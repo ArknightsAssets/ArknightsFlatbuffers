@@ -1,0 +1,26 @@
+name: Download new assets
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 * * * *'
+
+jobs:
+  update:
+    name: Update
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Update files
+        run: chmod +x script.sh && sudo bash script.sh
+      - name: Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message:  FBS update
+          commit_user_name: Silence
+          commit_user_email: silence+github-actions[bot]@users.noreply.github.com
