@@ -1,9 +1,10 @@
 # generate arknights flatbuffers schema by bruteforcing previously-known schemas
 
 TMP="/tmp/fbs-tw"
+rm -rf $TMP ||:
 mkdir -p $TMP
 
-rm -rf cn yostar tw
+rm -rf cn yostar tw output
 
 # download files, see https://github.com/ArknightsAssets/ArknightsAssets for reference
 BUNDLES="$TMP/bundles"
@@ -44,17 +45,24 @@ git clone https://github.com/MooncellWiki/OpenArknightsFBS $OAFBS
 $TMP/AssetStudioModCLI/AssetStudioModCLI "$BUNDLES" -t TextAsset -o "$TMP/extracted"
 
 mkdir -p "$TMP/export"
+mkdir -p "$TMP/extracted-cut"
 mkdir -p "$TMP/fb"
 mkdir -p "tw"
+mkdir -p "output/tw"
+mkdir -p "output/tw/levels"
 for path in $(find "$TMP/extracted/assets/torappu/dynamicassets/gamedata" -type f -name "*.bytes"); do
+    cutpath="$TMP/extracted-cut/$(basename $path)"
+    dd if=$path bs=128 skip=1 of=$cutpath 2>/dev/null
+
     if [[ $path =~ gamedata/(.+_(table|data|const|database))([0-9a-fA-F]{6}) ]]; then
         name=$(basename "${BASH_REMATCH[1]}")
 
         git -C $OAFBS rev-list --all --objects -- FBS/$name.fbs | cut -d ' ' -f1 |
         while read h; do
             git -C $OAFBS cat-file -p ${h}:FBS/$name.fbs > $TMP/export/$name.$h.fbs;
-            $TMP/flatc -o "$TMP/fb" "$TMP/export/$name.$h.fbs" -- "$path" --no-warnings --json --strict-json --natural-utf8 --defaults-json --unknown-json --raw-binary --force-empty |:
+            $TMP/flatc -o "output/tw" "$TMP/export/$name.$h.fbs" -- "$cutpath" --no-warnings --json --strict-json --natural-utf8 --defaults-json --unknown-json --raw-binary --force-empty 1> /dev/null 2> /dev/null
             if [[ $? == 0 ]]; then
+                mv "output/tw/$(basename $cutpath .bytes).json" "output/tw/$name.json"
                 echo "// https://github.com/MooncellWiki/OpenArknightsFBS/commit/$h" | cat - $TMP/export/$name.$h.fbs > tw/$name.fbs
                 echo $name - $h
                 break
@@ -71,8 +79,11 @@ while read h; do
     git -C $OAFBS cat-file -p ${h}:FBS/$name.fbs > $TMP/export/$name.$h.fbs;
     # maybe it will work, maybe it won't. Who can tell?
     for path in $(find "$TMP/extracted/assets/torappu/dynamicassets/gamedata/levels/activities" -type f -name "*.bytes" | shuf -n 20); do
+        cutpath="$TMP/extracted-cut/$(basename $path)"
+        dd if=$path bs=128 skip=1 of=$cutpath 2>/dev/null
+
         echo "$h $path"
-        $TMP/flatc -o "$TMP/fb" "$TMP/export/$name.$h.fbs" -- "$path" --no-warnings --json --strict-json --natural-utf8 --defaults-json --unknown-json --raw-binary --force-empty |:
+        $TMP/flatc -o "output/tw/levels" "$TMP/export/$name.$h.fbs" -- "$cutpath" --no-warnings --json --strict-json --natural-utf8 --defaults-json --unknown-json --raw-binary --force-empty 1> /dev/null 2> /dev/null
         if [[ $? != 0 ]]; then
             success=0
             break
