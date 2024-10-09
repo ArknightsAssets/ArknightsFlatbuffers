@@ -1,6 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/2d6351403dfa8f55c8b7e5219c10ca1c2cb4b415
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/abbeb4caaa893646ae22bec9a33b6b8774dc4aec
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-// YoStar version
 enum enum__Torappu_BattleFunctionDisableMask : int {
     NONE = 0,
     CARD_LIST = 1,
@@ -13,7 +12,9 @@ enum enum__Torappu_BattleFunctionDisableMask : int {
     COST_PANEL = 128,
     SLOW_MOTION = 256,
     PAUSE_BUTTON_INTERACT = 512,
-    ALL = 1023,
+    SYSTEM_MENU_INTERACT = 1024,
+    SPEED_SWITCHER_BUTTON_INTERACT = 2048,
+    ALL = 4095,
 }
 
 table clz_Torappu_Blackboard_DataPair {
@@ -244,6 +245,7 @@ table clz_Torappu_AttributesData {
     frozenImmune: bool; 
     levitateImmune: bool; 
     disarmedCombatImmune: bool; 
+    fearedImmune: bool; 
 }
 
 enum enum__Torappu_SourceApplyWay : int {
@@ -364,6 +366,7 @@ table clz_Torappu_EnemyDatabase_AttributesData {
     frozenImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     levitateImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     disarmedCombatImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    fearedImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
 }
 
 table clz_Torappu_Undefinable_1_Torappu_SourceApplyWay_ {
@@ -424,7 +427,9 @@ enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_ActionType : int {
     TRIGGER_PREDEFINED = 8,
     BATTLE_EVENTS = 9,
     WITHDRAW_PREDEFINED = 10,
-    E_NUM = 11,
+    DIALOG = 11,
+    SHOW_ALL_HIDDEN_CARDS = 12,
+    E_NUM = 13,
 }
 
 enum enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RandomType : int {
@@ -472,6 +477,7 @@ table clz_Torappu_LevelData_WaveData_FragmentData_ActionData {
     refreshType: enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RefreshType; 
     weight: int; 
     dontBlockWave: bool; 
+    forceBlockWaveInBranch: bool; 
     isValid: bool; 
     extraMeta: clz_System_Object; 
     actionId: clz_Torappu_LevelData_ActionID; 
@@ -604,6 +610,7 @@ table clz_Torappu_LevelData {
     excludeCharIdList: [string]; 
     randomSeed: int; 
     operaConfig: string; 
+    cameraPlugin: string; 
     runtimeData: clz_Torappu_LevelData_RuntimeData; 
 }
 
