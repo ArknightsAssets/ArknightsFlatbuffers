@@ -1,5 +1,6 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/ef2edb0e5a895f20e3b527fa316ef279a47ea3f7
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/26ba49e8f17132df9f8e6d6bf4a65cd3410625cb
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 enum enum__Torappu_BuildableType : int {
     NONE = 0,
     MELEE = 1,
@@ -272,9 +273,7 @@ enum enum__Torappu_AbnormalFlag : int {
     TOWER_TARGET_FREE = 32,
     FEARED = 33,
     SKILL_ACTIVABLE_IN_ABNORMAL = 34,
-    MOTION_TARGET_FREE = 35,
-    FORCE_LEVITATE = 36,
-    E_NUM = 37,
+    E_NUM = 35,
 }
 
 enum enum__Torappu_AbnormalCombo : int {

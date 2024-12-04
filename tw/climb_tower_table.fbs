@@ -1,5 +1,6 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/ef2edb0e5a895f20e3b527fa316ef279a47ea3f7
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/26ba49e8f17132df9f8e6d6bf4a65cd3410625cb
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 enum enum__Torappu_ClimbTowerTowerType : int {
     TRAINING = 0,
     NORMAL = 1,
@@ -283,7 +284,6 @@ table clz_Torappu_RuneData_Selector {
     enemyIdFilter: [string]; 
     enemyIdExcludeFilter: [string]; 
     enemyLevelTypeFilter: [string]; 
-    enemyActionHiddenGroupFilter: [string]; 
     skillIdFilter: [string]; 
     tileKeyFilter: [string]; 
     groupTagFilter: [string]; 
