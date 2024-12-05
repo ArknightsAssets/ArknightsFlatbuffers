@@ -1,6 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/26ba49e8f17132df9f8e6d6bf4a65cd3410625cb
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/ab59ca354ccfdcf311a8ca7046922c9937d399b3
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-// YoStar version
 enum enum__Torappu_BattleFunctionDisableMask : int {
     NONE = 0,
     CARD_LIST = 1,
@@ -15,7 +14,12 @@ enum enum__Torappu_BattleFunctionDisableMask : int {
     PAUSE_BUTTON_INTERACT = 512,
     SYSTEM_MENU_INTERACT = 1024,
     SPEED_SWITCHER_BUTTON_INTERACT = 2048,
-    ALL = 4095,
+    UNIT_HUD_SKILL_CAST_MASK = 4096,
+    WITHDRAWABLE_PANEL = 8192,
+    COST_PANEL_KEEP_CHARACTERLIMIT = 16384,
+    CHARACTER_LIMIT = 32768,
+    AUTOCHESS_SELL_OR_DESTORY = 65536,
+    ALL = 131071,
 }
 
 table clz_Torappu_Blackboard_DataPair {
@@ -38,6 +42,7 @@ table clz_Torappu_LevelData_Options {
     maxPlayTime: float; 
     functionDisableMask: enum__Torappu_BattleFunctionDisableMask; 
     configBlackBoard: [clz_Torappu_Blackboard_DataPair]; 
+    enemyTauntLevelPow: int; 
 }
 
 table hg__internal__MapData {
@@ -478,6 +483,7 @@ table clz_Torappu_LevelData_WaveData_FragmentData_ActionData {
     refreshType: enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RefreshType; 
     weight: int; 
     dontBlockWave: bool; 
+    forceBlockWaveInBranch: bool; 
     isValid: bool; 
     extraMeta: clz_System_Object; 
     actionId: clz_Torappu_LevelData_ActionID; 
@@ -610,6 +616,7 @@ table clz_Torappu_LevelData {
     excludeCharIdList: [string]; 
     randomSeed: int; 
     operaConfig: string; 
+    cameraPlugin: string; 
     runtimeData: clz_Torappu_LevelData_RuntimeData; 
 }
 
