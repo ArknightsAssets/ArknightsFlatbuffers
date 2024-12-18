@@ -1,6 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/47f74422273de2cc52e15bffe639f8fe5fa0d8f1
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/ab59ca354ccfdcf311a8ca7046922c9937d399b3
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-// YoStar version
 enum enum__Torappu_AbnormalFlag : int {
     STUNNED = 0,
     SP_RECOVER_STOPPED = 1,
@@ -34,7 +33,12 @@ enum enum__Torappu_AbnormalFlag : int {
     SP_MODIFY_STOPPED = 29,
     ANTI_STATUS_RESISTABLE = 30,
     DISARMED_COMBAT = 31,
-    E_NUM = 32,
+    TOWER_TARGET_FREE = 32,
+    FEARED = 33,
+    SKILL_ACTIVABLE_IN_ABNORMAL = 34,
+    MOTION_TARGET_FREE = 35,
+    FORCE_LEVITATE = 36,
+    E_NUM = 37,
 }
 
 enum enum__Torappu_AbnormalCombo : int {
@@ -77,7 +81,9 @@ enum enum__Torappu_AttributeType : int {
     SP_RECOVER_RATIO = 30,
     EP_DAMAGE_RESISTANCE = 31,
     EP_RESISTANCE = 32,
-    E_NUM = 33,
+    DAMAGE_HITRATE_PHYSICAL = 33,
+    DAMAGE_HITRATE_MAGICAL = 34,
+    E_NUM = 35,
 }
 
 enum enum__Torappu_AttributeModifierData_AttributeModifier_FormulaItemType : int {
@@ -131,6 +137,7 @@ enum enum__Torappu_LifeType : ubyte {
     IMMEDIATELY = 0,
     LIMITED = 1,
     INFINITY = 2,
+    CUSTOM = 3,
 }
 
 table clz_Torappu_Blackboard_DataPair {
@@ -144,6 +151,7 @@ table clz_Torappu_BuffData {
     buffKey: string; 
     loadFromDB: bool; 
     isDurableBuff: bool; 
+    isDamageMissable: bool; 
     isSilenceable: bool; 
     isStunnable: bool; 
     isFreezable: bool; 
@@ -154,7 +162,10 @@ table clz_Torappu_BuffData {
     overrideKey: string; 
     overrideType: enum__Torappu_BuffData_OverrideType; 
     maxStackCnt: int; 
+    refreshRemainingTimeWhenStackMax: bool; 
+    clearAllStackCntWhenTimeUp: bool; 
     maxValidStackCnt: int; 
+    independentCharacterSource: bool; 
     overrideEffectKey: string; 
     overrideOnEventPriority: bool; 
     onEventPriority: enum__Torappu_BuffData_OnEventPriority; 
