@@ -16,6 +16,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      # for some reason github actions uses the wrong version and I can't seem to fix it any other way
+      - name: Remove all .NET versions
+        run: |
+          sudo apt-get remove --purge -y dotnet* || true
+          sudo apt-get autoremove -y
+          sudo rm -rf /usr/share/dotnet /etc/dotnet
+      - name: Install .NET 6.0
+        uses: actions/setup-dotnet@v4
+        with:
+            dotnet-version: 6.0.x
       - name: Update files
         run: chmod +x script.sh && sudo bash script.sh
       - name: Push changes
