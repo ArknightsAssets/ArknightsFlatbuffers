@@ -1,5 +1,5 @@
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/66c667d7b37c8f306160944f9f7a4bbda2da9b49
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-// YoStar version
 table clz_Torappu_RoguelikeTopicBasicData_HomeEntryDisplayData {
     topicId: string; 
     displayId: string; 
@@ -253,6 +253,11 @@ table clz_Torappu_RoguelikeTopicMonthMission {
     tokenRewardNum: int; 
 }
 
+table clz_Torappu_RoguelikeTopicMonthSquadTeamChar {
+    teamCharId: string; 
+    teamTmplId: string; 
+}
+
 table clz_Torappu_RoguelikeTopicMonthSquad {
     id: string; 
     teamName: string; 
@@ -263,7 +268,7 @@ table clz_Torappu_RoguelikeTopicMonthSquad {
     teamMonth: string; 
     teamYear: string; 
     teamIndex: string; 
-    teamChars: [string]; 
+    teamChars: [clz_Torappu_RoguelikeTopicMonthSquadTeamChar]; 
     zoneId: string; 
     chatId: string; 
     tokenRewardNum: int; 
