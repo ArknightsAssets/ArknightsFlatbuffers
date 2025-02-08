@@ -1,5 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/66c667d7b37c8f306160944f9f7a4bbda2da9b49
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 enum enum__Torappu_DataUnlockType : int {
     DIRECT = 0,
     AWAKE = 1,
