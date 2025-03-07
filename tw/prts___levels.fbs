@@ -1,6 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/a3d27e31778e23378b137550d0d47cb4b5470f0f
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/83ecc786245435932e84812ff34820782b8a1824
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-// YoStar version
 enum enum__Torappu_BattleFunctionDisableMask : int {
     NONE = 0,
     CARD_LIST = 1,
@@ -15,7 +14,13 @@ enum enum__Torappu_BattleFunctionDisableMask : int {
     PAUSE_BUTTON_INTERACT = 512,
     SYSTEM_MENU_INTERACT = 1024,
     SPEED_SWITCHER_BUTTON_INTERACT = 2048,
-    ALL = 4095,
+    UNIT_HUD_SKILL_CAST_MASK = 4096,
+    WITHDRAWABLE_PANEL = 8192,
+    COST_PANEL_KEEP_CHARACTERLIMIT = 16384,
+    CHARACTER_LIMIT = 32768,
+    AUTOCHESS_SELL_OR_DESTORY = 65536,
+    CHARACTER_MENU_PANEL = 131072,
+    ALL = 262143,
 }
 
 table clz_Torappu_Blackboard_DataPair {
@@ -160,6 +165,7 @@ table clz_Torappu_LevelData_GlobalBuffData {
     overrideCameraEffect: string; 
     passProfessionMaskFlag: bool; 
     professionMask: enum__Torappu_ProfessionCategory; 
+    playerSideMask: enum__Torappu_PlayerSideMask; 
 }
 
 enum enum__Torappu_MotionMode : int {
@@ -275,17 +281,6 @@ table clz_Torappu_LevelData_EnemyData_ESpData {
     increment: float; 
 }
 
-table clz_Torappu_DynamicAbilityData {
-    atRoot: bool; 
-    prefabKey: string; 
-    blackboard: [clz_Torappu_Blackboard_DataPair]; 
-}
-
-table clz_Torappu_LevelData_EnemyData_RuntimeData {
-    dynamicAbilities: [clz_Torappu_DynamicAbilityData]; 
-    skinData: [string]; 
-}
-
 table clz_Torappu_LevelData_EnemyData {
     name: string; 
     description: string; 
@@ -304,7 +299,6 @@ table clz_Torappu_LevelData_EnemyData {
     talentBlackboard: [clz_Torappu_Blackboard_DataPair]; 
     skills: [clz_Torappu_LevelData_EnemyData_ESkillData]; 
     spData: clz_Torappu_LevelData_EnemyData_ESpData; 
-    m_runtimeData: clz_Torappu_LevelData_EnemyData_RuntimeData; 
 }
 
 table clz_Torappu_Undefinable_1_System_String_ {
@@ -455,6 +449,7 @@ table clz_Torappu_LevelData_WaveData_FragmentData_ActionData {
     refreshType: enum__Torappu_LevelData_WaveData_FragmentData_ActionData_RefreshType; 
     weight: int; 
     dontBlockWave: bool; 
+    forceBlockWaveInBranch: bool; 
 }
 
 table clz_Torappu_LevelData_WaveData_FragmentData {
@@ -572,6 +567,7 @@ table clz_Torappu_LevelData {
     excludeCharIdList: [string]; 
     randomSeed: int; 
     operaConfig: string; 
+    cameraPlugin: string; 
 }
 
 root_type clz_Torappu_LevelData;
