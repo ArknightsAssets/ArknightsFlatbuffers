@@ -1,5 +1,5 @@
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/2d2b0043c149881460dd43173e95e10085627582
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-// YoStar version
 enum enum__Torappu_SandboxPermTemplateType : int {
     NONE = 0,
     SANDBOX_V2 = 1,
@@ -649,8 +649,9 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 79,
     TEMPLATE_TRAP = 80,
     NAME_CARD_SKIN = 81,
-    EXCLUSIVE_TKT_GACHA = 82,
-    EXCLUSIVE_TKT_GACHA_10 = 83,
+    EMOTICON_SET = 82,
+    EXCLUSIVE_TKT_GACHA = 83,
+    EXCLUSIVE_TKT_GACHA_10 = 84,
 }
 
 table clz_Torappu_ItemBundle {
@@ -799,14 +800,25 @@ enum enum__Torappu_PlayerSideMask : ubyte {
     NONE = 3,
 }
 
+enum enum__Torappu_Battle_SideType : int {
+    NONE = 0,
+    ALLY = 1,
+    ENEMY = 2,
+    BOTH_ALLY_AND_ENEMY = 3,
+    NEUTRAL = 4,
+    ALL = 7,
+}
+
 table clz_Torappu_RuneData_Selector {
     professionMask: enum__Torappu_ProfessionCategory; 
     buildableMask: enum__Torappu_BuildableType; 
     playerSideMask: enum__Torappu_PlayerSideMask; 
+    sideType: enum__Torappu_Battle_SideType; 
     charIdFilter: [string]; 
     enemyIdFilter: [string]; 
     enemyIdExcludeFilter: [string]; 
     enemyLevelTypeFilter: [string]; 
+    enemyActionHiddenGroupFilter: [string]; 
     skillIdFilter: [string]; 
     tileKeyFilter: [string]; 
     groupTagFilter: [string]; 
@@ -846,7 +858,8 @@ enum enum__Torappu_LevelData_Difficulty : int {
     NORMAL = 1,
     FOUR_STAR = 2,
     EASY = 4,
-    ALL = 7,
+    SIX_STAR = 8,
+    ALL = 15,
 }
 
 table clz_Torappu_LegacyInLevelRuneData {
@@ -961,11 +974,18 @@ enum enum__Torappu_SandboxV2QuestLineBadgeType : int {
     RIFT = 4,
 }
 
+enum enum__Torappu_SandboxV2QuestLineScopeType : int {
+    MAIN = 0,
+    RIFT = 1,
+    ALL = 2,
+}
+
 table clz_Torappu_SandboxV2QuestLineData {
     questLineId: string; 
     questLineTitle: string; 
     questLineType: enum__Torappu_SandboxV2QuestLineType; 
     questLineBadgeType: enum__Torappu_SandboxV2QuestLineBadgeType; 
+    questLineScopeType: enum__Torappu_SandboxV2QuestLineScopeType; 
     questLineDesc: string; 
     sortId: int; 
 }
