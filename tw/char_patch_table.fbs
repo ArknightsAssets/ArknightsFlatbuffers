@@ -1,5 +1,6 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/83ecc786245435932e84812ff34820782b8a1824
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/82a7eab40bc57702a7a7a32b3fd5ae9a5cce8494
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 table clz_Torappu_CharPatchData_PatchInfo {
     tmplIds: [string]; 
     default: string; // __prts__check_required__defaultPatch__
@@ -188,9 +189,8 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 79,
     TEMPLATE_TRAP = 80,
     NAME_CARD_SKIN = 81,
-    EMOTICON_SET = 82,
-    EXCLUSIVE_TKT_GACHA = 83,
-    EXCLUSIVE_TKT_GACHA_10 = 84,
+    EXCLUSIVE_TKT_GACHA = 82,
+    EXCLUSIVE_TKT_GACHA_10 = 83,
 }
 
 table clz_Torappu_ItemBundle {

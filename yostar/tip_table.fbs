@@ -1,5 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/4464eb23c129884ac837cc35f8de11e520faa501
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 enum enum__Torappu_TipData_Category : int {
     NONE = 0,
     BATTLE = 1,
