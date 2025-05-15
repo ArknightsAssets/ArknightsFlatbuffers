@@ -1,6 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/26ba49e8f17132df9f8e6d6bf4a65cd3410625cb
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/3eb9eea6dd28420bf595fc9244b03fe0a1a36b65
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-// YoStar version
 enum enum__Torappu_AbnormalFlag : int {
     STUNNED = 0,
     SP_RECOVER_STOPPED = 1,
@@ -12,12 +11,12 @@ enum enum__Torappu_AbnormalFlag : int {
     HEAL_FREE = 7,
     UNBALANCE_IMMUNE = 8,
     INVISIBLE = 9,
+    UNUSED_PLACEHOLDER_2 = 14,
+    ALLY_TARGET_FREE = 15,
     UNUSED_PLACEHOLDER_1 = 10,
     DISARMED = 11,
     SILENCED = 12,
     UNMOVABLE = 13,
-    UNUSED_PLACEHOLDER_2 = 14,
-    ALLY_TARGET_FREE = 15,
     FROZEN = 16,
     CAMOUFLAGE = 17,
     FORCE_DISARMED = 18,
@@ -37,7 +36,13 @@ enum enum__Torappu_AbnormalFlag : int {
     TOWER_TARGET_FREE = 32,
     FEARED = 33,
     SKILL_ACTIVABLE_IN_ABNORMAL = 34,
-    E_NUM = 35,
+    MOTION_TARGET_FREE = 35,
+    FORCE_LEVITATE = 36,
+    BUFF_ADD_CAN_BE_CANCELED_IF_DEFENSE = 37,
+    DEFENSE_BUFF_ADD_IF_CANCELABLE_BUFF = 38,
+    PALSY = 39,
+    PALSYING = 40,
+    E_NUM = 41,
 }
 
 enum enum__Torappu_AbnormalCombo : int {
@@ -124,18 +129,19 @@ enum enum__Torappu_BuffData_OverrideType : int {
 }
 
 enum enum__Torappu_BuffData_OnEventPriority : int {
-    DEFAULT = 0,
-    HIGH_PRIORITY = 1000,
     HIGHER_PRIORITY = 2000,
-    LOWEST_PRIORITY = -3000,
-    LOWER_PRIORITY = -2000,
+    HIGH_PRIORITY = 1000,
+    DEFAULT = 0,
     LOW_PRIORITY = -1000,
+    LOWER_PRIORITY = -2000,
+    LOWEST_PRIORITY = -3000,
 }
 
 enum enum__Torappu_LifeType : ubyte {
     IMMEDIATELY = 0,
     LIMITED = 1,
     INFINITY = 2,
+    CUSTOM = 3,
 }
 
 table clz_Torappu_Blackboard_DataPair {
@@ -163,6 +169,7 @@ table clz_Torappu_BuffData {
     refreshRemainingTimeWhenStackMax: bool; 
     clearAllStackCntWhenTimeUp: bool; 
     maxValidStackCnt: int; 
+    independentCharacterSource: bool; 
     overrideEffectKey: string; 
     overrideOnEventPriority: bool; 
     onEventPriority: enum__Torappu_BuffData_OnEventPriority; 
