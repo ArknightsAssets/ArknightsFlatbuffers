@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/2d2b0043c149881460dd43173e95e10085627582
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/3cd83986000ba0bd4a88d78a636558cb7505684a
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 table clz_Torappu_Audio_Middleware_Data_BGMBank {
     intro: string; 
@@ -128,6 +128,7 @@ enum enum__Torappu_VoiceLangType : int {
     ITA = 7,
     GER = 8,
     RUS = 9,
+    FRE = 10,
 }
 
 table dict__enum__Torappu_VoiceLangType__string {

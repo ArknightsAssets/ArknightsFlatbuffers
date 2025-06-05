@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/3eb9eea6dd28420bf595fc9244b03fe0a1a36b65
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/3cd83986000ba0bd4a88d78a636558cb7505684a
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 enum enum__Torappu_AbnormalFlag : int {
     STUNNED = 0,
@@ -42,7 +42,8 @@ enum enum__Torappu_AbnormalFlag : int {
     DEFENSE_BUFF_ADD_IF_CANCELABLE_BUFF = 38,
     PALSY = 39,
     PALSYING = 40,
-    E_NUM = 41,
+    ATTRACTED = 41,
+    E_NUM = 42,
 }
 
 enum enum__Torappu_AbnormalCombo : int {
@@ -87,7 +88,8 @@ enum enum__Torappu_AttributeType : int {
     EP_RESISTANCE = 32,
     DAMAGE_HITRATE_PHYSICAL = 33,
     DAMAGE_HITRATE_MAGICAL = 34,
-    E_NUM = 35,
+    EP_BREAK_RECOVER_SPEED = 35,
+    E_NUM = 36,
 }
 
 enum enum__Torappu_AttributeModifierData_AttributeModifier_FormulaItemType : int {
