@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/ceb0ec7d9cbf9243ac231fe4bc7d872d570f5491
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/8f4871552921290fc954e74a9240ca3f5a22b5d6
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 // YoStar version
 enum enum__Torappu_AbnormalFlag : int {
@@ -12,12 +12,12 @@ enum enum__Torappu_AbnormalFlag : int {
     HEAL_FREE = 7,
     UNBALANCE_IMMUNE = 8,
     INVISIBLE = 9,
-    UNUSED_PLACEHOLDER_2 = 14,
-    ALLY_TARGET_FREE = 15,
     UNUSED_PLACEHOLDER_1 = 10,
     DISARMED = 11,
     SILENCED = 12,
     UNMOVABLE = 13,
+    UNUSED_PLACEHOLDER_2 = 14,
+    ALLY_TARGET_FREE = 15,
     FROZEN = 16,
     CAMOUFLAGE = 17,
     FORCE_DISARMED = 18,
@@ -126,12 +126,12 @@ enum enum__Torappu_BuffData_OverrideType : int {
 }
 
 enum enum__Torappu_BuffData_OnEventPriority : int {
-    HIGHER_PRIORITY = 2000,
-    HIGH_PRIORITY = 1000,
     DEFAULT = 0,
-    LOW_PRIORITY = -1000,
-    LOWER_PRIORITY = -2000,
+    HIGH_PRIORITY = 1000,
+    HIGHER_PRIORITY = 2000,
     LOWEST_PRIORITY = -3000,
+    LOWER_PRIORITY = -2000,
+    LOW_PRIORITY = -1000,
 }
 
 enum enum__Torappu_LifeType : ubyte {

@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/ceb0ec7d9cbf9243ac231fe4bc7d872d570f5491
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/8f4871552921290fc954e74a9240ca3f5a22b5d6
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 // YoStar version
 enum enum__Torappu_ItemRarity : int {
@@ -101,9 +101,8 @@ enum enum__Torappu_ItemType : int {
     SANDBOX_TOKEN = 79,
     TEMPLATE_TRAP = 80,
     NAME_CARD_SKIN = 81,
-    EMOTICON_SET = 82,
-    EXCLUSIVE_TKT_GACHA = 83,
-    EXCLUSIVE_TKT_GACHA_10 = 84,
+    EXCLUSIVE_TKT_GACHA = 82,
+    EXCLUSIVE_TKT_GACHA_10 = 83,
 }
 
 enum enum__Torappu_OccPer : int {
@@ -135,8 +134,8 @@ enum enum__Torappu_BuildingData_RoomType : int {
     TRADING = 512,
     WORKSHOP = 1024,
     TRAINING = 2048,
-    PRIVATE = 4096,
     FUNCTIONAL = 3710,
+    PRIVATE = 4096,
     ALL = 8191,
 }
 

@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/ceb0ec7d9cbf9243ac231fe4bc7d872d570f5491
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/8f4871552921290fc954e74a9240ca3f5a22b5d6
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 // YoStar version
 enum enum__Torappu_CharWordVoiceType : int {
@@ -123,7 +123,7 @@ table dict__enum__Torappu_VoiceLangType__clz_Torappu_VoiceLangInfoData {
 table clz_Torappu_VoiceLangData {
     wordkeys: [string]; 
     charId: string; 
-    dict: [dict__enum__Torappu_VoiceLangType__clz_Torappu_VoiceLangInfoData]; 
+    dict: [dict__enum__Torappu_VoiceLangType__clz_Torappu_VoiceLangInfoData]; // __prts__check_required__voiceLangInfoDataDict__
 }
 
 table dict__string__clz_Torappu_VoiceLangData {

@@ -1,4 +1,3 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/9226342537c95c473974d24092d48966b920748f
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 // YoStar version
 enum enum__Torappu_ProfessionCategory : int {
