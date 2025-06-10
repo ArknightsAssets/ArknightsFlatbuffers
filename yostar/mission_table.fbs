@@ -1,5 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/2d2b0043c149881460dd43173e95e10085627582
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 enum enum__Torappu_MissionType : int {
     UNKNOWN = 0,
     MAIN = 1,

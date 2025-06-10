@@ -1,5 +1,6 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/83ecc786245435932e84812ff34820782b8a1824
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/ceb0ec7d9cbf9243ac231fe4bc7d872d570f5491
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 enum enum__Torappu_SkillType : int {
     PASSIVE = 0,
     MANUAL = 1,

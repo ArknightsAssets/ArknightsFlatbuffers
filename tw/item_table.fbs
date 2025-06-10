@@ -1,5 +1,6 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/3cd83986000ba0bd4a88d78a636558cb7505684a
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/ceb0ec7d9cbf9243ac231fe4bc7d872d570f5491
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 enum enum__Torappu_ItemRarity : int {
     TIER_1 = 0,
     TIER_2 = 1,
@@ -149,21 +150,6 @@ table clz_Torappu_ItemData_VoucherRelateInfo {
     voucherItemType: enum__Torappu_ItemType; 
 }
 
-enum enum__Torappu_ItemDropShopType : int {
-    HGGSHD_SHOP = 0,
-    LGGSHD_SHOP = 1,
-    XSHD_SHOP = 2,
-    EPGS_SHOP = 3,
-    REP_SHOP = 4,
-    CLASSIC_SHOP = 5,
-}
-
-table clz_Torappu_ItemData_ShopRelateInfo {
-    shopType: enum__Torappu_ItemDropShopType; 
-    shopGroup: int; 
-    startTs: long; 
-}
-
 table clz_Torappu_ItemData {
     itemId: string; 
     name: string; 
@@ -181,7 +167,6 @@ table clz_Torappu_ItemData {
     stageDropList: [clz_Torappu_ItemData_StageDropInfo]; 
     buildingProductList: [clz_Torappu_ItemData_BuildingProductInfo]; 
     voucherRelateList: [clz_Torappu_ItemData_VoucherRelateInfo]; 
-    shopRelateInfoList: [clz_Torappu_ItemData_ShopRelateInfo]; 
 }
 
 table dict__string__clz_Torappu_ItemData {
@@ -309,7 +294,6 @@ table clz_Torappu_InventoryData {
     fullPotentialCharacters: [dict__string__clz_Torappu_FullPotentialCharacterInfo]; 
     activityPotentialCharacters: [dict__string__clz_Torappu_ActivityPotentialCharacterInfo]; 
     favorCharacters: [dict__string__clz_Torappu_FavorCharacterInfo]; 
-    itemShopNameDict: [dict__string__string]; 
 }
 
 root_type clz_Torappu_InventoryData;

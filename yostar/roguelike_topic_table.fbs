@@ -1,5 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/ab9749987ce58650d328d28a6545476fb5269070
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 table clz_Torappu_RoguelikeTopicBasicData_HomeEntryDisplayData {
     topicId: string; 
     displayId: string; 

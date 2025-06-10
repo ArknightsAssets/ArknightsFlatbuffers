@@ -1,5 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/146b7eb9bc0bf979a87c4495d296b91be5789efe
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 table clz_Torappu_GridPosition {
     row: int; 
     col: int; 

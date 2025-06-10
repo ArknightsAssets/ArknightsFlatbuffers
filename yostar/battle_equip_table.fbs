@@ -1,5 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/efb9b25751af883b9fb021b2dddce072477679aa
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 enum enum__Torappu_UniEquipTarget : int {
     NONE = 0,
     TRAIT = 1,
