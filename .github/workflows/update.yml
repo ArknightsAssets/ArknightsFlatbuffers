@@ -29,8 +29,12 @@ jobs:
       - name: Update files
         run: chmod +x script.sh && sudo bash script.sh
       - name: Push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message:  FBS update
-          commit_user_name: Silence
-          commit_user_email: silence+github-actions[bot]@users.noreply.github.com
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # there has to be a better way...
+          git status --porcelain | grep -E '^ [AM] ' | cut -c4- | while read file; do
+            git add "$file"
+          done
+          git commit -m "FBS update"
+          git push origin HEAD
