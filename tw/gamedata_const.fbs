@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/a3d27e31778e23378b137550d0d47cb4b5470f0f
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/d334afa65c3b3d2138a957175e702accd8a1a416
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 // YoStar version
 table list_int {
@@ -177,6 +177,7 @@ table clz_Torappu_GameDataConsts {
     mainlineNormalDesc: string; 
     rejectSpCharMission: long; 
     addedRewardDisplayZone: string; 
+    oneDiamondAp: int; 
     richTextStyles: [dict__string__string]; 
     charAssistRefreshTime: [clz_Torappu_GameDataConsts_CharAssistRefreshTimeState]; 
     normalRecruitLockedString: [string]; 
@@ -229,6 +230,8 @@ table clz_Torappu_GameDataConsts {
     dataVersion: string; 
     resPrefVersion: string; 
     announceWebBusType: string; 
+    videoPlayerWebBusType: string; 
+    gachaLogBusType: string; 
     defaultMinContinuousBattleTimes: int; 
     defaultMaxContinuousBattleTimes: int; 
     continuousActionOpen: bool; 
