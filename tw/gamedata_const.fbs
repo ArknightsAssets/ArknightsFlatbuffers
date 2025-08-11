@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/d334afa65c3b3d2138a957175e702accd8a1a416
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/8f4871552921290fc954e74a9240ca3f5a22b5d6
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 // YoStar version
 table list_int {
@@ -178,6 +178,16 @@ table clz_Torappu_GameDataConsts {
     rejectSpCharMission: long; 
     addedRewardDisplayZone: string; 
     oneDiamondAp: int; 
+    charRotationPresetMaxCnt: int; 
+    charRotationSkinListMaxCnt: int; 
+    defaultCRPresetCharId: string; 
+    defaultCRPresetCharSkinId: string; 
+    defaultCRPresetBGId: string; 
+    defaultCRPresetThemeId: string; 
+    defaultCRPresetName: string; 
+    charRotationPresetTrackTs: long; 
+    uniequipArchiveSysTrackTs: long; 
+    manufactPromptTime: int; 
     richTextStyles: [dict__string__string]; 
     charAssistRefreshTime: [clz_Torappu_GameDataConsts_CharAssistRefreshTimeState]; 
     normalRecruitLockedString: [string]; 
@@ -237,6 +247,13 @@ table clz_Torappu_GameDataConsts {
     continuousActionOpen: bool; 
     subProfessionDamageTypePairs: [dict__string__enum__Torappu_SubProfessionAttackType]; 
     classicProtectChar: [string]; 
+    birthdaySettingDesc: string; 
+    birthdaySettingConfirmDesc: string; 
+    birthdaySettingLeapConfirmDesc: string; 
+    leapBirthdayRewardMonth: int; 
+    leapBirthdayRewardDay: int; 
+    birthdaySettingShowStageId: string; 
+    isBirthdayFuncEnabled: bool; 
 }
 
 root_type clz_Torappu_GameDataConsts;
