@@ -154,7 +154,7 @@ mkdir -p "$TMP/fb"
 mkdir -p "yostar"
 mkdir -p "output/yostar"
 mkdir -p "output/yostar/levels"
-for path in $(find "$TMP/extracted/assets/torappu/dynamicassets/gamedata" -type f -name "*.bytes"); do
+for path in $(find "$TMP/extracted/dyn/gamedata" -type f -name "*.bytes"); do
     cutpath="$TMP/extracted-cut/$(basename $path)"
     dd if=$path bs=128 skip=1 of=$cutpath 2>/dev/null
 
