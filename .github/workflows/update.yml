@@ -32,9 +32,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # there has to be a better way...
-          git status --porcelain | grep -E '^ [AM] ' | cut -c4- | while read file; do
-            git add "$file"
-          done
+          git add --ignore-removal .
           git commit -m "FBS update"
           git push origin HEAD
+
