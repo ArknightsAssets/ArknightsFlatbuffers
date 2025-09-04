@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/7fb23434462ac948c1a88143fb08828aca8f2cf9
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/45e54beb7221c349ae04da6ee86ac075e22f035b
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 enum enum__Torappu_ItemRarity : int {
     TIER_1 = 0,
@@ -105,6 +105,7 @@ enum enum__Torappu_ItemType : int {
     EXCLUSIVE_TKT_GACHA_10 = 84,
     SO_CHAR_EXP = 85,
     GIFTPACKAGE_TKT = 86,
+    ACT1VHALFIDLE_ITEM = 87,
 }
 
 enum enum__Torappu_OccPer : int {
@@ -120,6 +121,7 @@ enum enum__Torappu_OccPer : int {
 table clz_Torappu_ItemData_StageDropInfo {
     stageId: string; 
     occPer: enum__Torappu_OccPer; 
+    sortId: int; 
 }
 
 enum enum__Torappu_BuildingData_RoomType : int {
