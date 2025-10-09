@@ -58,7 +58,9 @@ enum enum__Torappu_ActivityType : int {
     TYPE_ACT44SIDE = 55,
     HALFIDLE_VERIFY1 = 56,
     TYPE_ACT45SIDE = 57,
-    ENUM = 58,
+    TEAM_QUEST = 58,
+    RECRUIT_ONLY = 59,
+    ENUM = 60,
 }
 
 enum enum__Torappu_ActivityDisplayType : int {
@@ -263,7 +265,10 @@ enum enum__Torappu_ItemType : int {
     EXCLUSIVE_TKT_GACHA_10 = 84,
     SO_CHAR_EXP = 85,
     GIFTPACKAGE_TKT = 86,
-    ACT1VHALFIDLE_ITEM = 87,
+    VOUCHER_SKIN_V2 = 87,
+    RANDOM_VOUCHER_SKIN = 88,
+    ACT1VHALFIDLE_ITEM = 89,
+    PLOT_ITEM = 90,
 }
 
 table clz_Torappu_MissionDisplayRewards {
@@ -1848,11 +1853,36 @@ table clz_Torappu_ActivitySwitchCheckinConstData {
     activityRule: string; 
 }
 
+table clz_Torappu_ActivitySwitchCheckinRewardItemShowData {
+    itemBundle: clz_Torappu_ItemBundle; 
+    isMainReward: bool; 
+}
+
+table clz_Torappu_ActivitySwitchCheckinMainRewardShowData {
+    mainRewardPicId: string; 
+    mainRewardName: string; 
+    mainRewardCount: int; 
+    hasTip: bool; 
+    tipItemBundle: clz_Torappu_ItemBundle; 
+}
+
+table clz_Torappu_ActivitySwitchCheckinRewardShowData {
+    checkinId: string; 
+    rewardsTitle: string; 
+    rewardShowItemDatas: [clz_Torappu_ActivitySwitchCheckinRewardItemShowData]; 
+    mainRewardShowData: clz_Torappu_ActivitySwitchCheckinMainRewardShowData; 
+}
+
+table dict__string__clz_Torappu_ActivitySwitchCheckinRewardShowData {
+    key: string(key);
+    value: clz_Torappu_ActivitySwitchCheckinRewardShowData;
+}
+
 table clz_Torappu_ActivitySwitchCheckinData {
     constData: clz_Torappu_ActivitySwitchCheckinConstData; 
     rewards: [dict__string__list_clz_Torappu_ItemBundle]; 
+    rewardShowDatas: [dict__string__clz_Torappu_ActivitySwitchCheckinRewardShowData]; 
     apSupplyOutOfDateDict: [dict__string__long]; 
-    rewardsTitle: [dict__string__string]; 
     sortIdDict: [dict__string__int]; 
 }
 
@@ -2145,6 +2175,7 @@ enum enum__Torappu_StageDropType : int {
     CHARM_DROP = 9,
     OVERRIDE_DROP = 10,
     ITEM_RETURN = 11,
+    CONDITION_DROP = 12,
 }
 
 table clz_Torappu_ActivityBossRushData_DisplayDetailRewards {
@@ -4410,6 +4441,7 @@ enum enum__Torappu_ActMultiV3MapModeType : int {
     NORMAL = 1,
     FOOTBALL = 2,
     DEFENCE = 3,
+    RAFT = 4,
 }
 
 table clz_Torappu_ActMultiV3SquadInfoData {
@@ -4451,8 +4483,8 @@ table clz_Torappu_ActMultiV3SquadEffectData {
     buffDesc: string; 
     debuffDesc: string; 
     token: clz_Torappu_ActMultiV3SquadEffectData_Token; 
-    unlockKeyNum: int; 
     runeData: clz_Torappu_RuneTable_PackedRuneData; 
+    isInitial: bool; 
 }
 
 table clz_Torappu_ActMultiV3TargetMissionData {
@@ -4788,6 +4820,73 @@ table clz_Torappu_ActMultiV3ConstData {
     photoCharacterDefaultAct: string; 
     trainingStageConfirmDesc: string; 
     joinRoomLongTimeThreshold: double; 
+    invitationSendCd: int; 
+    boatMapReachableSize: int; 
+    boatMapSizeMax: int; 
+    boatExitMapOffset: int; 
+    boatEnterTranOffset: int; 
+    boatCollisionLossSpeedFactor: float; 
+    boatAirFactor: float; 
+    boatFrictionFactor: float; 
+    boatForceInterval: float; 
+    boatExchangeDamageMax: int; 
+    boatExchangeDamageMin: int; 
+    boatExchangeForceMax: int; 
+    boatExchangeForceMin: int; 
+    waterSpeedFactor: float; 
+}
+
+table clz_Torappu_ActMultiV3SailBoatLevelPoolData {
+    stageId: string; 
+    startBlockPool: string; 
+    midBlockPool: string; 
+    endBlockPool: string; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3SailBoatLevelPoolData {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3SailBoatLevelPoolData;
+}
+
+enum enum__Torappu_ActMultiV3BlockDirType : int {
+    NONE = 0,
+    UP = 1,
+    RIGHT = 2,
+    DOWN = 3,
+    LEFT = 4,
+}
+
+table clz_Torappu_ActMultiV3SailBoatBlockPoolData {
+    blockPool: string; 
+    blockId: string; 
+    startDirType: enum__Torappu_ActMultiV3BlockDirType; 
+    endDirType: enum__Torappu_ActMultiV3BlockDirType; 
+    weight: int; 
+}
+
+table dict__string__list_clz_Torappu_ActMultiV3SailBoatBlockPoolData {
+    key: string(key);
+    value: [clz_Torappu_ActMultiV3SailBoatBlockPoolData];
+}
+
+enum enum__Torappu_ActMultiV3BlockType : int {
+    NONE = 0,
+    START = 1,
+    END = 2,
+    MID = 3,
+}
+
+table clz_Torappu_ActMultiV3SailBoatBlockInfoData {
+    blockId: string; 
+    blockLevelId: string; 
+    startDirType: enum__Torappu_ActMultiV3BlockDirType; 
+    endDirType: enum__Torappu_ActMultiV3BlockDirType; 
+    blockType: enum__Torappu_ActMultiV3BlockType; 
+}
+
+table dict__string__clz_Torappu_ActMultiV3SailBoatBlockInfoData {
+    key: string(key);
+    value: clz_Torappu_ActMultiV3SailBoatBlockInfoData;
 }
 
 table clz_Torappu_ActMultiV3Data {
@@ -4813,6 +4912,9 @@ table clz_Torappu_ActMultiV3Data {
     tempCharDataList: [clz_Torappu_ActMultiV3TempCharData]; 
     constToastData: clz_Torappu_ActMultiV3ConstToastData; 
     constData: clz_Torappu_ActMultiV3ConstData; 
+    sailBoatLevelPoolDict: [dict__string__clz_Torappu_ActMultiV3SailBoatLevelPoolData]; 
+    sailBoatBlockPoolDict: [dict__string__list_clz_Torappu_ActMultiV3SailBoatBlockPoolData]; 
+    sailBoatBlockInfoList: [dict__string__clz_Torappu_ActMultiV3SailBoatBlockInfoData]; 
 }
 
 table dict__string__clz_Torappu_ActMultiV3Data {
@@ -4822,6 +4924,7 @@ table dict__string__clz_Torappu_ActMultiV3Data {
 
 table clz_Torappu_ActMainSSZoneAdditionData {
     unlockTip: string; 
+    unlockTipAfterRetro: string; 
 }
 
 table dict__string__clz_Torappu_ActMainSSZoneAdditionData {
@@ -5971,6 +6074,29 @@ table dict__string__clz_Torappu_Act45SideData {
     value: clz_Torappu_Act45SideData;
 }
 
+table clz_Torappu_ActRecruitOnlyData_RecruitOnlyItemData {
+    id: string; 
+    phaseNum: int; 
+    tagId: int; 
+    tagTimes: int; 
+    startTime: long; 
+    endTime: long; 
+    startTimeDesc: string; 
+    endTimeDesc: string; 
+    desc1: string; 
+    desc2: string; 
+}
+
+table clz_Torappu_ActRecruitOnlyData {
+    recruitData: clz_Torappu_ActRecruitOnlyData_RecruitOnlyItemData; 
+    previewData: clz_Torappu_ActRecruitOnlyData_RecruitOnlyItemData; 
+}
+
+table dict__string__clz_Torappu_ActRecruitOnlyData {
+    key: string(key);
+    value: clz_Torappu_ActRecruitOnlyData;
+}
+
 table clz_Torappu_ActivityTable_ActivityDetailTable {
     DEFAULT: [dict__string__clz_Torappu_DefaultFirstData]; 
     CHECKIN_ONLY: [dict__string__clz_Torappu_DefaultCheckInData]; 
@@ -6014,6 +6140,7 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     TYPE_ACT44SIDE: [dict__string__clz_Torappu_Act44SideData]; 
     HALFIDLE_VERIFY1: [dict__string__clz_Torappu_Act1VHalfIdleData]; 
     TYPE_ACT45SIDE: [dict__string__clz_Torappu_Act45SideData]; 
+    RECRUIT_ONLY: [dict__string__clz_Torappu_ActRecruitOnlyData]; 
 }
 
 table clz_Torappu_ActMainlineBpExtraData_ActMainlineBpExtraPeriodData {
