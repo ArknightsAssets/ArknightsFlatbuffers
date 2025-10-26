@@ -1,5 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/3cd83986000ba0bd4a88d78a636558cb7505684a
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 table clz_Torappu_CharPatchData_PatchInfo {
     tmplIds: [string]; 
     default: string; 

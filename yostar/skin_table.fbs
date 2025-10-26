@@ -1,5 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/3eb9eea6dd28420bf595fc9244b03fe0a1a36b65
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 table clz_Torappu_CharSkinData_TokenSkinInfo {
     tokenId: string; 
     tokenSkinId: string; 
