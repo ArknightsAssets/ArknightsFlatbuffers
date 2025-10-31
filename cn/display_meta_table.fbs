@@ -408,6 +408,8 @@ enum enum__Torappu_EmojiSceneType : int {
     ACTMULTIV3_PICK = 2,
     ACTMULTIV3_BATTLE = 3,
     ENEMYDUEL_BATTLE = 4,
+    AUTOCHESS_ROOM = 5,
+    AUTOCHESS_BATTLE = 6,
 }
 
 table clz_Torappu_EmoticonData_EmojiData {
@@ -497,6 +499,8 @@ enum enum__Torappu_UIGuideTarget : int {
     SPECIAL_OPERATOR = 46,
     INFORMANT = 47,
     ACT1VHALFIDLE = 48,
+    MONOPOLY = 49,
+    AUTO_CHESS = 50,
 }
 
 table clz_Torappu_GuidebookConfigData {
