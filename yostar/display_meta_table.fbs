@@ -1,5 +1,5 @@
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/ad1f7afbe2085100005d6af9d45087e5d4e07e80
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-// YoStar version
 enum enum__Torappu_PlayerAvatarGroupType : int {
     NONE = 0,
     ASSISTANT = 1,
@@ -39,16 +39,34 @@ table clz_Torappu_PlayerAvatarData {
     avatarTypeData: [dict__enum__Torappu_PlayerAvatarGroupType__clz_Torappu_PlayerAvatarGroupData]; 
 }
 
+enum enum__Torappu_HomeMultiFormChangeRule : int {
+    NONE = 0,
+    TIME = 1,
+}
+
+table clz_Torappu_HomeBackgroundMultiFormData {
+    multiFormBgId: string; 
+    sortId: int; 
+    bgMusicId: string; 
+}
+
 table clz_Torappu_HomeBackgroundSingleData {
     bgId: string; 
     bgSortId: int; 
     bgStartTime: long; 
     bgName: string; 
-    bgMusicId: string; 
     bgDes: string; 
     bgUsage: string; 
+    isMultiForm: bool; 
+    changeRule: enum__Torappu_HomeMultiFormChangeRule; 
+    multiFormList: [clz_Torappu_HomeBackgroundMultiFormData]; 
     obtainApproach: string; 
     unlockDesList: [string]; 
+}
+
+table clz_Torappu_HomeThemeMultiFormData {
+    multiFormTmId: string; 
+    sortId: int; 
 }
 
 enum enum__Torappu_ItemRarity : int {
@@ -69,6 +87,9 @@ table clz_Torappu_HomeThemeDisplayData {
     tmName: string; 
     tmDes: string; 
     tmUsage: string; 
+    isMultiForm: bool; 
+    changeRule: enum__Torappu_HomeMultiFormChangeRule; 
+    multiFormList: [clz_Torappu_HomeThemeMultiFormData]; 
     obtainApproach: string; 
     unlockDesList: [string]; 
     isLimitObtain: bool; 
@@ -110,6 +131,22 @@ table dict__string__clz_Torappu_HomeThemeLimitData {
     value: clz_Torappu_HomeThemeLimitData;
 }
 
+table clz_Torappu_HomeMultiFormInfoData {
+    changeRule: enum__Torappu_HomeMultiFormChangeRule; 
+    bgDesc: string; 
+    tmDesc: string; 
+}
+
+table clz_Torappu_HomeMultiFormTimeRuleData {
+    id: string; 
+    startHour: int; 
+}
+
+table dict__string__list_clz_Torappu_HomeMultiFormTimeRuleData {
+    key: string(key);
+    value: [clz_Torappu_HomeMultiFormTimeRuleData];
+}
+
 table clz_Torappu_HomeBackgroundData {
     defaultBackgroundId: string; 
     defaultThemeId: string; 
@@ -117,6 +154,8 @@ table clz_Torappu_HomeBackgroundData {
     themeList: [clz_Torappu_HomeThemeDisplayData]; 
     backgroundLimitData: [dict__string__clz_Torappu_HomeBackgroundLimitData]; 
     themeLimitData: [dict__string__clz_Torappu_HomeThemeLimitData]; 
+    multiFormInfoData: [clz_Torappu_HomeMultiFormInfoData]; 
+    timeRuleData: [dict__string__list_clz_Torappu_HomeMultiFormTimeRuleData]; 
     defaultBgMusicId: string; 
     themeStartTime: long; 
 }
@@ -308,6 +347,12 @@ enum enum__Torappu_ItemType : int {
     EMOTICON_SET = 82,
     EXCLUSIVE_TKT_GACHA = 83,
     EXCLUSIVE_TKT_GACHA_10 = 84,
+    SO_CHAR_EXP = 85,
+    GIFTPACKAGE_TKT = 86,
+    VOUCHER_SKIN_V2 = 87,
+    RANDOM_VOUCHER_SKIN = 88,
+    ACT1VHALFIDLE_ITEM = 89,
+    PLOT_ITEM = 90,
 }
 
 table clz_Torappu_ItemBundle {
@@ -364,6 +409,8 @@ enum enum__Torappu_EmojiSceneType : int {
     ACTMULTIV3_PICK = 2,
     ACTMULTIV3_BATTLE = 3,
     ENEMYDUEL_BATTLE = 4,
+    AUTOCHESS_ROOM = 5,
+    AUTOCHESS_BATTLE = 6,
 }
 
 table clz_Torappu_EmoticonData_EmojiData {
@@ -405,6 +452,76 @@ table dict__string__clz_Torappu_StoryVariantData {
     value: clz_Torappu_StoryVariantData;
 }
 
+enum enum__Torappu_UIGuideTarget : int {
+    NONE = 0,
+    BUILDING_CONTROL = 1,
+    BUILDING_DORM = 2,
+    BUILDING_HIRE = 3,
+    BUILDING_MANUFACT = 4,
+    BUILDING_MEETING = 5,
+    BUILDING_TRADING = 6,
+    CHAR_INFO = 7,
+    FRIEND = 8,
+    RECRUIT = 9,
+    SHOP = 10,
+    SQUAD_NORMAL = 11,
+    SQUAD_BATTLE = 12,
+    STAGE_MAINLINE = 13,
+    BUILDING_POWER = 14,
+    MISSION = 15,
+    CHAR_SKILL_SELECT = 16,
+    BUILDING_WORKSHOP = 17,
+    STAGE_CAMPAIGN = 18,
+    CHAR_EVOLVE = 19,
+    HANDBOOK = 20,
+    BUILDING_FURN_SHOP = 21,
+    BUILDING_TRAINING = 22,
+    STAGE_ACTIVITY = 23,
+    CRISIS_STAGE = 24,
+    ROGUELIKE_CHARSELECT = 25,
+    ROGUELIKE_BP = 26,
+    CLIMB_TOWER_ENTRY = 27,
+    CLIMB_TOWER_LAYER = 28,
+    ROGUELIKE_DUNGEON = 31,
+    RL03_TOTEM = 32,
+    GROCERY = 33,
+    TUNING = 34,
+    CRISIS_V2 = 35,
+    MISSION_ARCHIVE = 36,
+    FIFTH_ANNIV_EXPLORE = 37,
+    CARVING = 38,
+    VEC_BREAK = 39,
+    FIREWORK = 40,
+    BUILDING_STATION_MANAGE = 41,
+    ACT_MULTI_V3 = 42,
+    ENEMY_DUEL = 43,
+    VEC_BREAK_V2 = 44,
+    GUN_TASK = 45,
+    SPECIAL_OPERATOR = 46,
+    INFORMANT = 47,
+    ACT1VHALFIDLE = 48,
+    MONOPOLY = 49,
+    AUTO_CHESS = 50,
+}
+
+table clz_Torappu_GuidebookConfigData {
+    configId: string; 
+    sortId: int; 
+    pageIdList: [string]; 
+}
+
+table clz_Torappu_GuidebookGroupData {
+    groupId: string; 
+    guideTarget: enum__Torappu_UIGuideTarget; 
+    subSignal: string; 
+    configList: [clz_Torappu_GuidebookConfigData]; 
+}
+
+table dict__string__clz_Torappu_GuidebookGroupData {
+    key: string(key);
+    value: clz_Torappu_GuidebookGroupData;
+}
+
 table clz_Torappu_DisplayMetaData {
     playerAvatarData: clz_Torappu_PlayerAvatarData; 
     homeBackgroundData: clz_Torappu_HomeBackgroundData; 
@@ -413,6 +530,7 @@ table clz_Torappu_DisplayMetaData {
     mailSenderData: clz_Torappu_MailSenderData; 
     emoticonData: clz_Torappu_EmoticonData; 
     storyVariantData: [dict__string__clz_Torappu_StoryVariantData]; 
+    guidebookGroupDatas: [dict__string__clz_Torappu_GuidebookGroupData]; 
 }
 
 root_type clz_Torappu_DisplayMetaData;
