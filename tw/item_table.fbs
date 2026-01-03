@@ -1,5 +1,6 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/3cc62e82842f8b54c4fd20973e8be9ed3dd1732a
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/6c35802a200ece55c6ef732d45a1b12c6aa4e7dd
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
 enum enum__Torappu_ItemRarity : int {
     TIER_1 = 0,
     TIER_2 = 1,
@@ -103,12 +104,6 @@ enum enum__Torappu_ItemType : int {
     EMOTICON_SET = 82,
     EXCLUSIVE_TKT_GACHA = 83,
     EXCLUSIVE_TKT_GACHA_10 = 84,
-    SO_CHAR_EXP = 85,
-    GIFTPACKAGE_TKT = 86,
-    VOUCHER_SKIN_V2 = 87,
-    RANDOM_VOUCHER_SKIN = 88,
-    ACT1VHALFIDLE_ITEM = 89,
-    PLOT_ITEM = 90,
 }
 
 enum enum__Torappu_OccPer : int {
@@ -124,7 +119,6 @@ enum enum__Torappu_OccPer : int {
 table clz_Torappu_ItemData_StageDropInfo {
     stageId: string; 
     occPer: enum__Torappu_OccPer; 
-    sortId: int; 
 }
 
 enum enum__Torappu_BuildingData_RoomType : int {

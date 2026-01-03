@@ -1,0 +1,33 @@
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/8014ccac194076c659a544f52e03a1efa370d669
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
+table clz_Torappu_Blackboard_DataPair {
+    key: string; 
+    value: float; 
+    valueStr: string; 
+}
+
+table clz_Torappu_Battle_Legion_LegionModeBuffData_LegionModeBuffDataPart_LegionModeBuffLevelPhase {
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table clz_Torappu_Battle_Legion_LegionModeBuffData_LegionModeBuffDataPart {
+    isInheritable: bool; 
+    isRedrawWhenReplace: bool; 
+    description: string; 
+    descriptionHead: string; 
+    levelPhases: [clz_Torappu_Battle_Legion_LegionModeBuffData_LegionModeBuffDataPart_LegionModeBuffLevelPhase]; 
+}
+
+table clz_Torappu_Battle_Legion_LegionModeBuffData {
+    dataParts: [clz_Torappu_Battle_Legion_LegionModeBuffData_LegionModeBuffDataPart]; 
+}
+
+table dict__string__clz_Torappu_Battle_Legion_LegionModeBuffData {
+    key: string(key);
+    value: clz_Torappu_Battle_Legion_LegionModeBuffData;
+}
+table clz_Torappu_SimpleKVTable_clz_Torappu_Battle_Legion_LegionModeBuffData {
+    legion_mode_buffs: [dict__string__clz_Torappu_Battle_Legion_LegionModeBuffData];
+}
+root_type clz_Torappu_SimpleKVTable_clz_Torappu_Battle_Legion_LegionModeBuffData;

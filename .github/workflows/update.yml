@@ -16,6 +16,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests
       # for some reason github actions uses the wrong version and I can't seem to fix it any other way
       - name: Remove all .NET versions
         run: |
@@ -27,7 +35,9 @@ jobs:
         with:
             dotnet-version: 6.0.x
       - name: Update files
-        run: chmod +x script.sh && sudo bash script.sh
+        run: |
+          python script.py --server tw
+          python script.py --server yostar
       - name: Push changes
         run: |
           git config user.name "github-actions[bot]"
