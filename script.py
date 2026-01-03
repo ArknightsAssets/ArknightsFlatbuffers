@@ -157,7 +157,7 @@ for path in extracted_dir.rglob("*.bytes"):
         infile.seek(128)
         outfile.write(infile.read())
 
-    match = re.search(r"gamedata[/\\](.+_(table|data|const|database))([0-9a-fA-F]{6})", str(path))
+    match = re.search(r"gamedata[/\\](.+_(table|data|const|database|text))([0-9a-fA-F]{6})", str(path))
     if not match:
         continue
     name = Path(match[1]).name

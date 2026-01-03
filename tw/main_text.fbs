@@ -1,0 +1,13 @@
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/8014ccac194076c659a544f52e03a1efa370d669
+// This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
+// YoStar version
+table dict__string__string {
+    key: string(key);
+    value: string;
+}
+
+table clz_Torappu_LanguageData {
+    strings: [dict__string__string]; 
+}
+
+root_type clz_Torappu_LanguageData;
