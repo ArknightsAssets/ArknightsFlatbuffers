@@ -56,6 +56,7 @@ table clz_Torappu_RuneData_Selector {
     playerSideMask: enum__Torappu_PlayerSideMask; 
     sideType: enum__Torappu_Battle_SideType; 
     charIdFilter: [string]; 
+    charIdExcludeFilter: [string]; 
     enemyIdFilter: [string]; 
     enemyIdExcludeFilter: [string]; 
     enemyLevelTypeFilter: [string]; 

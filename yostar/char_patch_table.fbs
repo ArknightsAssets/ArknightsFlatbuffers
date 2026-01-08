@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/3cc62e82842f8b54c4fd20973e8be9ed3dd1732a
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/b11b249f1feeb34ba863ae822d81f9ac2c8c3f9f
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 table clz_Torappu_CharPatchData_PatchInfo {
     tmplIds: [string]; 
@@ -309,7 +309,9 @@ enum enum__Torappu_AbnormalFlag : int {
     PALSY = 39,
     PALSYING = 40,
     ATTRACTED = 41,
-    E_NUM = 42,
+    FEARED_PRIVATE = 42,
+    DOZE = 43,
+    E_NUM = 44,
 }
 
 enum enum__Torappu_AbnormalCombo : int {

@@ -1124,6 +1124,13 @@ enum enum__Torappu_RoguelikeGameChoiceType : int {
     USE_STASHED_TICKET = 14,
     EXPEDITION_ALL = 15,
     EXPEDITION_RETURN_ALL = 16,
+    PACIFY_WRATH = 17,
+    GILD_COPPER = 18,
+    ITEM_REROLL = 19,
+    ITEM_TOP_UP = 20,
+    GILD_COPPER_ALL = 21,
+    JUMP_PROB = 22,
+    JUMP = 23,
 }
 
 enum enum__Torappu_RoguelikeChoiceLeftDecoType : int {
@@ -1227,7 +1234,7 @@ enum enum__Torappu_RoguelikeEventType : int {
     STASHED_RECRUIT = 524288,
     SPECIAL_ZONE = 1048576,
     BATTLES = 7,
-    CHOICES = 913136,
+    CHOICES = 1961712,
     EVENTS = 1965816,
     ALL = 1965823,
 }
@@ -2359,6 +2366,7 @@ table clz_Torappu_RoguelikeCopperData {
     poemList: [string]; 
     alwaysShowCountDown: bool; 
     buffItemIdList: [string]; 
+    isAllLuckyLevel: bool; 
 }
 
 table dict__string__clz_Torappu_RoguelikeCopperData {
@@ -2392,14 +2400,29 @@ table dict__string__clz_Torappu_RoguelikeCopperDivineData {
     value: clz_Torappu_RoguelikeCopperDivineData;
 }
 
+table clz_Torappu_RoguelikeCopperGildTypeData {
+    gildTypeId: string; 
+    gildName: string; 
+    gildDesc: string; 
+}
+
+table dict__string__clz_Torappu_RoguelikeCopperGildTypeData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeCopperGildTypeData;
+}
+
 table clz_Torappu_RoguelikeCopperModuleConsts {
     copperDrawMaxNum: int; 
     copperDrawMinNum: int; 
+    copperAllLuckyLevelGildId: string; 
+    copperDrawFreezeCostItemId: string; 
+    copperDrawFreezeCostCount: [int]; 
 }
 
 table clz_Torappu_RoguelikeCopperModuleData {
     copperData: [dict__string__clz_Torappu_RoguelikeCopperData]; 
     copperDivineData: [dict__string__clz_Torappu_RoguelikeCopperDivineData]; 
+    copperGildTypeData: [dict__string__clz_Torappu_RoguelikeCopperGildTypeData]; 
     changeCopperMap: [dict__string__string]; 
     moduleConsts: clz_Torappu_RoguelikeCopperModuleConsts; 
 }
@@ -2412,6 +2435,7 @@ table clz_Torappu_RoguelikeWrathData {
     levelName: string; 
     functionDesc: string; 
     desc: string; 
+    isPacified: bool; 
 }
 
 table dict__string__clz_Torappu_RoguelikeWrathData {
@@ -2423,6 +2447,7 @@ table clz_Torappu_RoguelikeWrathModuleConsts {
     getWrathTransition: string; 
     getWrathToast: string; 
     hiddenWrathType: string; 
+    pacifiedWrathLevel: int; 
 }
 
 table clz_Torappu_RoguelikeWrathModuleData {
@@ -3020,6 +3045,7 @@ table clz_Torappu_RL05EndingText {
     summaryHoldCandle: string; 
     summaryHoldCandleRecruit: string; 
     summaryHoldCandleUpgrade: string; 
+    summaryExpeditionEndingFourToFive: string; 
     summaryExchangeSpZoneGet: string; 
     summaryMeetShopSpZone: string; 
     summaryBattleFailSpZone: string; 
