@@ -271,6 +271,8 @@ enum enum__Torappu_ItemType : int {
     RANDOM_VOUCHER_SKIN = 88,
     ACT1VHALFIDLE_ITEM = 89,
     PLOT_ITEM = 90,
+    MAGAZINE_LEAF = 91,
+    STICKER = 92,
 }
 
 table clz_Torappu_MissionDisplayRewards {
@@ -3645,6 +3647,8 @@ table clz_Torappu_ActVecBreakV2ConstData {
     defenceBattleFinishActivateText: string; 
     defenceBattleFinishSquadText: string; 
     milestoneTrackId: string; 
+    themeColor: string; 
+    subTitleName: string; 
 }
 
 table clz_Torappu_ActVecBreakV2ScheduleBlockData {
@@ -3668,7 +3672,7 @@ table clz_Torappu_ActVecBreakV2Data {
     defenseZoneId: string; 
     offenseZoneId: string; 
     hardZoneId: string; 
-    firstDefenseGroupId: string; 
+    firstDefenseStageId: string; 
 }
 
 table dict__string__clz_Torappu_ActVecBreakV2Data {
@@ -8004,6 +8008,20 @@ table dict__string__clz_Torappu_CrossDayTrackTypeData {
     value: clz_Torappu_CrossDayTrackTypeData;
 }
 
+table clz_Torappu_StoryReadTipsData {
+    key: string; 
+    picId: string; 
+    mainText: string; 
+    confirmText: string; 
+    isAll: bool; 
+    stageIdList: [string]; 
+}
+
+table dict__string__clz_Torappu_StoryReadTipsData {
+    key: string(key);
+    value: clz_Torappu_StoryReadTipsData;
+}
+
 table clz_Torappu_ActivityTable {
     basicInfo: [dict__string__clz_Torappu_ActivityTable_BasicData]; 
     homeActConfig: [dict__string__clz_Torappu_ActivityTable_HomeActivityConfig]; 
@@ -8037,6 +8055,7 @@ table clz_Torappu_ActivityTable {
     activityTemplateMissionStyles: [dict__string__clz_Torappu_TemplateMissionStyleData]; 
     activityCrossDayTrackTypeDataDict: [dict__string__clz_Torappu_CrossDayTrackTypeData]; 
     activityCrossDayTrackTypeMap: [dict__string__list_string]; 
+    activityStoryReadTipsDatas: [dict__string__clz_Torappu_StoryReadTipsData]; 
 }
 
 root_type clz_Torappu_ActivityTable;

@@ -32,6 +32,7 @@ table clz_Torappu_EquipTalentData {
     displayRangeId: bool; 
     upgradeDescription: string; 
     talentIndex: int; 
+    validModeIndices: [int]; 
     unlockCondition: clz_Torappu_CharacterData_UnlockCondition; 
     requiredPotentialRank: int; 
     prefabKey: string; 

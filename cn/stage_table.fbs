@@ -149,6 +149,8 @@ enum enum__Torappu_ItemType : int {
     RANDOM_VOUCHER_SKIN = 88,
     ACT1VHALFIDLE_ITEM = 89,
     PLOT_ITEM = 90,
+    MAGAZINE_LEAF = 91,
+    STICKER = 92,
 }
 
 table clz_Torappu_ItemBundle {
@@ -653,10 +655,12 @@ table clz_Torappu_StorylineMainlineData {
     zoneId: string; 
     retroId: string; 
     decoImageId: string; 
+    desc: string; 
+    backgroundId: string; 
+    tags: [string]; 
 }
 
 table clz_Torappu_StorylineSSData {
-    name: string; 
     desc: string; 
     backgroundId: string; 
     tags: [string]; 
@@ -668,7 +672,6 @@ table clz_Torappu_StorylineSSData {
 }
 
 table clz_Torappu_StorylineCollectData {
-    name: string; 
     desc: string; 
     backgroundId: string; 
 }
@@ -713,6 +716,67 @@ table clz_Torappu_StorylineConstData {
     recommendHideGuideGroupId: string; 
     tutorialSelectStorylineId: string; 
     mainlineStorylineId: string; 
+}
+
+enum enum__Torappu_CGGalleryCGSource : int {
+    IMAGE = 0,
+    BACKGROUND = 1,
+    ITEM = 2,
+}
+
+table clz_Torappu_CGGalleryDisplayData {
+    displayId: string; 
+    cgList: [string]; 
+    cgSource: enum__Torappu_CGGalleryCGSource; 
+    displayName: string; 
+    displayDesc: string; 
+    storySetId: string; 
+    sortId: int; 
+    relatedStoryId: string; 
+    relatedStageId: string; 
+}
+
+table dict__string__clz_Torappu_CGGalleryDisplayData {
+    key: string(key);
+    value: clz_Torappu_CGGalleryDisplayData;
+}
+
+table clz_Torappu_CGGalleryGroupData {
+    storySetId: string; 
+    storylineId: string; 
+    locationId: string; 
+    displays: [string]; 
+}
+
+table dict__string__clz_Torappu_CGGalleryGroupData {
+    key: string(key);
+    value: clz_Torappu_CGGalleryGroupData;
+}
+
+enum enum__Torappu_CGGalleryCGCompositeType : int {
+    NONE = 0,
+    HORIZONTAL = 1,
+    VERTICAL = 2,
+    GRID = 3,
+}
+
+table clz_Torappu_CGGalleryCGCompositeData {
+    cgId: string; 
+    width: int; 
+    height: int; 
+}
+
+table clz_Torappu_CGGalleryCGData {
+    cgId: string; 
+    sortId: int; 
+    compositeType: enum__Torappu_CGGalleryCGCompositeType; 
+    compositeList: [clz_Torappu_CGGalleryCGCompositeData]; 
+    storySetId: string; 
+}
+
+table dict__string__clz_Torappu_CGGalleryCGData {
+    key: string(key);
+    value: clz_Torappu_CGGalleryCGData;
 }
 
 table clz_Torappu_SixStarRuneData {
@@ -805,6 +869,9 @@ table clz_Torappu_StageTable {
     storylineStorySets: [dict__string__clz_Torappu_StorylineStorySetData]; 
     storylineTags: [dict__string__clz_Torappu_StorylineTagData]; 
     storylineConst: clz_Torappu_StorylineConstData; 
+    cgGalleryDisplays: [dict__string__clz_Torappu_CGGalleryDisplayData]; 
+    cgGalleryGroups: [dict__string__clz_Torappu_CGGalleryGroupData]; 
+    cgGalleryCgs: [dict__string__clz_Torappu_CGGalleryCGData]; 
     sixStarRuneData: [dict__string__clz_Torappu_SixStarRuneData]; 
     sixStarMilestoneInfo: [dict__string__clz_Torappu_SixStarMilestoneGroupData]; 
     sixStarCompatibleInfo: [dict__string__clz_Torappu_SixStarLinkedStageCompatibleInfo]; 
