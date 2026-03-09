@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/b11b249f1feeb34ba863ae822d81f9ac2c8c3f9f
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/e6719301bd97ad8769fd7a4874e9ca9a674a9e63
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 enum enum__Torappu_AbnormalFlag : int {
     STUNNED = 0,
@@ -192,6 +192,7 @@ table clz_Torappu_BuffData {
     priorityBBKeys: [string]; 
     stripBlackboardParamsWithBuffKey: bool; 
     blackboard: [clz_Torappu_Blackboard_DataPair]; 
+    enableInitDirectionFromSource: bool; 
 }
 
 table dict__string__clz_Torappu_BuffData {
