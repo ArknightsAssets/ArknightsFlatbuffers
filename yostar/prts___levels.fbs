@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/3cc62e82842f8b54c4fd20973e8be9ed3dd1732a
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/4975a03f61c54aa9e4ea792c7fd193039166d0cd
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 enum enum__Torappu_BattleFunctionDisableMask : int {
     NONE = 0,
@@ -519,6 +519,11 @@ table clz_Torappu_CharacterInst_Metadata {
     potentialRank: int; 
 }
 
+table clz_Torappu_CharacterInst_TalentInst {
+    prefabKey: string; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
 table clz_Torappu_LevelData_PredefinedData_PredefinedCharacter {
     position: clz_Torappu_GridPosition; 
     direction: enum__Torappu_SharedConsts_Direction; 
@@ -533,6 +538,7 @@ table clz_Torappu_LevelData_PredefinedData_PredefinedCharacter {
     skinId: string; 
     tmplId: string; 
     overrideSkillBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+    overrideTalents: [clz_Torappu_CharacterInst_TalentInst]; 
 }
 
 table clz_Torappu_LevelData_PredefinedData_PredefinedCard {
@@ -547,6 +553,7 @@ table clz_Torappu_LevelData_PredefinedData_PredefinedCard {
     skinId: string; 
     tmplId: string; 
     overrideSkillBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+    overrideTalents: [clz_Torappu_CharacterInst_TalentInst]; 
 }
 
 table clz_Torappu_LevelData_PredefinedData_PredefinedTokenCard {
@@ -562,6 +569,7 @@ table clz_Torappu_LevelData_PredefinedData_PredefinedTokenCard {
     skinId: string; 
     tmplId: string; 
     overrideSkillBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+    overrideTalents: [clz_Torappu_CharacterInst_TalentInst]; 
 }
 
 table clz_Torappu_LevelData_PredefinedData {

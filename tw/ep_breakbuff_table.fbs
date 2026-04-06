@@ -1,8 +1,8 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/dbb22db38899170664fda4f3d65bc781ce6a99b0
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/4975a03f61c54aa9e4ea792c7fd193039166d0cd
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-// YoStar version
 table clz_Torappu_EPBreakBuffData {
     elementBreakDuration: float; 
+    enemyElementBreakDuration: float; 
     elementBuffs: [string]; 
 }
 

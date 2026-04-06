@@ -518,6 +518,11 @@ table clz_Torappu_CharacterInst_Metadata {
     potentialRank: int; 
 }
 
+table clz_Torappu_CharacterInst_TalentInst {
+    prefabKey: string; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
 table clz_Torappu_LevelData_PredefinedData_PredefinedCharacter {
     position: clz_Torappu_GridPosition; 
     direction: enum__Torappu_SharedConsts_Direction; 
@@ -532,6 +537,7 @@ table clz_Torappu_LevelData_PredefinedData_PredefinedCharacter {
     skinId: string; 
     tmplId: string; 
     overrideSkillBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+    overrideTalents: [clz_Torappu_CharacterInst_TalentInst]; 
 }
 
 table clz_Torappu_LevelData_PredefinedData_PredefinedCard {
@@ -546,6 +552,7 @@ table clz_Torappu_LevelData_PredefinedData_PredefinedCard {
     skinId: string; 
     tmplId: string; 
     overrideSkillBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+    overrideTalents: [clz_Torappu_CharacterInst_TalentInst]; 
 }
 
 table clz_Torappu_LevelData_PredefinedData_PredefinedTokenCard {
@@ -561,6 +568,7 @@ table clz_Torappu_LevelData_PredefinedData_PredefinedTokenCard {
     skinId: string; 
     tmplId: string; 
     overrideSkillBlackboard: [clz_Torappu_Blackboard_DataPair]; 
+    overrideTalents: [clz_Torappu_CharacterInst_TalentInst]; 
 }
 
 table clz_Torappu_LevelData_PredefinedData {

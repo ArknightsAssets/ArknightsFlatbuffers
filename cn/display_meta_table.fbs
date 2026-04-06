@@ -244,9 +244,15 @@ enum enum__Torappu_NameCardV2SkinType : int {
 }
 
 table clz_Torappu_NameCardV2TimeLimitInfo {
+    limitId: string; 
     id: string; 
     availStartTime: long; 
     availEndTime: long; 
+}
+
+table dict__string__clz_Torappu_NameCardV2TimeLimitInfo {
+    key: string(key);
+    value: clz_Torappu_NameCardV2TimeLimitInfo;
 }
 
 table clz_Torappu_NameCardV2SkinData {
@@ -270,7 +276,7 @@ table clz_Torappu_NameCardV2SkinData {
     skinTmplCnt: int; 
     canChangeTmpl: bool; 
     isTimeLimit: bool; 
-    timeLimitInfoList: [clz_Torappu_NameCardV2TimeLimitInfo]; 
+    timeLimitInfoList: [dict__string__clz_Torappu_NameCardV2TimeLimitInfo]; 
 }
 
 table dict__string__clz_Torappu_NameCardV2SkinData {
@@ -564,10 +570,16 @@ table dict__string__clz_Torappu_GuidebookGroupData {
     value: clz_Torappu_GuidebookGroupData;
 }
 
+enum enum__Torappu_KeyCodeType : int {
+    KEYBOARD = 0,
+    MOUSE = 1,
+}
+
 table clz_Torappu_KeyItem {
     keyId: string; 
     keyName: string; 
     useIcon: bool; 
+    keyCodeType: enum__Torappu_KeyCodeType; 
     keyCodes: [int]; 
     canBeSetted: bool; 
 }
@@ -901,6 +913,19 @@ table clz_Torappu_StickerData {
     stickerMap: [dict__string__clz_Torappu_StickerItemData]; 
 }
 
+table clz_Torappu_AVGDialogPresetData {
+    id: int; 
+    name: string; 
+    nameFontSize: int; 
+    messageFontSize: int; 
+    messageMinHeight: float; 
+}
+
+table clz_Torappu_AVGDialogSettingData {
+    defaultPresetId: int; 
+    presetList: [clz_Torappu_AVGDialogPresetData]; 
+}
+
 table clz_Torappu_DisplayMetaData {
     playerAvatarData: clz_Torappu_PlayerAvatarData; 
     homeBackgroundData: clz_Torappu_HomeBackgroundData; 
@@ -915,6 +940,7 @@ table clz_Torappu_DisplayMetaData {
     artGalleryCollectData: clz_Torappu_ArtGalleryCollectData; 
     magazineLeafData: clz_Torappu_MagazineLeafData; 
     stickerData: clz_Torappu_StickerData; 
+    avgDialogSettingData: clz_Torappu_AVGDialogSettingData; 
 }
 
 root_type clz_Torappu_DisplayMetaData;

@@ -1,6 +1,7 @@
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 table clz_Torappu_EPBreakBuffData {
     elementBreakDuration: float; 
+    enemyElementBreakDuration: float; 
     elementBuffs: [string]; 
 }
 

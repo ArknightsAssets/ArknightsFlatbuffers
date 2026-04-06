@@ -1,6 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/8014ccac194076c659a544f52e03a1efa370d669
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/4975a03f61c54aa9e4ea792c7fd193039166d0cd
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-// YoStar version
 enum enum__Torappu_RecommendItemTagTips : int {
     ONSALE = 0,
     DEADLINE = 1,
@@ -171,6 +170,8 @@ enum enum__Torappu_ShopCondTrigPackageType : int {
     RETURN_PROGRESS = 1,
     RETURN_ONCE = 2,
     NEW_PROGRESS = 3,
+    CHOOSE_REGISTER_TIME = 4,
+    CHOOSE_NEWBIE = 5,
 }
 
 table clz_Torappu_ShopClientGPData {

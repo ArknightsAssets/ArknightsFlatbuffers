@@ -447,9 +447,12 @@ table clz_Torappu_NewbieCheckInPackageData {
     endTime: long; 
     bindGPGoodId: string; 
     checkInDuration: int; 
+    compensateEndDay: int; 
     totalCheckInDay: int; 
     iconId: string; 
     checkInRewardDict: [dict__int__list_clz_Torappu_NewbieCheckInPackageRewardData]; 
+    trigStartTime: long; 
+    trigEndTime: long; 
 }
 
 table clz_Torappu_LongTermCheckInGroupData {

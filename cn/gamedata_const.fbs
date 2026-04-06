@@ -148,6 +148,12 @@ table clz_Torappu_GameDataConsts_FeverGameData {
     feverNeed: float; 
 }
 
+table clz_Torappu_GameDataConsts_AVGReaderModeDefaultSetting {
+    defaultReaderFontsize: int; 
+    defaultReaderLinespace: int; 
+    defaultReaderBackgroundAlpha: int; 
+}
+
 table clz_Torappu_GameDataConsts {
     maxPlayerLevel: int; 
     playerExpMap: [int]; 
@@ -273,6 +279,7 @@ table clz_Torappu_GameDataConsts {
     birthdaySettingShowStageId: string; 
     isBirthdayFuncEnabled: bool; 
     isSoCharEnabled: bool; 
+    avgReaderModeDefaultSetting: clz_Torappu_GameDataConsts_AVGReaderModeDefaultSetting; 
 }
 
 root_type clz_Torappu_GameDataConsts;
