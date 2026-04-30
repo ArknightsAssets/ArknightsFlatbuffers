@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/0bd9e7c27493ef96308ced91d8df3df62412baa6
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/fdb838a2305922358dc4cae6b1d505f45cd5ddaf
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 enum enum__Torappu_SpecialOperatorTargetType : int {
     NONE = 0,
@@ -349,7 +349,9 @@ enum enum__Torappu_AttributeType : int {
     DAMAGE_HITRATE_PHYSICAL = 33,
     DAMAGE_HITRATE_MAGICAL = 34,
     EP_BREAK_RECOVER_SPEED = 35,
-    E_NUM = 36,
+    SLOW_DOWN = 36,
+    BLOCK_RADIUS_SCALE = 37,
+    E_NUM = 38,
 }
 
 enum enum__Torappu_AttributeModifierData_AttributeModifier_FormulaItemType : int {

@@ -941,6 +941,21 @@ table dict__string__clz_Torappu_BuildingData_BuildingRoomTypeBuffSortData {
     value: clz_Torappu_BuildingData_BuildingRoomTypeBuffSortData;
 }
 
+table clz_Torappu_BuildingData_TradingRoomSpecialOrderInfo {
+    charId: string; 
+    iconId: string; 
+    title: string; 
+}
+
+table dict__string__clz_Torappu_BuildingData_TradingRoomSpecialOrderInfo {
+    key: string(key);
+    value: clz_Torappu_BuildingData_TradingRoomSpecialOrderInfo;
+}
+
+table clz_Torappu_BuildingData_TradingRoomInfoData {
+    tradingRoomSpecialOrderData: [dict__string__clz_Torappu_BuildingData_TradingRoomSpecialOrderInfo]; 
+}
+
 table clz_Torappu_BuildingData {
     controlSlotId: string; 
     meetingSlotId: string; 
@@ -1023,6 +1038,7 @@ table clz_Torappu_BuildingData {
     emojis: [string]; 
     categoryNames: [dict__string__string]; 
     buffSortData: [dict__string__clz_Torappu_BuildingData_BuildingRoomTypeBuffSortData]; 
+    tradingRoomInfoData: clz_Torappu_BuildingData_TradingRoomInfoData; 
 }
 
 root_type clz_Torappu_BuildingData;

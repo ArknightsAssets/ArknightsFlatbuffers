@@ -152,6 +152,11 @@ table clz_Torappu_ChooseShopRelation {
     optionList: [string]; 
 }
 
+table dict__string__string {
+    key: string(key);
+    value: string;
+}
+
 enum enum__Torappu_ShopUnlockType : int {
     ALWAYS_UNLOCK = 0,
     SKIN_UNLOCK = 1,
@@ -175,6 +180,7 @@ enum enum__Torappu_ShopCondTrigPackageType : int {
 
 table clz_Torappu_ShopClientGPData {
     goodId: string; 
+    giftPackageId: string; 
     displayName: string; 
     condTrigPackageType: enum__Torappu_ShopCondTrigPackageType; 
 }
@@ -235,6 +241,7 @@ table clz_Torappu_ShopClientData {
     shopKeeperData: clz_Torappu_ShopClientData_ShopKeeperData; 
     carousels: [clz_Torappu_ShopCarouselData]; 
     chooseShopRelations: [clz_Torappu_ChooseShopRelation]; 
+    chooseOptionToGoodDict: [dict__string__string]; 
     shopUnlockDict: [dict__string__enum__Torappu_ShopUnlockType]; 
     extraQCShopRule: [string]; 
     repQCShopRule: [string]; 

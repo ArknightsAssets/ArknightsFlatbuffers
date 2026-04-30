@@ -7711,6 +7711,75 @@ table clz_Torappu_FifthAnnivExploreData {
     missionData: [dict__string__clz_Torappu_FifthAnnivExploreMissionData]; 
 }
 
+table clz_Torappu_Anniv7thClueGroupData {
+    clueGroupId: string; 
+    sortId: int; 
+    clueGroupName: string; 
+    clueGroupSubName: string; 
+    clueGroupBg: string; 
+}
+
+table dict__string__clz_Torappu_Anniv7thClueGroupData {
+    key: string(key);
+    value: clz_Torappu_Anniv7thClueGroupData;
+}
+
+table clz_Torappu_Anniv7thClueData {
+    clueId: string; 
+    clueGroupId: string; 
+    sortId: int; 
+    clueLink: [string]; 
+    clueName: string; 
+    clueOwner: string; 
+    clueDesc: string; 
+    unlockDesc: string; 
+    clueOwnerPic: string; 
+    pageRes: string; 
+}
+
+table dict__string__clz_Torappu_Anniv7thClueData {
+    key: string(key);
+    value: clz_Torappu_Anniv7thClueData;
+}
+
+table clz_Torappu_Anniv7thClueRewardData {
+    clueRecordId: string; 
+    clueRecord: int; 
+    clueRecordDesc: string; 
+    rewards: [clz_Torappu_ItemBundle]; 
+}
+
+enum enum__Torappu_Anniv7thDisplayNodeType : int {
+    LETTER = 0,
+    TYPE_WRITER = 1,
+    RECORD = 2,
+    SIGN = 3,
+}
+
+table clz_Torappu_Anniv7thDisplayData {
+    sortId: int; 
+    charId: string; 
+    voiceId: string; 
+}
+
+table clz_Torappu_Anniv7thDisplayNodeData {
+    nodeType: enum__Torappu_Anniv7thDisplayNodeType; 
+    displayData: [clz_Torappu_Anniv7thDisplayData]; 
+}
+
+table clz_Torappu_Anniv7thClueConstData {
+    unlockStageId: string; 
+    unlockToast: string; 
+}
+
+table clz_Torappu_Anniv7thMainlineData {
+    clueGroupData: [dict__string__clz_Torappu_Anniv7thClueGroupData]; 
+    clueData: [dict__string__clz_Torappu_Anniv7thClueData]; 
+    clueRewardData: [clz_Torappu_Anniv7thClueRewardData]; 
+    displayNodeData: [clz_Torappu_Anniv7thDisplayNodeData]; 
+    constData: clz_Torappu_Anniv7thClueConstData; 
+}
+
 table clz_Torappu_AutoChessData_AutoChessVersionInfoData {
     versionId: string; 
     activityId: string; 
@@ -8167,6 +8236,7 @@ table clz_Torappu_ActivityTable {
     hiddenStageData: [clz_Torappu_ActivityTable_ActivityHiddenStageData]; 
     missionArchives: [dict__string__clz_Torappu_MissionArchiveData]; 
     fifthAnnivExploreData: clz_Torappu_FifthAnnivExploreData; 
+    anniv7thData: clz_Torappu_Anniv7thMainlineData; 
     autoChessData: clz_Torappu_AutoChessData; 
     stringRes: [dict__string__list_dict__string__string]; 
     activityTraps: [dict__string__clz_Torappu_ActivityTable_ActivityTrapsData]; 

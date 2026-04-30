@@ -1,14 +1,8 @@
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-table clz_Torappu_Battle_BakedFrameData {
-    position: [float]; 
-    rotation: [float]; 
-    scale: [float]; 
-}
-
 table clz_Torappu_Battle_BakedMountPointData {
-    isConstant: bool; 
     bakedStepInterval: int; 
-    frames: [clz_Torappu_Battle_BakedFrameData]; 
+    frameCount: int; 
+    trsData: [float]; 
 }
 
 table dict__int__clz_Torappu_Battle_BakedMountPointData {

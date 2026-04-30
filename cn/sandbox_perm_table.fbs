@@ -2,6 +2,7 @@
 enum enum__Torappu_SandboxPermTemplateType : int {
     NONE = 0,
     SANDBOX_V2 = 1,
+    SANDBOX_V3 = 2,
 }
 
 table clz_Torappu_SandboxPermBasicData_HomeEntryDisplayData {
@@ -9,6 +10,16 @@ table clz_Torappu_SandboxPermBasicData_HomeEntryDisplayData {
     topicId: string; 
     startTs: long; 
     endTs: long; 
+}
+
+table clz_Torappu_SandboxPermEnrollPointData {
+    enrollPointId: string; 
+    enrollTime: long; 
+}
+
+table dict__string__clz_Torappu_SandboxPermEnrollPointData {
+    key: string(key);
+    value: clz_Torappu_SandboxPermEnrollPointData;
 }
 
 table clz_Torappu_SandboxPermBasicData {
@@ -23,6 +34,9 @@ table clz_Torappu_SandboxPermBasicData {
     homeEntryDisplayData: [clz_Torappu_SandboxPermBasicData_HomeEntryDisplayData]; 
     webBusType: string; 
     medalGroupId: string; 
+    showMedalId: string; 
+    description: string; 
+    enrollPoints: [dict__string__clz_Torappu_SandboxPermEnrollPointData]; 
 }
 
 table dict__string__clz_Torappu_SandboxPermBasicData {
@@ -136,14 +150,14 @@ table dict__string__clz_Torappu_SandboxV2ItemTrapTagData {
     value: clz_Torappu_SandboxV2ItemTrapTagData;
 }
 
-table clz_Torappu_SandboxV2BuildingItemData {
+table clz_Torappu_SandboxBuildingItemData {
     itemId: string; 
     itemRarity: int; 
 }
 
-table dict__string__clz_Torappu_SandboxV2BuildingItemData {
+table dict__string__clz_Torappu_SandboxBuildingItemData {
     key: string(key);
-    value: clz_Torappu_SandboxV2BuildingItemData;
+    value: clz_Torappu_SandboxBuildingItemData;
 }
 
 enum enum__Torappu_SandboxV2CraftItemType : int {
@@ -231,6 +245,19 @@ enum enum__Torappu_SandboxPermItemType : int {
     ANIMAL = 13,
     INSECT = 14,
     SLUGITEM = 15,
+    RELIC = 16,
+    RECIPE = 17,
+    PRODUCT = 18,
+    TOOLKIT = 19,
+    RANDRELIC = 20,
+    RANDRECIPE = 21,
+    CURRENCY = 22,
+    COOKBOOK = 23,
+    BASEBUILDING = 24,
+    BASECOIN = 25,
+    BASEANIMAL = 26,
+    BASETACTICAL = 27,
+    TECHPOINT = 28,
 }
 
 table clz_Torappu_SandboxV2DrinkMatData {
@@ -244,12 +271,12 @@ table dict__string__clz_Torappu_SandboxV2DrinkMatData {
     value: clz_Torappu_SandboxV2DrinkMatData;
 }
 
-enum enum__Torappu_SandboxV2FoodMatType : int {
+enum enum__Torappu_SandboxFoodMatType : int {
     MAIN = 0,
     SUB = 1,
 }
 
-enum enum__Torappu_SandboxV2FoodAttribute : int {
+enum enum__Torappu_SandboxFoodAttribute : int {
     NONE = 0,
     SURVIVE = 1,
     COST = 2,
@@ -258,53 +285,54 @@ enum enum__Torappu_SandboxV2FoodAttribute : int {
     SKILL_POINT = 5,
     SPECIAL = 6,
     ENHANCED = 7,
+    FUNCTION = 8,
 }
 
-enum enum__Torappu_SandboxV2FoodVariantType : int {
+enum enum__Torappu_SandboxFoodVariantType : int {
     NONE = 0,
     ALPHA = 1,
     BETA = 2,
     GAMMA = 3,
 }
 
-table clz_Torappu_SandboxV2FoodMatData {
+table clz_Torappu_SandboxFoodMatData {
     id: string; 
-    type: enum__Torappu_SandboxV2FoodMatType; 
-    attribute: enum__Torappu_SandboxV2FoodAttribute; 
-    variantType: enum__Torappu_SandboxV2FoodVariantType; 
+    type: enum__Torappu_SandboxFoodMatType; 
+    attribute: enum__Torappu_SandboxFoodAttribute; 
+    variantType: enum__Torappu_SandboxFoodVariantType; 
     bonusDuration: int; 
     buffDesc: string; 
     sortId: int; 
 }
 
-table dict__string__clz_Torappu_SandboxV2FoodMatData {
+table dict__string__clz_Torappu_SandboxFoodMatData {
     key: string(key);
-    value: clz_Torappu_SandboxV2FoodMatData;
+    value: clz_Torappu_SandboxFoodMatData;
 }
 
-table clz_Torappu_SandboxV2FoodRecipeData {
+table clz_Torappu_SandboxFoodRecipeData {
     foodId: string; 
     mats: [string]; 
 }
 
-table clz_Torappu_SandboxV2FoodVariantData {
-    type: enum__Torappu_SandboxV2FoodVariantType; 
+table clz_Torappu_SandboxFoodVariantData {
+    type: enum__Torappu_SandboxFoodVariantType; 
     name: string; 
     usage: string; 
 }
 
-table clz_Torappu_SandboxV2FoodData {
+table clz_Torappu_SandboxFoodData {
     id: string; 
-    attributes: [enum__Torappu_SandboxV2FoodAttribute]; 
-    recipes: [clz_Torappu_SandboxV2FoodRecipeData]; 
-    variants: [clz_Torappu_SandboxV2FoodVariantData]; 
+    attributes: [enum__Torappu_SandboxFoodAttribute]; 
+    recipes: [clz_Torappu_SandboxFoodRecipeData]; 
+    variants: [clz_Torappu_SandboxFoodVariantData]; 
     duration: int; 
     sortId: int; 
 }
 
-table dict__string__clz_Torappu_SandboxV2FoodData {
+table dict__string__clz_Torappu_SandboxFoodData {
     key: string(key);
-    value: clz_Torappu_SandboxV2FoodData;
+    value: clz_Torappu_SandboxFoodData;
 }
 
 enum enum__Torappu_SandboxV2NodeType : int {
@@ -1022,18 +1050,21 @@ table dict__string__clz_Torappu_SandboxV2GuideQuestData {
     value: clz_Torappu_SandboxV2GuideQuestData;
 }
 
-enum enum__Torappu_SandboxV2DevelopmentType : int {
+enum enum__Torappu_SandboxDevelopmentType : int {
     NONE = 0,
     SURVIVE = 1,
     COLLECT = 2,
     SHOP = 3,
     BATTLE = 4,
     DUNGEON = 5,
+    EXPLORE = 6,
+    RESOURCE = 7,
+    INITIAL = 8,
 }
 
-table clz_Torappu_SandboxV2DevelopmentData {
+table clz_Torappu_SandboxDevelopmentData {
     techId: string; 
-    techType: enum__Torappu_SandboxV2DevelopmentType; 
+    techType: enum__Torappu_SandboxDevelopmentType; 
     positionX: int; 
     positionY: int; 
     frontNodeId: string; 
@@ -1047,9 +1078,9 @@ table clz_Torappu_SandboxV2DevelopmentData {
     canBuffReserch: bool; 
 }
 
-table dict__string__clz_Torappu_SandboxV2DevelopmentData {
+table dict__string__clz_Torappu_SandboxDevelopmentData {
     key: string(key);
-    value: clz_Torappu_SandboxV2DevelopmentData;
+    value: clz_Torappu_SandboxDevelopmentData;
 }
 
 enum enum__Torappu_SandboxV2EventType : int {
@@ -1149,22 +1180,27 @@ table dict__string__clz_Torappu_SandboxV2EventEffectData {
     value: clz_Torappu_SandboxV2EventEffectData;
 }
 
-enum enum__Torappu_SandboxV2CoinType : int {
+enum enum__Torappu_SandboxShopCoinType : int {
     DIMENSION_COIN = 0,
     GOLD = 1,
+    BASE_GOLD = 2,
+    BASE_GOLDEX = 3,
 }
 
-table clz_Torappu_SandboxV2ShopGoodData {
+table clz_Torappu_SandboxShopGoodData {
     goodId: string; 
     itemId: string; 
     count: int; 
-    coinType: enum__Torappu_SandboxV2CoinType; 
+    coinType: enum__Torappu_SandboxShopCoinType; 
     value: int; 
+    itemPoolId: string; 
+    stock: int; 
+    weight: int; 
 }
 
-table dict__string__clz_Torappu_SandboxV2ShopGoodData {
+table dict__string__clz_Torappu_SandboxShopGoodData {
     key: string(key);
-    value: clz_Torappu_SandboxV2ShopGoodData;
+    value: clz_Torappu_SandboxShopGoodData;
 }
 
 table dict__string__list_string {
@@ -1324,49 +1360,49 @@ table dict__string__list_dict__string__string {
     value: [dict__string__string];
 }
 
-enum enum__Torappu_SandboxV2ArchiveQuestType : int {
+enum enum__Torappu_SandboxArchiveQuestType : int {
     NONE = 0,
     MAIN = 1,
     SIDE = 2,
 }
 
-table clz_Torappu_SandboxV2ArchiveQuestAvgData {
+table clz_Torappu_SandboxArchiveQuestAvgData {
     avgId: string; 
     avgName: string; 
 }
 
-table clz_Torappu_SandboxV2ArchiveQuestCgData {
+table clz_Torappu_SandboxArchiveQuestCgData {
     cgId: string; 
     cgTitle: string; 
     cgDesc: string; 
     cgPath: string; 
 }
 
-table clz_Torappu_SandboxV2ArchiveQuestZoneData {
+table clz_Torappu_SandboxArchiveQuestZoneData {
     zoneId: string; 
     zoneName: string; 
     zoneBgPicId: string; 
     zoneNameIdEn: string; 
 }
 
-table clz_Torappu_SandboxV2ArchiveQuestData {
+table clz_Torappu_SandboxArchiveQuestData {
     id: string; 
     sortId: int; 
-    questType: enum__Torappu_SandboxV2ArchiveQuestType; 
+    questType: enum__Torappu_SandboxArchiveQuestType; 
     name: string; 
     desc: string; 
-    avgDataList: [clz_Torappu_SandboxV2ArchiveQuestAvgData]; 
-    cgDataList: [clz_Torappu_SandboxV2ArchiveQuestCgData]; 
+    avgDataList: [clz_Torappu_SandboxArchiveQuestAvgData]; 
+    cgDataList: [clz_Torappu_SandboxArchiveQuestCgData]; 
     npcPicIdList: [string]; 
-    zoneData: clz_Torappu_SandboxV2ArchiveQuestZoneData; 
+    zoneData: clz_Torappu_SandboxArchiveQuestZoneData; 
 }
 
-table dict__string__clz_Torappu_SandboxV2ArchiveQuestData {
+table dict__string__clz_Torappu_SandboxArchiveQuestData {
     key: string(key);
-    value: clz_Torappu_SandboxV2ArchiveQuestData;
+    value: clz_Torappu_SandboxArchiveQuestData;
 }
 
-table clz_Torappu_SandboxV2ArchiveAchievementData {
+table clz_Torappu_SandboxArchiveAchievementData {
     id: string; 
     achievementType: [string]; 
     raritySortId: int; 
@@ -1375,41 +1411,41 @@ table clz_Torappu_SandboxV2ArchiveAchievementData {
     desc: string; 
 }
 
-table dict__string__clz_Torappu_SandboxV2ArchiveAchievementData {
+table dict__string__clz_Torappu_SandboxArchiveAchievementData {
     key: string(key);
-    value: clz_Torappu_SandboxV2ArchiveAchievementData;
+    value: clz_Torappu_SandboxArchiveAchievementData;
 }
 
-table clz_Torappu_SandboxV2ArchiveAchievementTypeData {
+table clz_Torappu_SandboxArchiveAchievementTypeData {
     achievementType: string; 
     name: string; 
     sortId: int; 
 }
 
-table dict__string__clz_Torappu_SandboxV2ArchiveAchievementTypeData {
+table dict__string__clz_Torappu_SandboxArchiveAchievementTypeData {
     key: string(key);
-    value: clz_Torappu_SandboxV2ArchiveAchievementTypeData;
+    value: clz_Torappu_SandboxArchiveAchievementTypeData;
 }
 
-table clz_Torappu_SandboxV2ArchiveQuestTypeData {
-    type: enum__Torappu_SandboxV2ArchiveQuestType; 
+table clz_Torappu_SandboxArchiveQuestTypeData {
+    type: enum__Torappu_SandboxArchiveQuestType; 
     name: string; 
     iconId: string; 
 }
 
-table dict__string__clz_Torappu_SandboxV2ArchiveQuestTypeData {
+table dict__string__clz_Torappu_SandboxArchiveQuestTypeData {
     key: string(key);
-    value: clz_Torappu_SandboxV2ArchiveQuestTypeData;
+    value: clz_Torappu_SandboxArchiveQuestTypeData;
 }
 
-table clz_Torappu_SandboxV2ArchiveMusicUnlockData {
+table clz_Torappu_SandboxArchiveMusicUnlockData {
     musicId: string; 
     unlockCondDesc: string; 
 }
 
-table dict__string__clz_Torappu_SandboxV2ArchiveMusicUnlockData {
+table dict__string__clz_Torappu_SandboxArchiveMusicUnlockData {
     key: string(key);
-    value: clz_Torappu_SandboxV2ArchiveMusicUnlockData;
+    value: clz_Torappu_SandboxArchiveMusicUnlockData;
 }
 
 table clz_Torappu_SandboxV2BaseUpdateCondition {
@@ -1466,20 +1502,20 @@ table clz_Torappu_SandboxV2BaseUpdateData {
     repairCost: int; 
 }
 
-enum enum__Torappu_SandboxV2DevelopmentLineStyle : int {
+enum enum__Torappu_SandboxDevelopmentLineStyle : int {
     EMPTY = 0,
     LEVEL_PASS = 1,
     LEVEL_BLOCK = 2,
 }
 
-table clz_Torappu_SandboxV2DevelopmentLineSegmentData {
+table clz_Torappu_SandboxDevelopmentLineSegmentData {
     fromNodeId: string; 
     passingNodeIds: [string]; 
     fromAxisPosX: int; 
     fromAxisPosY: int; 
     toAxisPosX: int; 
     toAxisPosY: int; 
-    lineStyle: enum__Torappu_SandboxV2DevelopmentLineStyle; 
+    lineStyle: enum__Torappu_SandboxDevelopmentLineStyle; 
     unlockBasementLevel: int; 
 }
 
@@ -1730,14 +1766,14 @@ table clz_Torappu_SandboxV2Data {
     mapData: [dict__string__clz_Torappu_SandboxV2MapData]; 
     itemTrapData: [dict__string__clz_Torappu_SandboxV2ItemTrapData]; 
     itemTrapTagData: [dict__string__clz_Torappu_SandboxV2ItemTrapTagData]; 
-    buildingItemData: [dict__string__clz_Torappu_SandboxV2BuildingItemData]; 
+    buildingItemData: [dict__string__clz_Torappu_SandboxBuildingItemData]; 
     craftItemData: [dict__string__clz_Torappu_SandboxV2CraftItemData]; 
     livestockProduceData: [dict__string__clz_Torappu_SandboxV2LivestockData]; 
     craftGroupData: [dict__string__clz_Torappu_SandboxV2CraftGroupData]; 
     alchemyRecipeData: [dict__string__clz_Torappu_SandboxV2AlchemyRecipeData]; 
     drinkMatData: [dict__string__clz_Torappu_SandboxV2DrinkMatData]; 
-    foodMatData: [dict__string__clz_Torappu_SandboxV2FoodMatData]; 
-    foodData: [dict__string__clz_Torappu_SandboxV2FoodData]; 
+    foodMatData: [dict__string__clz_Torappu_SandboxFoodMatData]; 
+    foodData: [dict__string__clz_Torappu_SandboxFoodData]; 
     nodeTypeData: [dict__string__clz_Torappu_SandboxV2NodeTypeData]; 
     nodeUpgradeData: [dict__string__clz_Torappu_SandboxV2NodeUpgradeData]; 
     weatherData: [dict__string__clz_Torappu_SandboxV2WeatherData]; 
@@ -1761,13 +1797,13 @@ table clz_Torappu_SandboxV2Data {
     questLineData: [dict__string__clz_Torappu_SandboxV2QuestLineData]; 
     questLineStoryData: [dict__string__string]; 
     guideQuestData: [dict__string__clz_Torappu_SandboxV2GuideQuestData]; 
-    developmentData: [dict__string__clz_Torappu_SandboxV2DevelopmentData]; 
+    developmentData: [dict__string__clz_Torappu_SandboxDevelopmentData]; 
     eventData: [dict__string__clz_Torappu_SandboxV2EventData]; 
     eventSceneData: [dict__string__clz_Torappu_SandboxV2EventSceneData]; 
     eventChoiceData: [dict__string__clz_Torappu_SandboxV2EventChoiceData]; 
     expeditionData: [dict__string__clz_Torappu_SandboxV2ExpeditionData]; 
     eventEffectData: [dict__string__clz_Torappu_SandboxV2EventEffectData]; 
-    shopGoodData: [dict__string__clz_Torappu_SandboxV2ShopGoodData]; 
+    shopGoodData: [dict__string__clz_Torappu_SandboxShopGoodData]; 
     shopDialogData: clz_Torappu_SandboxV2ShopDialogData; 
     logisticsData: [clz_Torappu_SandboxV2LogisticsData]; 
     logisticsCharMapping: [dict__int__list_dict__int__list_clz_Torappu_SandboxV2LogisticsCharData]; 
@@ -1784,13 +1820,13 @@ table clz_Torappu_SandboxV2Data {
     riftDifficultyData: [dict__string__clz_Torappu_SandboxV2RiftDifficultyData]; 
     riftRewardDisplayData: [dict__string__list_string]; 
     enemyReplaceData: [dict__string__list_dict__string__string]; 
-    archiveQuestData: [dict__string__clz_Torappu_SandboxV2ArchiveQuestData]; 
-    achievementData: [dict__string__clz_Torappu_SandboxV2ArchiveAchievementData]; 
-    achievementTypeData: [dict__string__clz_Torappu_SandboxV2ArchiveAchievementTypeData]; 
-    archiveQuestTypeData: [dict__string__clz_Torappu_SandboxV2ArchiveQuestTypeData]; 
-    archiveMusicUnlockData: [dict__string__clz_Torappu_SandboxV2ArchiveMusicUnlockData]; 
+    archiveQuestData: [dict__string__clz_Torappu_SandboxArchiveQuestData]; 
+    achievementData: [dict__string__clz_Torappu_SandboxArchiveAchievementData]; 
+    achievementTypeData: [dict__string__clz_Torappu_SandboxArchiveAchievementTypeData]; 
+    archiveQuestTypeData: [dict__string__clz_Torappu_SandboxArchiveQuestTypeData]; 
+    archiveMusicUnlockData: [dict__string__clz_Torappu_SandboxArchiveMusicUnlockData]; 
     baseUpdate: [clz_Torappu_SandboxV2BaseUpdateData]; 
-    developmentLineSegmentDatas: [clz_Torappu_SandboxV2DevelopmentLineSegmentData]; 
+    developmentLineSegmentDatas: [clz_Torappu_SandboxDevelopmentLineSegmentData]; 
     buildingNodeScoreData: [dict__string__clz_Torappu_SandboxV2BuildingNodeScoreData]; 
     seasonData: [dict__string__clz_Torappu_SandboxV2SeasonData]; 
     confirmIconData: [clz_Torappu_SandboxV2ConfirmIconData]; 
@@ -1805,8 +1841,1344 @@ table dict__string__clz_Torappu_SandboxV2Data {
     value: clz_Torappu_SandboxV2Data;
 }
 
+table clz_Torappu_SandboxV3ModeData {
+    modeId: string; 
+    modeName: string; 
+    sortId: int; 
+    modeDescription: string; 
+    modeDescriptionDetail: string; 
+    difficultyFactor: float; 
+    runeIdList: [string]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ModeData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ModeData;
+}
+
+enum enum__Torappu_SandboxV3MapTileType : int {
+    NONE = 0,
+    TEXTURE = 1,
+    BUILDING = 2,
+}
+
+table clz_Torappu_SandboxV3MapGridPos {
+    x: int; 
+    y: int; 
+}
+
+table clz_Torappu_SandboxV3MapTileData {
+    tileId: string; 
+    tileType: enum__Torappu_SandboxV3MapTileType; 
+    gridPos: clz_Torappu_SandboxV3MapGridPos; 
+    tileResId: string; 
+    tileResRotateZ: int; 
+    tileDecoId: string; 
+    tileDecoRotateZ: int; 
+    height: int; 
+    nodeId: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3MapTileData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3MapTileData;
+}
+
+enum enum__Torappu_SandboxV3NodeType : int {
+    NONE = 0,
+    HOME = 1,
+    STORY = 2,
+    EXPLORE = 3,
+}
+
+table clz_Torappu_SandboxV3MapNodeData {
+    nodeId: string; 
+    nodeType: enum__Torappu_SandboxV3NodeType; 
+    stageId: string; 
+    zoneId: string; 
+    frontNodeId: string; 
+    unlockTileIdList: [string]; 
+    gridPos: clz_Torappu_SandboxV3MapGridPos; 
+    onTileId: string; 
+    height: int; 
+}
+
+table dict__string__clz_Torappu_SandboxV3MapNodeData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3MapNodeData;
+}
+
+table clz_Torappu_SandboxV3ZoneData {
+    zoneId: string; 
+    name: string; 
+    sortId: int; 
+    displayName: bool; 
+    appellation: string; 
+    gridPos: clz_Torappu_SandboxV3MapGridPos; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ZoneData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ZoneData;
+}
+
+table clz_Torappu_SandboxV3MapConfig {
+    maxSpringBackRadius: float; 
+    minSpringBackRadius: float; 
+}
+
+table clz_Torappu_SandboxV3MapData {
+    tiles: [dict__string__clz_Torappu_SandboxV3MapTileData]; 
+    nodes: [dict__string__clz_Torappu_SandboxV3MapNodeData]; 
+    zones: [dict__string__clz_Torappu_SandboxV3ZoneData]; 
+    mapConfig: clz_Torappu_SandboxV3MapConfig; 
+}
+
+table clz_Torappu_SandboxV3NodeTypeData {
+    nodeType: enum__Torappu_SandboxV3NodeType; 
+    name: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3NodeTypeData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3NodeTypeData;
+}
+
+enum enum__Torappu_SandboxV3MilestoneStage : int {
+    EARLY = 0,
+    MIDDLE = 1,
+    LATE = 2,
+}
+
+table clz_Torappu_SandboxV3PowerMilestoneData {
+    milestoneId: string; 
+    stage: enum__Torappu_SandboxV3MilestoneStage; 
+    targetPowerValue: int; 
+    choiceSlotCnt: int; 
+    allowRefresh: bool; 
+    allowGiveUpChoice: bool; 
+    defaultPool: string; 
+    refreshPool: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3PowerMilestoneData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3PowerMilestoneData;
+}
+
+table clz_Torappu_SandboxV3StageInitialItemData {
+    itemId: string; 
+    count: int; 
+}
+
+table clz_Torappu_SandboxV3StageData {
+    stageId: string; 
+    code: string; 
+    name: string; 
+    description: string; 
+    maxDay: int; 
+    maxPlayTime: float; 
+    jumpTime: float; 
+    targetPowerValue: int; 
+    dayTargetValues: [int]; 
+    taskPool: [string]; 
+    questPoolByDifficulty: int; 
+    statParams: string; 
+    milestones: [dict__string__clz_Torappu_SandboxV3PowerMilestoneData]; 
+    taskSlots: [string]; 
+    initialItemData: [clz_Torappu_SandboxV3StageInitialItemData]; 
+    squadMax: int; 
+    initialRecruitNum: int; 
+    dayPassRecruitNum: int; 
+    levelRune: string; 
+    firstDayDescription: string; 
+    levelBgm: string; 
+    isFormationSaved: bool; 
+}
+
+table dict__string__clz_Torappu_SandboxV3StageData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3StageData;
+}
+
+table clz_Torappu_SandboxV3StoryStageData {
+    stageId: string; 
+    subStageIdList: [string]; 
+    initialSubStageIndexList: [int]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3StoryStageData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3StoryStageData;
+}
+
+table clz_Torappu_SandboxV3ExploreStageData {
+    stageId: string; 
+    subStagePoolId: string; 
+    stageDifficultyMax: int; 
+    displayEnemyIdList: [string]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ExploreStageData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ExploreStageData;
+}
+
+table clz_Torappu_SandboxV3ExploreStageDifficultyData {
+    difficultyId: string; 
+    difficultyLevel: int; 
+    unlockCondDescList: [string]; 
+    difficultyDesc: string; 
+    difficultyFactor: float; 
+    runeIdList: [string]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ExploreStageDifficultyData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ExploreStageDifficultyData;
+}
+
+table clz_Torappu_SandboxV3SubStageData {
+    subStageId: string; 
+    levelId: string; 
+    typeMask: int; 
+    mapPreviewId: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3SubStageData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3SubStageData;
+}
+
+table dict__string__float {
+    key: string(key);
+    value: float;
+}
+
+table clz_Torappu_SandboxV3StageDropData {
+    stageId: string; 
+    rewardFirstItems: [dict__string__int]; 
+    rewardNormalItems: [dict__string__float]; 
+    rewardHardItems: [dict__string__float]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3StageDropData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3StageDropData;
+}
+
+enum enum__Torappu_SandboxV3BagItemType : int {
+    NONE = 0,
+    MATERIALBAG = 1,
+    RELICBAG = 2,
+}
+
+table clz_Torappu_SandboxV3ItemTypeData {
+    itemType: enum__Torappu_SandboxPermItemType; 
+    itemTypeName: string; 
+    isShopSell: bool; 
+    isBagShow: bool; 
+    bagItemType: enum__Torappu_SandboxV3BagItemType; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ItemTypeData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ItemTypeData;
+}
+
+table clz_Torappu_SandboxV3BagItemTypeData {
+    bagItemType: enum__Torappu_SandboxV3BagItemType; 
+    bagItemTypeName: string; 
+    sortId: int; 
+    bagItemTypePic: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3BagItemTypeData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3BagItemTypeData;
+}
+
+table clz_Torappu_SandboxV3ToolkitContentData {
+    contentItemId: string; 
+    contentCntMin: int; 
+    contentCntMax: int; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ToolkitContentData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ToolkitContentData;
+}
+
+table clz_Torappu_SandboxV3ItemRandomPoolData_Item {
+    itemId: string; 
+    count: int; 
+    weight: int; 
+}
+
+table clz_Torappu_SandboxV3ItemRandomPoolData {
+    normalItemList: [clz_Torappu_SandboxV3ItemRandomPoolData_Item]; 
+    guaranteeItemList: [clz_Torappu_SandboxV3ItemRandomPoolData_Item]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ItemRandomPoolData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ItemRandomPoolData;
+}
+
+table clz_Torappu_SandboxV3RandomItemData {
+    poolId: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3RandomItemData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3RandomItemData;
+}
+
+table clz_Torappu_SandboxV3ItemExtraData {
+    itemId: string; 
+    itemType: enum__Torappu_SandboxPermItemType; 
+    trapCfgId: string; 
+    recipeCfgId: string; 
+    relicCfgId: string; 
+    itemRarity: int; 
+    itemSortId1: int; 
+    itemSortId2: int; 
+    isBagPreview: bool; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ItemExtraData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ItemExtraData;
+}
+
+table clz_Torappu_SandboxV3DefendScoreData {
+    rarity: int; 
+    evolvePhase: int; 
+    level: int; 
+    grade: int; 
+}
+
+table clz_Torappu_SandboxV3ZoneDefendRewardData {
+    grade: int; 
+    rewards: [dict__string__int]; 
+}
+
+table clz_Torappu_SandboxV3ZoneDefendData {
+    zoneId: string; 
+    iconId: string; 
+    titleIconId: string; 
+    rewardDataList: [clz_Torappu_SandboxV3ZoneDefendRewardData]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ZoneDefendData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ZoneDefendData;
+}
+
+table clz_Torappu_SandboxV3BasementUpdateCondition {
+    desc: string; 
+    limitCond: string; 
+    param: [string]; 
+}
+
+table clz_Torappu_SandboxV3BasementFunctionPreviewData {
+    previewId: string; 
+    previewValue: int; 
+}
+
+table clz_Torappu_SandboxV3BasementUpdateData {
+    baseLevelId: string; 
+    baseLevel: int; 
+    baseDesc: string; 
+    levelId: string; 
+    wonderId: string; 
+    conditions: [clz_Torappu_SandboxV3BasementUpdateCondition]; 
+    items: [dict__string__int]; 
+    previewDatas: [clz_Torappu_SandboxV3BasementFunctionPreviewData]; 
+    rewards: [clz_Torappu_ItemBundle]; 
+}
+
+enum enum__Torappu_SandboxV3BasementUnlockFuncType : int {
+    NONE = 0,
+    HOME_PUTPOST = 1,
+    TECH = 2,
+    MAP = 3,
+}
+
+enum enum__Torappu_SandboxV3BasementUnlockFuncDisplayType : int {
+    NONE = 0,
+    NEW = 1,
+    UPDATE = 2,
+    NUMBER = 3,
+}
+
+table clz_Torappu_SandboxV3BasementUpdateFunctionPreviewDetailData {
+    funcId: string; 
+    unlockType: enum__Torappu_SandboxV3BasementUnlockFuncType; 
+    typeTitle: string; 
+    desc: string; 
+    icon: string; 
+    darkMode: bool; 
+    sortId: int; 
+    displayType: enum__Torappu_SandboxV3BasementUnlockFuncDisplayType; 
+}
+
+table dict__string__clz_Torappu_SandboxV3BasementUpdateFunctionPreviewDetailData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3BasementUpdateFunctionPreviewDetailData;
+}
+
+table clz_Torappu_SandboxV3WonderData {
+    wonderId: string; 
+    wonderName: string; 
+    sortId: int; 
+}
+
+table dict__string__clz_Torappu_SandboxV3WonderData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3WonderData;
+}
+
+enum enum__Torappu_ScoreGroupType : int {
+    WONDER = 0,
+    DEBRIS_CLEAN = 1,
+    NPC_RECRUIT = 2,
+    TRAP_BUILD = 3,
+    TRAP_RULE = 4,
+}
+
+table clz_Torappu_SandboxV3BuildScoreGroupData {
+    sortId: int; 
+    scoreGroupType: enum__Torappu_ScoreGroupType; 
+}
+
+table dict__string__clz_Torappu_SandboxV3BuildScoreGroupData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3BuildScoreGroupData;
+}
+
+table clz_Torappu_SandboxV3QuestData {
+    questId: string; 
+    questLine: string; 
+    sortId: int; 
+    questTitle: string; 
+    questDesc: string; 
+    questTargetDesc: string; 
+    isDisplay: bool; 
+    questRouteParam: string; 
+    showProgressIndex: int; 
+}
+
+table dict__string__clz_Torappu_SandboxV3QuestData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3QuestData;
+}
+
+enum enum__Torappu_SandboxV3NpcType : int {
+    NORMAL = 0,
+    BASE = 1,
+}
+
+table clz_Torappu_SandboxV3NpcData {
+    npcId: string; 
+    trapId: string; 
+    sortId: int; 
+    npcType: enum__Torappu_SandboxV3NpcType; 
+    dialogIds: [dict__enum__Torappu_BattleDialogType__string]; 
+    npcLocation: [int]; 
+    npcOrientation: enum__Torappu_SharedConsts_Direction; 
+    picId: string; 
+    picName: string; 
+    showPic: bool; 
+    reactSkillIndex: int; 
+}
+
+table dict__string__clz_Torappu_SandboxV3NpcData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3NpcData;
+}
+
+table clz_Torappu_SandboxV3EnemyNpcData {
+    npcId: string; 
+    battleRuneId: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3EnemyNpcData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3EnemyNpcData;
+}
+
+table clz_Torappu_SandboxV3DialogData {
+    dialogId: string; 
+    avgId: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3DialogData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3DialogData;
+}
+
+enum enum__Torappu_SandboxV3QuestLineBadgeType : int {
+    NONE = 0,
+    MAIN = 1,
+    SIDE = 2,
+    GUIDE = 3,
+}
+
+table clz_Torappu_SandboxV3QuestLineData {
+    questLineId: string; 
+    questLineTitle: string; 
+    questLineBadgeType: enum__Torappu_SandboxV3QuestLineBadgeType; 
+    questLineDesc: string; 
+    sortId: int; 
+}
+
+table dict__string__clz_Torappu_SandboxV3QuestLineData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3QuestLineData;
+}
+
+table clz_Torappu_SandboxV3GuideQuestData {
+    questId: string; 
+    storyId: string; 
+    triggerKey: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3GuideQuestData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3GuideQuestData;
+}
+
+table clz_Torappu_SandboxV3CookbookData {
+    itemId: string; 
+    attrList: [string]; 
+    mainMatList: [string]; 
+    itemUsage: string; 
+    itemName: string; 
+    runeData: clz_Torappu_RuneTable_PackedRuneData; 
+}
+
+table dict__string__clz_Torappu_SandboxV3CookbookData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3CookbookData;
+}
+
+table clz_Torappu_SandboxV3CookSpiceData {
+    itemId: string; 
+    buffDesc: string; 
+    attrType: enum__Torappu_SandboxFoodAttribute; 
+    runeData: clz_Torappu_RuneTable_PackedRuneData; 
+}
+
+table dict__string__clz_Torappu_SandboxV3CookSpiceData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3CookSpiceData;
+}
+
+table clz_Torappu_SandboxV3BaseShopGoodExtraData {
+    unlockDesc: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3BaseShopGoodExtraData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3BaseShopGoodExtraData;
+}
+
+table clz_Torappu_SandboxPermShopGoodData {
+    goodId: string; 
+    itemId: string; 
+    count: int; 
+    coinType: enum__Torappu_SandboxShopCoinType; 
+    value: int; 
+    stock: int; 
+}
+
+table dict__string__clz_Torappu_SandboxPermShopGoodData {
+    key: string(key);
+    value: clz_Torappu_SandboxPermShopGoodData;
+}
+
+table clz_Torappu_SandboxPermShopSellData {
+    itemId: string; 
+    countInUnit: int; 
+    sellCoinType: enum__Torappu_SandboxShopCoinType; 
+    sellVal: int; 
+}
+
+table dict__string__clz_Torappu_SandboxPermShopSellData {
+    key: string(key);
+    value: clz_Torappu_SandboxPermShopSellData;
+}
+
+enum enum__Torappu_SandboxV3ShopType : int {
+    NONE = 0,
+    REST = 1,
+    BATTLE = 2,
+}
+
+table clz_Torappu_SandboxV3StageShopData {
+    shopId: string; 
+    stageId: string; 
+    shopType: enum__Torappu_SandboxV3ShopType; 
+    priority: int; 
+    canRefresh: bool; 
+    displaySlot: int; 
+}
+
+table dict__string__list_clz_Torappu_SandboxV3StageShopData {
+    key: string(key);
+    value: [clz_Torappu_SandboxV3StageShopData];
+}
+
+table clz_Torappu_SandboxShopSlotData {
+    slotId: int; 
+    sortId: int; 
+    itemPoolId: string; 
+    priceModifier: float; 
+}
+
+table clz_Torappu_SandboxV3ShopDetailData {
+    slotDataList: [clz_Torappu_SandboxShopSlotData]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ShopDetailData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ShopDetailData;
+}
+
+table clz_Torappu_SandboxV3ShopGoodPoolItemData {
+    goodId: string; 
+    weight: int; 
+}
+
+table clz_Torappu_SandboxV3ShopGoodPoolData {
+    itemPoolId: string; 
+    normalItemList: [clz_Torappu_SandboxV3ShopGoodPoolItemData]; 
+    guaranteeItemList: [clz_Torappu_SandboxV3ShopGoodPoolItemData]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ShopGoodPoolData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ShopGoodPoolData;
+}
+
+table clz_Torappu_SandboxShopCoinTypeData {
+    coinTye: enum__Torappu_SandboxShopCoinType; 
+    itemId: string; 
+    coinIcon: string; 
+    coinColorStr: string; 
+}
+
+table dict__string__clz_Torappu_SandboxShopCoinTypeData {
+    key: string(key);
+    value: clz_Torappu_SandboxShopCoinTypeData;
+}
+
+table clz_Torappu_SandboxV3EventSceneData {
+    sceneId: string; 
+    title: string; 
+    desc: string; 
+    choiceIdList: [string]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3EventSceneData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3EventSceneData;
+}
+
+table clz_Torappu_SandboxV3EventChoiceData {
+    choiceId: string; 
+    title: string; 
+    desc: string; 
+    expeditionId: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3EventChoiceData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3EventChoiceData;
+}
+
+table clz_Torappu_SandboxV3EventExpeditionData {
+    expeditionId: string; 
+    charCount: int; 
+    requiredProfession: enum__Torappu_ProfessionCategory; 
+    minEliteRank: int; 
+}
+
+table dict__string__clz_Torappu_SandboxV3EventExpeditionData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3EventExpeditionData;
+}
+
+enum enum__Torappu_SandboxV3TrapType : int {
+    PRODUCER = 0,
+    INFRASTRUCTURE = 1,
+    PROCESSOR = 2,
+    SERVICE = 3,
+    AESTHETICS = 4,
+    TACTICAL = 5,
+}
+
+table clz_Torappu_SandboxV3TrapData {
+    trapCfgId: string; 
+    trapId: string; 
+    trapPhase: int; 
+    trapLevel: int; 
+    skillIndex: int; 
+    skillLevel: int; 
+    itemId: string; 
+    trapType: enum__Torappu_SandboxV3TrapType; 
+    trapIcon: string; 
+    prosperity: int; 
+    aesthetics: int; 
+    trapGroup: string; 
+    overrideMaxDeployCnt: int; 
+    handCoverItemId: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3TrapData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3TrapData;
+}
+
+table clz_Torappu_SandboxV3TrapTypeData {
+    trapType: enum__Torappu_SandboxV3TrapType; 
+    typeName: string; 
+    typeImg: string; 
+    sortId: int; 
+    tagColor: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3TrapTypeData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3TrapTypeData;
+}
+
+enum enum__Torappu_SandboxV3BaseTrapType : int {
+    NONE = 0,
+    PATH = 1,
+    AGRICULTURE = 2,
+    SETTLEMENT = 3,
+    PDLINE = 4,
+    DECORATION = 5,
+    OTHER = 6,
+}
+
+enum enum__Torappu_SandboxV3BaseBuildType : int {
+    NONE = 0,
+    ROAD = 1,
+    CANAL = 2,
+    RAILWAY = 3,
+    PRODUCTION = 4,
+    HOUSE = 5,
+    POWER = 6,
+    BEAUTY = 7,
+}
+
+table clz_Torappu_SandboxV3BaseTrapData {
+    trapCfgId: string; 
+    trapId: string; 
+    trapPhase: int; 
+    trapLevel: int; 
+    skillIndex: int; 
+    skillLevel: int; 
+    itemId: string; 
+    upgradeItemId: string; 
+    trapType: enum__Torappu_SandboxV3BaseTrapType; 
+    buildType: enum__Torappu_SandboxV3BaseBuildType; 
+    buildScore: int; 
+    derivedBuildType: [string]; 
+    derivedItemNMaxCnt: [dict__string__int]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3BaseTrapData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3BaseTrapData;
+}
+
+enum enum__Torappu_SandboxV3ElectricTransferType : int {
+    NONE = 0,
+    FUNCTION = 1,
+    SUPPLY = 2,
+    ADDITION = 3,
+    AMPLIFY = 4,
+}
+
+table clz_Torappu_GridPosition {
+    row: int; 
+    col: int; 
+}
+
+table clz_Torappu_RangeData {
+    id: string; 
+    direction: enum__Torappu_SharedConsts_Direction; 
+    grids: [clz_Torappu_GridPosition]; 
+}
+
+table clz_Torappu_SandboxV3ElectricTransferData {
+    itemId: string; 
+    calType: enum__Torappu_SandboxV3ElectricTransferType; 
+    attackRange: string; 
+    attackRangeData: clz_Torappu_RangeData; 
+    skillParam: string; 
+    supplyType: [string]; 
+    powerOutput: [dict__string__float]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ElectricTransferData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ElectricTransferData;
+}
+
+table clz_Torappu_SandboxV3BaseTrapTypeData {
+    trapType: enum__Torappu_SandboxV3BaseTrapType; 
+    typeName: string; 
+    iconId: string; 
+    sortId: int; 
+}
+
+table dict__string__clz_Torappu_SandboxV3BaseTrapTypeData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3BaseTrapTypeData;
+}
+
+table clz_Torappu_SandboxV3BuildRuleData {
+    buildType1: enum__Torappu_SandboxV3BaseBuildType; 
+    buildType2: [string]; 
+    extraBuildScore: int; 
+    extraScoreDesc: string; 
+    sortId: int; 
+}
+
+enum enum__Torappu_SandboxV3BuildScoreType : int {
+    NONE = 0,
+    NPC = 1,
+    TRAP = 2,
+    LEVEL = 3,
+    ENPC = 4,
+}
+
+table clz_Torappu_SandboxV3BuildScoreData {
+    itemId: string; 
+    paramType: enum__Torappu_SandboxV3BuildScoreType; 
+    buildScore: int; 
+    sortId: int; 
+}
+
+table dict__string__clz_Torappu_SandboxV3BuildScoreData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3BuildScoreData;
+}
+
+table clz_Torappu_SandboxV3CoinCostData {
+    coinType: enum__Torappu_SandboxShopCoinType; 
+    coinCount: int; 
+}
+
+table clz_Torappu_SandboxV3BaseTrapUpgradeData {
+    itemId: string; 
+    upgradeItemId: string; 
+    costCoinList: [clz_Torappu_SandboxV3CoinCostData]; 
+    upgradeDesc: string; 
+    upgradeCondition: string; 
+    upgradeParamList: [string]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3BaseTrapUpgradeData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3BaseTrapUpgradeData;
+}
+
+table clz_Torappu_SandboxV3BuildAnimalData {
+    itemId: string; 
+    enemyId: string; 
+    isLegend: bool; 
+    isShiny: bool; 
+}
+
+table dict__string__clz_Torappu_SandboxV3BuildAnimalData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3BuildAnimalData;
+}
+
+table clz_Torappu_SandboxV3BaseTrapDeployData {
+    baseLevel: int; 
+    maxDeployCnt: int; 
+}
+
+table dict__string__list_clz_Torappu_SandboxV3BaseTrapDeployData {
+    key: string(key);
+    value: [clz_Torappu_SandboxV3BaseTrapDeployData];
+}
+
+table clz_Torappu_SandboxV3ProcessRecipeData {
+    recipeCfgId: string; 
+    recipeLevel: int; 
+    recipeItemId: string; 
+    materials: [dict__string__int]; 
+    outputItemId: string; 
+    outputCnt: int; 
+    outputProsperity: int; 
+    recipeName: string; 
+    outputSkillIcon: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3ProcessRecipeData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3ProcessRecipeData;
+}
+
+table clz_Torappu_SandboxV3BuildRecipeData {
+    recipeCfgId: string; 
+    recipeItemId: string; 
+    materials: [dict__string__int]; 
+    outputItemId: string; 
+    outputTrapType: enum__Torappu_SandboxV3TrapType; 
+    withdrawRatio: int; 
+    outputCnt: int; 
+}
+
+table dict__string__clz_Torappu_SandboxV3BuildRecipeData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3BuildRecipeData;
+}
+
+enum enum__Torappu_SandboxV3EnemyRewardType : int {
+    NONE = 0,
+    ITEM = 1,
+    POWER = 2,
+    LUCKYDROP = 3,
+}
+
+table clz_Torappu_SandboxV3EnemyRewardItem {
+    itemId: string; 
+    count: int; 
+    rewardType: enum__Torappu_SandboxV3EnemyRewardType; 
+    weight: int; 
+}
+
+table dict__int__list_clz_Torappu_SandboxV3EnemyRewardItem {
+    key: int(key);
+    value: [clz_Torappu_SandboxV3EnemyRewardItem];
+}
+
+table clz_Torappu_SandboxV3EnemyRewardData {
+    sourceId: string; 
+    slotDict: [dict__int__list_clz_Torappu_SandboxV3EnemyRewardItem]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3EnemyRewardData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3EnemyRewardData;
+}
+
+table clz_Torappu_SandboxV3EnemyLevelRewardData {
+    enemyLevelType: string; 
+    slotDict: [dict__int__list_clz_Torappu_SandboxV3EnemyRewardItem]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3EnemyLevelRewardData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3EnemyLevelRewardData;
+}
+
+table dict__string__list_dict__string__int {
+    key: string(key);
+    value: [dict__string__int];
+}
+
+table clz_Torappu_SandboxV3ProsParam {
+    threshold: int; 
+    plusValue: float; 
+    level: int; 
+}
+
+table dict__int__float {
+    key: int(key);
+    value: float;
+}
+
+table clz_Torappu_SandboxV3StatParamData {
+    statId: string; 
+    prosParams: [clz_Torappu_SandboxV3ProsParam]; 
+    aesthParams: [dict__int__float]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3StatParamData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3StatParamData;
+}
+
+table clz_Torappu_SandboxV3WeatherData {
+    weatherId: string; 
+    name: string; 
+    runeId: string; 
+    exRuneId: string; 
+    funcDesc: string; 
+    desc: string; 
+    enableFog: bool; 
+    screenEffectId: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3WeatherData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3WeatherData;
+}
+
+table clz_Torappu_SandboxV3RelicPart {
+    key: string; 
+    selector: string; 
+    allowMultiple: bool; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table clz_Torappu_SandboxV3RelicData {
+    relicId: string; 
+    parts: [clz_Torappu_SandboxV3RelicPart]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3RelicData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3RelicData;
+}
+
+table clz_Torappu_SandboxV3BandLevelData {
+    level: int; 
+    effectDesc: string; 
+    unlockCondDesc: string; 
+}
+
+table clz_Torappu_SandboxV3BandData {
+    bandId: string; 
+    name: string; 
+    sortId: int; 
+    bandIcon: string; 
+    levelList: [clz_Torappu_SandboxV3BandLevelData]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3BandData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3BandData;
+}
+
+table clz_Torappu_SandboxV3TaskSlotData {
+    slotId: string; 
+    stageId: string; 
+    unlockDay: int; 
+    isFixed: bool; 
+    fixedTasks: [string]; 
+    taskLevel: int; 
+}
+
+table dict__string__clz_Torappu_SandboxV3TaskSlotData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3TaskSlotData;
+}
+
+table clz_Torappu_SandboxV3TaskPoolWeightItem {
+    taskId: string; 
+    weight: int; 
+}
+
+table clz_Torappu_SandboxV3TaskPoolData {
+    poolId: string; 
+    taskWeights: [clz_Torappu_SandboxV3TaskPoolWeightItem]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3TaskPoolData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3TaskPoolData;
+}
+
+enum enum__Torappu_SandboxV3TaskDifficultyType : int {
+    NONE = 0,
+    EASY = 1,
+    NORMAL = 2,
+    HARD = 3,
+}
+
+enum enum__Torappu_SandboxV3TaskType : int {
+    DEPLOY_TRAP_BY_GROUP = 0,
+    CONSTRUCT_TRAP_BY_GROUP = 1,
+    OWN_TRAP_BY_GROUP = 2,
+    OWN_TRAP_AND_DELIVER = 3,
+    OWN_TRAP_BY_TYPE = 4,
+    ITEM_DELIVERY = 5,
+    GATHER = 6,
+    KILL_ENEMY = 7,
+    KILL_ENEMY_FILTER_BY_TAG = 8,
+    KILL_ENEMY_FILTER_BY_LEVELTYPE = 9,
+    UNLOCK_ROOM_BY_MASK = 10,
+    UNLOCK_ROOM_CULMULATIVE = 11,
+    CATCH_ANIMAL = 12,
+    PROSPERITY_KEEP = 13,
+    AESTHETICS_REACH = 14,
+    PROSPERITY_REACH = 15,
+    AESTHETICS_INCREASE = 16,
+    PROSPERITY_INCREASE = 17,
+    TRADE_IN_SALE = 18,
+    CHARACTER_CHECK = 19,
+    RAILWAY_CHECK = 20,
+}
+
+table list_string {
+    values: [string];
+}
+
+table clz_Torappu_SandboxV3TaskData {
+    taskId: string; 
+    taskBaseDesc: string; 
+    taskDesc: string; 
+    taskLevel: int; 
+    difficulty: enum__Torappu_SandboxV3TaskDifficultyType; 
+    taskType: enum__Torappu_SandboxV3TaskType; 
+    taskTypeDesc: string; 
+    strParams: [string]; 
+    intParams: [int]; 
+    powerValue: int; 
+    rewards: [string]; 
+    typeMask: int; 
+    checkRecipes: [list_string]; 
+    taskGroup: string; 
+    preTaskGroupChain: [string]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3TaskData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3TaskData;
+}
+
+table clz_Torappu_SandboxV3AvgPostTaskData {
+    taskId: string; 
+    avgId: string; 
+    questId: string; 
+}
+
+table dict__string__clz_Torappu_SandboxV3AvgPostTaskData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3AvgPostTaskData;
+}
+
+table clz_Torappu_SandboxV3LivestockData {
+    enemyId: string; 
+    livestockItemId: string; 
+    livestockEnemyId: string; 
+    shinyLivestockItemId: string; 
+    shinyLivestockEnemyId: string; 
+    shinyRate: float; 
+    isLegend: bool; 
+}
+
+table dict__string__clz_Torappu_SandboxV3LivestockData {
+    key: string(key);
+    value: clz_Torappu_SandboxV3LivestockData;
+}
+
+table clz_Torappu_SandboxV3GameConst {
+    basementGoldItemId: string; 
+    basementGoldExItemId: string; 
+    maxDefendCount: int; 
+    defendProgressVolume: int; 
+    defaultModeId: string; 
+    defaultDifficultyId: string; 
+    hardDifficultyLevel: int; 
+    basementMapUnlockLevel: int; 
+    defendUnlockLevel: int; 
+    highBgmBaseLevel: int; 
+    buildModeBgmHome: string; 
+    collectionBaseGoldId: string; 
+    collectionBaseGoldCount: int; 
+    collectionMinTime: long; 
+    collectionMaxTime: long; 
+    baseCoinMax: int; 
+    developmentPointsTotal: int; 
+    recruitBuyTime: int; 
+    recruitStartPrice: int; 
+    recruitPriceMultiply: float; 
+    recruitName: string; 
+    recruitUsage: string; 
+    shopDiscountRate: float; 
+    shopDiscountNumMin: int; 
+    shopDiscountNumMax: int; 
+    shopDiscountValueMin: float; 
+    shopDiscountValueMax: float; 
+    refreshPrice: int; 
+    multiplyFactor: float; 
+    maxRefreshPrice: int; 
+    refreshCoinType: enum__Torappu_SandboxShopCoinType; 
+    recruitCoinType: enum__Torappu_SandboxShopCoinType; 
+    characterLimit: int; 
+    maxLifePoint: int; 
+    initialCost: int; 
+    maxCost: int; 
+    giveUpRewardItemId: string; 
+    giveUpRewardItemCnt: int; 
+    recipeOriginRefreshTimes: int; 
+    recipeRepeatDamp: float; 
+    taskOptionCnt: int; 
+    taskRepeatDamp: float; 
+    taskOriginRefreshTimes: int; 
+    taskNotAllowRefreshStage: [string]; 
+    taskTimeStampType: enum__Torappu_SandboxV3TaskType; 
+    aestheticsRewardItem: string; 
+    repeatRelicConvertId: string; 
+    repeatRecipeConvertId: string; 
+    repeatRecipeConvertCount: int; 
+    bagPreviewCnt: int; 
+    bagPreviewFixedItems: [string]; 
+    bagPreviewFixedCnt: int; 
+    charRarityColorList: [string]; 
+    spicedFoodNameFmt: string; 
+    essentialFoodMatItemId: string; 
+    baseCleanerItemId: string; 
+    baseStartPointLocation: string; 
+    electricPowerMax: int; 
+    basementNodeId: string; 
+    recipeRefreshPriceInit: int; 
+    recipeRefreshPriceAdd: int; 
+    recipeRefreshPriceMax: int; 
+    recipeRefreshItemId: string; 
+    dayPassRecruitRefreshItemId: string; 
+    dayPassRecruitRefreshCount: [int]; 
+    dayPassRecruitSubProfessionCount: int; 
+    dayPassRecruitProfessionCount: int; 
+    tempRecruitPercentage: float; 
+    shopNpcRefreshStatus: string; 
+    imgLoadingNormalName: string; 
+    techTokenRatio: float; 
+    luckyRewardMax: int; 
+    bandAchievementScore: int; 
+    generalTrademanSkillIndex: int; 
+    generalTrademanAVGPath: string; 
+    hideCookEntryNodeIds: [string]; 
+    hideShopEntryNodeIds: [string]; 
+    showProcessorNotWorkingInterval: int; 
+    neutralBossEnemyId: [string]; 
+    specialBossEnemyId: [string]; 
+    taskPredecessorRampUp: float; 
+    rainbowShinyAnimalRateMul: float; 
+    enemyKillBlacklist: [string]; 
+}
+
+table clz_Torappu_SandboxV3SubStageRoomConstraint {
+    top: [dict__string__int]; 
+    bottom: [dict__string__int]; 
+    left: [dict__string__int]; 
+    right: [dict__string__int]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3SubStageRoomConstraint {
+    key: string(key);
+    value: clz_Torappu_SandboxV3SubStageRoomConstraint;
+}
+
+table clz_Torappu_SandboxV3RandomMapPool {
+    elements: [dict__string__clz_Torappu_SandboxV3SubStageRoomConstraint]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3RandomMapPool {
+    key: string(key);
+    value: clz_Torappu_SandboxV3RandomMapPool;
+}
+
+table clz_Torappu_SandboxV3Data {
+    modeDatas: [dict__string__clz_Torappu_SandboxV3ModeData]; 
+    mainMapData: clz_Torappu_SandboxV3MapData; 
+    nodeTypeData: [dict__string__clz_Torappu_SandboxV3NodeTypeData]; 
+    stageData: [dict__string__clz_Torappu_SandboxV3StageData]; 
+    storyStageData: [dict__string__clz_Torappu_SandboxV3StoryStageData]; 
+    exploreStageData: [dict__string__clz_Torappu_SandboxV3ExploreStageData]; 
+    exploreStageDifficultyData: [dict__string__clz_Torappu_SandboxV3ExploreStageDifficultyData]; 
+    subStageData: [dict__string__clz_Torappu_SandboxV3SubStageData]; 
+    stageDropData: [dict__string__clz_Torappu_SandboxV3StageDropData]; 
+    navigationNodeIds: [string]; 
+    itemTypeData: [dict__string__clz_Torappu_SandboxV3ItemTypeData]; 
+    bagItemTypeData: [dict__string__clz_Torappu_SandboxV3BagItemTypeData]; 
+    toolkitContentData: [dict__string__clz_Torappu_SandboxV3ToolkitContentData]; 
+    itemRandomPoolData: [dict__string__clz_Torappu_SandboxV3ItemRandomPoolData]; 
+    randomItemData: [dict__string__clz_Torappu_SandboxV3RandomItemData]; 
+    itemExtraData: [dict__string__clz_Torappu_SandboxV3ItemExtraData]; 
+    developmentData: [dict__string__clz_Torappu_SandboxDevelopmentData]; 
+    developmentLineSegmentDatas: [clz_Torappu_SandboxDevelopmentLineSegmentData]; 
+    defendScoreData: [clz_Torappu_SandboxV3DefendScoreData]; 
+    zoneDefendDatas: [dict__string__clz_Torappu_SandboxV3ZoneDefendData]; 
+    basementUpdateDatas: [clz_Torappu_SandboxV3BasementUpdateData]; 
+    basementPreviewDatas: [dict__string__clz_Torappu_SandboxV3BasementUpdateFunctionPreviewDetailData]; 
+    wonderDatas: [dict__string__clz_Torappu_SandboxV3WonderData]; 
+    buildScoreGroupDatas: [dict__string__clz_Torappu_SandboxV3BuildScoreGroupData]; 
+    basementWeatherWeights: [dict__string__int]; 
+    questData: [dict__string__clz_Torappu_SandboxV3QuestData]; 
+    npcData: [dict__string__clz_Torappu_SandboxV3NpcData]; 
+    enemyNpcData: [dict__string__clz_Torappu_SandboxV3EnemyNpcData]; 
+    dialogData: [dict__string__clz_Torappu_SandboxV3DialogData]; 
+    questLineData: [dict__string__clz_Torappu_SandboxV3QuestLineData]; 
+    questLineStoryData: [dict__string__string]; 
+    guideQuestData: [dict__string__clz_Torappu_SandboxV3GuideQuestData]; 
+    cookbookData: [dict__string__clz_Torappu_SandboxV3CookbookData]; 
+    cookSpiceData: [dict__string__clz_Torappu_SandboxV3CookSpiceData]; 
+    baseShopGoodExtraData: [dict__string__clz_Torappu_SandboxV3BaseShopGoodExtraData]; 
+    baseShopGoodData: [dict__string__clz_Torappu_SandboxPermShopGoodData]; 
+    baseShopSellData: [dict__string__clz_Torappu_SandboxPermShopSellData]; 
+    baseShopCoinList: [string]; 
+    baseTrapItemListMap: [dict__string__list_string]; 
+    stageShopListData: [dict__string__list_clz_Torappu_SandboxV3StageShopData]; 
+    shopDetailData: [dict__string__clz_Torappu_SandboxV3ShopDetailData]; 
+    shopTypeCoinMap: [dict__string__list_string]; 
+    shopGoodPoolData: [dict__string__clz_Torappu_SandboxV3ShopGoodPoolData]; 
+    shopGoodData: [dict__string__clz_Torappu_SandboxPermShopGoodData]; 
+    shopSellData: [dict__string__clz_Torappu_SandboxPermShopSellData]; 
+    shopCoinTypeData: [dict__string__clz_Torappu_SandboxShopCoinTypeData]; 
+    eventSceneData: [dict__string__clz_Torappu_SandboxV3EventSceneData]; 
+    eventChoiceData: [dict__string__clz_Torappu_SandboxV3EventChoiceData]; 
+    eventExpeditionData: [dict__string__clz_Torappu_SandboxV3EventExpeditionData]; 
+    trapData: [dict__string__clz_Torappu_SandboxV3TrapData]; 
+    trapTypeData: [dict__string__clz_Torappu_SandboxV3TrapTypeData]; 
+    baseTrapData: [dict__string__clz_Torappu_SandboxV3BaseTrapData]; 
+    electricTransferData: [dict__string__clz_Torappu_SandboxV3ElectricTransferData]; 
+    electricBuildingList: [string]; 
+    baseTrapTypeData: [dict__string__clz_Torappu_SandboxV3BaseTrapTypeData]; 
+    buildRuleData: [clz_Torappu_SandboxV3BuildRuleData]; 
+    buildScoreData: [dict__string__clz_Torappu_SandboxV3BuildScoreData]; 
+    baseTrapUpgradeData: [dict__string__clz_Torappu_SandboxV3BaseTrapUpgradeData]; 
+    buildAnimalData: [dict__string__clz_Torappu_SandboxV3BuildAnimalData]; 
+    baseTrapDeployMap: [dict__string__list_clz_Torappu_SandboxV3BaseTrapDeployData]; 
+    processRecipeData: [dict__string__clz_Torappu_SandboxV3ProcessRecipeData]; 
+    buildRecipeData: [dict__string__clz_Torappu_SandboxV3BuildRecipeData]; 
+    buildTipData: [clz_Torappu_TipData]; 
+    enemyRewardData: [dict__string__clz_Torappu_SandboxV3EnemyRewardData]; 
+    enemyLevelRewardData: [dict__string__clz_Torappu_SandboxV3EnemyLevelRewardData]; 
+    milestoneRewardPools: [dict__string__list_string]; 
+    recipeWeight: [dict__string__list_dict__string__int]; 
+    paramData: [dict__string__clz_Torappu_SandboxV3StatParamData]; 
+    weatherData: [dict__string__clz_Torappu_SandboxV3WeatherData]; 
+    runeDatas: [dict__string__clz_Torappu_RuneTable_PackedRuneData]; 
+    relicData: [dict__string__clz_Torappu_SandboxV3RelicData]; 
+    bandDataMap: [dict__string__clz_Torappu_SandboxV3BandData]; 
+    modeType2BandIdListMap: [dict__string__list_string]; 
+    taskSlotData: [dict__string__clz_Torappu_SandboxV3TaskSlotData]; 
+    taskPoolData: [dict__string__clz_Torappu_SandboxV3TaskPoolData]; 
+    taskData: [dict__string__clz_Torappu_SandboxV3TaskData]; 
+    avgPostTaskData: [dict__string__clz_Torappu_SandboxV3AvgPostTaskData]; 
+    livestockData: [dict__string__clz_Torappu_SandboxV3LivestockData]; 
+    achievementData: [dict__string__clz_Torappu_SandboxArchiveAchievementData]; 
+    achievementTypeData: [dict__string__clz_Torappu_SandboxArchiveAchievementTypeData]; 
+    archiveQuestData: [dict__string__clz_Torappu_SandboxArchiveQuestData]; 
+    archiveQuestTypeData: [dict__string__clz_Torappu_SandboxArchiveQuestTypeData]; 
+    archiveMusicUnlockData: [dict__string__clz_Torappu_SandboxArchiveMusicUnlockData]; 
+    gameConst: clz_Torappu_SandboxV3GameConst; 
+    shopUpdateTimeData: [long]; 
+    extraLoadEnemies: [string]; 
+    randomMapPool: [dict__string__clz_Torappu_SandboxV3RandomMapPool]; 
+}
+
+table dict__string__clz_Torappu_SandboxV3Data {
+    key: string(key);
+    value: clz_Torappu_SandboxV3Data;
+}
+
 table clz_Torappu_SandboxPermDetailData {
     SANDBOX_V2: [dict__string__clz_Torappu_SandboxV2Data]; 
+    SANDBOX_V3: [dict__string__clz_Torappu_SandboxV3Data]; 
 }
 
 table clz_Torappu_SandboxPermItemData {
