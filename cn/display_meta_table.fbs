@@ -241,6 +241,7 @@ enum enum__Torappu_NameCardV2SkinType : int {
     NONE = 0,
     BASE = 1,
     SPECIAL = 2,
+    DYNAMIC = 3,
 }
 
 table clz_Torappu_NameCardV2TimeLimitInfo {
@@ -550,6 +551,7 @@ enum enum__Torappu_UIGuideTarget : int {
     AUTO_CHESS = 50,
     ART_GALLERY = 51,
     ART_MAGAZINE = 52,
+    ACT_FOOTBALL = 53,
 }
 
 table clz_Torappu_GuidebookConfigData {
@@ -663,7 +665,8 @@ enum enum__Torappu_ActivityType : int {
     RECRUIT_ONLY = 59,
     TYPE_ACT46SIDE = 60,
     AUTOCHESS_SEASON = 61,
-    ENUM = 62,
+    ACT_FOOTBALL = 62,
+    ENUM = 63,
 }
 
 table clz_Torappu_KeySettingItemData {

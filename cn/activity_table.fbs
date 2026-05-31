@@ -62,7 +62,8 @@ enum enum__Torappu_ActivityType : int {
     RECRUIT_ONLY = 59,
     TYPE_ACT46SIDE = 60,
     AUTOCHESS_SEASON = 61,
-    ENUM = 62,
+    ACT_FOOTBALL = 62,
+    ENUM = 63,
 }
 
 enum enum__Torappu_ActivityDisplayType : int {
@@ -6304,6 +6305,79 @@ table dict__string__clz_Torappu_ActAutoChessData {
     value: clz_Torappu_ActAutoChessData;
 }
 
+table clz_Torappu_ActFootballData_ActFootballZoneAdditionData {
+    zoneId: string; 
+    unlockText: string; 
+}
+
+table dict__string__clz_Torappu_ActFootballData_ActFootballZoneAdditionData {
+    key: string(key);
+    value: clz_Torappu_ActFootballData_ActFootballZoneAdditionData;
+}
+
+table clz_Torappu_ActFootballData_ActFootballStageAdditionData {
+    stageId: string; 
+    selfTeamIcon: string; 
+    selfTeamName: string; 
+    enemyTeamIcon: string; 
+    enemyTeamName: string; 
+    unlockBuffId: string; 
+    unlockBuffIcon: string; 
+    unlockBuffName: string; 
+    unlockBuffDesc: string; 
+    firstCompletePoint: int; 
+    completePoint: int; 
+}
+
+table dict__string__clz_Torappu_ActFootballData_ActFootballStageAdditionData {
+    key: string(key);
+    value: clz_Torappu_ActFootballData_ActFootballStageAdditionData;
+}
+
+table clz_Torappu_ActFootballData_ActFootballMilestoneItemData {
+    milestoneId: string; 
+    orderId: int; 
+    tokenNum: int; 
+    reward: clz_Torappu_ItemBundle; 
+    availTime: long; 
+}
+
+table clz_Torappu_ActFootballData_ActFootballNPCCharData {
+    instId: int; 
+    charId: string; 
+    level: int; 
+    evolvePhase: enum__Torappu_EvolvePhase; 
+    mainSkillLevel: int; 
+    specializeLevel: int; 
+    potentialRank: int; 
+    favorPoint: int; 
+    skinId: string; 
+    getTime: long; 
+}
+
+table dict__int__clz_Torappu_ActFootballData_ActFootballNPCCharData {
+    key: int(key);
+    value: clz_Torappu_ActFootballData_ActFootballNPCCharData;
+}
+
+table clz_Torappu_ActFootballData_ActFootballConstData {
+    milestonePointId: string; 
+    milestoneTrackId: string; 
+}
+
+table clz_Torappu_ActFootballData {
+    zoneAdditionDataMap: [dict__string__clz_Torappu_ActFootballData_ActFootballZoneAdditionData]; 
+    stageAdditionDataMap: [dict__string__clz_Torappu_ActFootballData_ActFootballStageAdditionData]; 
+    milestoneList: [clz_Torappu_ActFootballData_ActFootballMilestoneItemData]; 
+    npcCharDataDict: [dict__int__clz_Torappu_ActFootballData_ActFootballNPCCharData]; 
+    constData: clz_Torappu_ActFootballData_ActFootballConstData; 
+}
+
+table dict__string__clz_Torappu_ActFootballData {
+    key: string(key);
+    value: clz_Torappu_ActFootballData;
+}
+
 table clz_Torappu_ActivityTable_ActivityDetailTable {
     DEFAULT: [dict__string__clz_Torappu_DefaultFirstData]; 
     CHECKIN_ONLY: [dict__string__clz_Torappu_DefaultCheckInData]; 
@@ -6349,6 +6423,7 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     RECRUIT_ONLY: [dict__string__clz_Torappu_ActRecruitOnlyData]; 
     TYPE_ACT46SIDE: [dict__string__clz_Torappu_Act46SideData]; 
     AUTOCHESS_SEASON: [dict__string__clz_Torappu_ActAutoChessData]; 
+    ACT_FOOTBALL: [dict__string__clz_Torappu_ActFootballData]; 
 }
 
 table clz_Torappu_ActMainlineBpExtraData_ActMainlineBpExtraPeriodData {
@@ -7470,10 +7545,18 @@ table clz_Torappu_HalfIdleData {
     itemData: [dict__string__clz_Torappu_Act1VHalfIdleItemData]; 
 }
 
+enum enum__Torappu_PlayerStageState : int {
+    UNLOCKED = 0,
+    PLAYED = 1,
+    PASS = 2,
+    COMPLETE = 3,
+}
+
 table clz_Torappu_KVSwitchInfo {
     isDefault: bool; 
     displayTime: long; 
-    zoneId: string; 
+    stageId: string; 
+    passState: enum__Torappu_PlayerStageState; 
 }
 
 table dict__string__clz_Torappu_KVSwitchInfo {
@@ -8082,6 +8165,8 @@ table clz_Torappu_ActivityTable_TemplateTrapData {
     trapName: string; 
     trapDesc: string; 
     trapText: string; 
+    trapIcon1: string; 
+    trapIcon2: string; 
     trapTaskId: string; 
     trapUnlockDesc: string; 
     trapBuffId: string; 
@@ -8102,6 +8187,7 @@ table clz_Torappu_ActivityTable_ActivityTrapConstData {
     squadSaveSuccessToast: string; 
     lockedToast: string; 
     showBtnBack: bool; 
+    useSpecialToast: bool; 
 }
 
 table clz_Torappu_ActivityTable_ActivityTrapsData {

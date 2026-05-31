@@ -1,6 +1,5 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/8014ccac194076c659a544f52e03a1efa370d669
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/6121fa94db86f4067711ea6e21025843e1654e53
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-// YoStar version
 enum enum__Torappu_Battle_Cooperate_EndTileType : int {
     NONE = 0,
     MY_SIDE = 1,
@@ -46,6 +45,7 @@ table dict__int__list_clz_Torappu_Battle_Cooperate_CooperateWaveWeight {
 table clz_Torappu_Battle_Cooperate_CooperateTeamWeight {
     teamName: string; 
     weight: int; 
+    teamType: int; 
 }
 
 table clz_Torappu_Battle_Cooperate_CooperateTeamPlayer {
@@ -64,6 +64,11 @@ table dict__string__string {
     value: string;
 }
 
+table clz_Torappu_Battle_Cooperate_FootballStadiumWeight {
+    stadiumType: int; 
+    weight: int; 
+}
+
 table clz_Torappu_Battle_Cooperate_CooperateModeBattleData {
     costTransferred: int; 
     getMaxMsgCntInOneUpdate: int; 
@@ -75,6 +80,8 @@ table clz_Torappu_Battle_Cooperate_CooperateModeBattleData {
     footballTeamWeights: [clz_Torappu_Battle_Cooperate_CooperateTeamWeight]; 
     footballTeamPlayers: [dict__string__clz_Torappu_Battle_Cooperate_CooperateTeamPlayer]; 
     footballPlayersName: [dict__string__string]; 
+    footballPlayersWaitTimeOnWaveStart: int; 
+    footballStadiumWeights: [clz_Torappu_Battle_Cooperate_FootballStadiumWeight]; 
 }
 
 root_type clz_Torappu_Battle_Cooperate_CooperateModeBattleData;
