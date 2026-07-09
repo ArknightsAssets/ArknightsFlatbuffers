@@ -100,6 +100,7 @@ table clz_Torappu_AttributesData {
     fearedImmune: bool; 
     palsyImmune: bool; 
     attractImmune: bool; 
+    teleportImmune: bool; 
 }
 
 table clz_Torappu_KeyFrames_2_KeyFrame_Torappu_AttributesData_Torappu_AttributesData_ {
@@ -302,7 +303,8 @@ enum enum__Torappu_AbnormalFlag : int {
     ATTRACTED = 41,
     FEARED_PRIVATE = 42,
     DOZE = 43,
-    E_NUM = 44,
+    TELEPORTED = 44,
+    E_NUM = 45,
 }
 
 enum enum__Torappu_AbnormalCombo : int {
@@ -415,6 +417,7 @@ table clz_Torappu_AttributesDeltaData {
     fearedImmune: bool; 
     palsyImmune: bool; 
     attractImmune: bool; 
+    teleportImmune: bool; 
 }
 
 table clz_Torappu_KeyFrames_2_KeyFrame_Torappu_AttributesDeltaData_Torappu_AttributesData_ {

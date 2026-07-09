@@ -20,6 +20,9 @@ enum enum__Torappu_RoguelikeModuleType : int {
     WRATH = 10,
     CANDLE = 11,
     SKY = 12,
+    GRID_ZONE = 13,
+    WEATHER = 14,
+    SCRAP = 15,
 }
 
 enum enum__Torappu_RoguelikeMonthChatTrigType : int {
@@ -66,6 +69,7 @@ enum enum__Torappu_RoguelikeCharState : int {
     THIRD = 6,
     MONTHLY = 7,
     THIRD_LOW = 8,
+    MERCENARY = 9,
 }
 
 table clz_Torappu_RoguelikeTopicConst_PredefinedChar {
@@ -385,6 +389,7 @@ table clz_Torappu_RoguelikeTopicDifficulty {
     unlockText: string; 
     displayIconId: string; 
     hideEndingStory: bool; 
+    haveLegacy: bool; 
 }
 
 enum enum__Torappu_RoguelikeTopicBankRewardType : int {
@@ -698,6 +703,36 @@ table clz_Torappu_ActArchiveCopperData {
     luckyLevels: [dict__string__clz_Torappu_ActArchiveCopperLuckyLevelData]; 
 }
 
+table clz_Torappu_ActArchiveScrapItemData {
+    scrapId: string; 
+    sortId: int; 
+    enrollConditionId: string; 
+}
+
+table dict__string__clz_Torappu_ActArchiveScrapItemData {
+    key: string(key);
+    value: clz_Torappu_ActArchiveScrapItemData;
+}
+
+table clz_Torappu_ActArchiveScrapData {
+    scraps: [dict__string__clz_Torappu_ActArchiveScrapItemData]; 
+}
+
+table clz_Torappu_ActArchiveWeatherItemData {
+    weatherId: string; 
+    sortId: int; 
+    enrollConditionId: string; 
+}
+
+table dict__string__clz_Torappu_ActArchiveWeatherItemData {
+    key: string(key);
+    value: clz_Torappu_ActArchiveWeatherItemData;
+}
+
+table clz_Torappu_ActArchiveWeatherData {
+    weathers: [dict__string__clz_Torappu_ActArchiveWeatherItemData]; 
+}
+
 table clz_Torappu_RoguelikeArchiveComponentData {
     relic: clz_Torappu_ActArchiveRelicData; 
     capsule: clz_Torappu_ActArchiveCapsuleData; 
@@ -711,6 +746,8 @@ table clz_Torappu_RoguelikeArchiveComponentData {
     disaster: clz_Torappu_ActArchiveDisasterData; 
     wrath: clz_Torappu_ActArchiveWrathData; 
     copper: clz_Torappu_ActArchiveCopperData; 
+    scrap: clz_Torappu_ActArchiveScrapData; 
+    weather: clz_Torappu_ActArchiveWeatherData; 
 }
 
 enum enum__Torappu_ActArchiveType : int {
@@ -742,6 +779,8 @@ enum enum__Torappu_ActArchiveType : int {
     DISASTER = 25,
     COPPER = 26,
     WRATH = 27,
+    SCRAP = 28,
+    WEATHER = 29,
 }
 
 table clz_Torappu_RoguelikeArchiveUnlockCondDesc {
@@ -922,6 +961,7 @@ table clz_Torappu_RoguelikeGameZoneData {
     isHiddenZone: bool; 
     bgmSignal: string; 
     bgmSignalWithLowSan: string; 
+    transitionEffectId: string; 
 }
 
 table dict__string__clz_Torappu_RoguelikeGameZoneData {
@@ -1135,6 +1175,10 @@ enum enum__Torappu_RoguelikeGameChoiceType : int {
     GILD_COPPER_ALL = 21,
     JUMP_PROB = 22,
     JUMP = 23,
+    ZONE_END = 24,
+    MOVE = 25,
+    VISION = 26,
+    SCRAP_PAY_SHOW = 27,
 }
 
 enum enum__Torappu_RoguelikeChoiceLeftDecoType : int {
@@ -1159,16 +1203,20 @@ enum enum__Torappu_RoguelikeChoiceHintType : int {
     GUIDED_CHAR = 3,
     SACRIFICE = 4,
     SACRIFICE_TOTEM = 5,
-    EXPEDITION = 6,
-    CANDLE = 7,
-    GUIDED = 8,
-    HP = 9,
-    VISION = 10,
-    STASHED_RECRUIT = 11,
-    CHAOS = 12,
-    FRAGMENT = 13,
-    SP_ZONE_AP = 14,
-    COPPER_LUCK = 15,
+    SACRIFICE_SCRAP = 6,
+    EXPEDITION = 7,
+    CANDLE = 8,
+    GUIDED = 9,
+    HP = 10,
+    VISION = 11,
+    STASHED_RECRUIT = 12,
+    SEED_COST = 13,
+    ITEM_COST = 14,
+    CHAOS = 15,
+    FRAGMENT = 16,
+    SP_ZONE_AP = 17,
+    COPPER_LUCK = 18,
+    AP_LEFT = 19,
 }
 
 table clz_Torappu_RoguelikeChoiceDisplayData {
@@ -1179,6 +1227,7 @@ table clz_Torappu_RoguelikeChoiceDisplayData {
     itemId: string; 
     difficultyUpgradeRelicGroupId: string; 
     taskId: string; 
+    instId: string; 
 }
 
 table clz_Torappu_RoguelikeGameChoiceData {
@@ -1192,6 +1241,8 @@ table clz_Torappu_RoguelikeGameChoiceData {
     icon: string; 
     displayData: clz_Torappu_RoguelikeChoiceDisplayData; 
     forceShowWhenOnlyLeave: bool; 
+    isHiddenChoice: bool; 
+    sortId: int; 
 }
 
 table dict__string__clz_Torappu_RoguelikeGameChoiceData {
@@ -1237,14 +1288,23 @@ enum enum__Torappu_RoguelikeEventType : int {
     DUEL = 262144,
     STASHED_RECRUIT = 524288,
     SPECIAL_ZONE = 1048576,
-    BATTLES = 7,
-    CHOICES = 1961712,
-    EVENTS = 1965816,
-    ALL = 1965823,
+    SCRAP_SHOP = 2097152,
+    DOOR = 4194304,
+    FINAL = 8388608,
+    EVACUATE = 16777216,
+    EMPLOY = 33554432,
+    LIGHT = 67108864,
+    BATTLE_SAVAGE = 134217728,
+    EMPTY = 268435456,
+    BATTLES = 134217735,
+    CHOICES = 27127536,
+    EVENTS = 402521848,
+    ALL = 536739583,
 }
 
 table clz_Torappu_RoguelikeGameNodeTypeData {
     name: string; 
+    subName: string; 
     description: string; 
 }
 
@@ -1301,12 +1361,14 @@ enum enum__Torappu_RoguelikeGameCharBuffType : int {
     NONE = 0,
     MUTATION = 1,
     EVOLUTION = 2,
+    FROM_RELIC = 3,
 }
 
 table clz_Torappu_RoguelikeGameCharBuffData {
     id: string; 
     buffType: enum__Torappu_RoguelikeGameCharBuffType; 
     iconId: string; 
+    relatedItemId: string; 
     outerName: string; 
     innerName: string; 
     functionDesc: string; 
@@ -1365,6 +1427,11 @@ enum enum__Torappu_RoguelikeRewardExDropTagSrcType : int {
     EXPLORE_TOOL = 3,
     COPPER = 4,
     EVIL_TEMPLE = 5,
+    TREASURE_MAP = 6,
+    LOOP_CHIP = 7,
+    STEP = 8,
+    GREED = 9,
+    GOLDEN_AGE = 10,
 }
 
 table dict__enum__Torappu_RoguelikeRewardExDropTagSrcType__string {
@@ -1393,6 +1460,7 @@ table clz_Torappu_RoguelikeGameConst {
     normBoxTrapId: string; 
     rareBoxTrapId: string; 
     badBoxTrapId: string; 
+    toolBoxTrapId: string; 
     maxHpItemId: string; 
     shieldItemId: string; 
     keyItemId: string; 
@@ -1423,6 +1491,8 @@ table clz_Torappu_RoguelikeGameConst {
     expeditionReturnDesc: string; 
     expeditionSelectDescFormat: string; 
     expeditionReturnDescItem: string; 
+    expedEndingRelic: string; 
+    expedEndingRelicDesc: string; 
     expeditionReturnRewardBlackList: [string]; 
     travelLeaveToastFormat: string; 
     charSelectTravelConflictToast: string; 
@@ -1450,11 +1520,12 @@ table clz_Torappu_RoguelikeGameConst {
     specialRecruitFuncDesc: string; 
     specialRecruitDetailDesc: string; 
     portalZones: [string]; 
+    treasureBuffs: [string]; 
     diffDisplayZoneId: string; 
     exploreExpOnKill: string; 
     fusionName: string; 
     fusionNotifyToast: string; 
-    haveSpZone: bool; 
+    haveCustomZone: bool; 
     gotCharCandleBuffToast: string; 
     gotCharsCandleBuffToast: string; 
     stashedRecruitNodeDescription: string; 
@@ -1605,6 +1676,10 @@ enum enum__Torappu_RoguelikeGameItemType : int {
     SPECIAL_ZONE_AP = 44,
     COPPER_DRAW_NUM = 45,
     STASH_RECRUIT_LIMIT = 46,
+    NODE_BUOY = 47,
+    SCRAP = 48,
+    LEGACY = 49,
+    CHARACTER = 50,
 }
 
 enum enum__Torappu_RoguelikeGameItemSubType : int {
@@ -1789,6 +1864,17 @@ table dict__string__clz_Torappu_RoguelikeRelicTipsData {
     value: clz_Torappu_RoguelikeRelicTipsData;
 }
 
+table clz_Torappu_RoguelikeLegacyItemData {
+    legacyId: string; 
+    hideLegacyItem: bool; 
+    legacyGroupId: string; 
+}
+
+table dict__string__clz_Torappu_RoguelikeLegacyItemData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeLegacyItemData;
+}
+
 enum enum__Torappu_RoguelikeActivityType : int {
     NONE = 0,
     SEED_MODE = 1,
@@ -1903,6 +1989,7 @@ table clz_Torappu_RoguelikeTopicDetail {
     exploreTools: [dict__string__clz_Torappu_RoguelikeGameExploreToolData]; 
     rollNodeData: [dict__string__clz_Torappu_RoguelikeRollNodeData]; 
     relicTipsData: [dict__string__clz_Torappu_RoguelikeRelicTipsData]; 
+    legacyItems: [dict__string__clz_Torappu_RoguelikeLegacyItemData]; 
     activity: clz_Torappu_RoguelikeActivityData; 
 }
 
@@ -2532,6 +2619,206 @@ table clz_Torappu_RoguelikeSkyModuleData {
     moduleConsts: clz_Torappu_RoguelikeSkyModuleConsts; 
 }
 
+table clz_Torappu_RoguelikeMainWeatherData {
+    id: string; 
+    iconId: string; 
+    iconBigId: string; 
+    isPositive: bool; 
+    level: int; 
+    name: string; 
+    levelName: string; 
+    type: string; 
+    functionDesc: string; 
+    desc: string; 
+    sound: string; 
+}
+
+table dict__string__clz_Torappu_RoguelikeMainWeatherData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeMainWeatherData;
+}
+
+table clz_Torappu_RoguelikeSubWeatherData {
+    id: string; 
+    iconId: string; 
+    isPositive: bool; 
+    name: string; 
+    type: string; 
+    functionDesc: string; 
+    desc: string; 
+    sound: string; 
+}
+
+table dict__string__clz_Torappu_RoguelikeSubWeatherData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeSubWeatherData;
+}
+
+table clz_Torappu_RoguelikeWeatherModuleData {
+    mainWeatherData: [dict__string__clz_Torappu_RoguelikeMainWeatherData]; 
+    subWeatherData: [dict__string__clz_Torappu_RoguelikeSubWeatherData]; 
+}
+
+table clz_Torappu_RoguelikeGridZoneMissionBannerData {
+    zoneId: string; 
+    bannerText: string; 
+    bannerIcon: string; 
+}
+
+table dict__string__clz_Torappu_RoguelikeGridZoneMissionBannerData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeGridZoneMissionBannerData;
+}
+
+table clz_Torappu_RoguelikeGridZoneFocusViewHintData {
+    zoneId: string; 
+    hintText: string; 
+}
+
+table dict__string__clz_Torappu_RoguelikeGridZoneFocusViewHintData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeGridZoneFocusViewHintData;
+}
+
+table clz_Torappu_RoguelikeBuoyItemData {
+    itemId: string; 
+    isVisible: bool; 
+}
+
+table dict__string__clz_Torappu_RoguelikeBuoyItemData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeBuoyItemData;
+}
+
+table dict__string__bool {
+    key: string(key);
+    value: bool;
+}
+
+table clz_Torappu_RoguelikeGridZoneModuleConsts {
+    savageBubble: string; 
+    secretZoneDisableBuff: string; 
+    maxBannerDifficulty: int; 
+    focusViewBossHintStageId: [dict__string__bool]; 
+}
+
+table clz_Torappu_RoguelikeGridZoneModuleData {
+    zoneMissionBannerData: [dict__string__clz_Torappu_RoguelikeGridZoneMissionBannerData]; 
+    scrapSideBarStepZeroHintBannerData: [dict__string__clz_Torappu_RoguelikeGridZoneFocusViewHintData]; 
+    buoyItemDatas: [dict__string__clz_Torappu_RoguelikeBuoyItemData]; 
+    moduleConsts: clz_Torappu_RoguelikeGridZoneModuleConsts; 
+}
+
+enum enum__Torappu_RoguelikeScrapType : int {
+    ERROR = -1,
+    NONE = 0,
+    MOVE = 1,
+    GOODS = 2,
+    PASSIVE = 3,
+}
+
+table dict__string__enum__Torappu_RoguelikeScrapType {
+    key: string(key);
+    value: enum__Torappu_RoguelikeScrapType;
+}
+
+table clz_Torappu_RoguelikeScrapTypeData {
+    type: enum__Torappu_RoguelikeScrapType; 
+    typeName: string; 
+    typeDesc: string; 
+    typeIconId: string; 
+}
+
+table dict__string__clz_Torappu_RoguelikeScrapTypeData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeScrapTypeData;
+}
+
+enum enum__Torappu_RoguelikeMoveScrapRangeType : int {
+    RANGE = 0,
+    FULL_MAP = 1,
+}
+
+table clz_Torappu_RoguelikeScrapMoveData {
+    count: int; 
+    range: string; 
+    rangeType: enum__Torappu_RoguelikeMoveScrapRangeType; 
+    node: [string]; 
+    step: int; 
+    isRandomMove: bool; 
+    scrapId: string; 
+    scrapDesc: string; 
+    sellPrice: int; 
+}
+
+table dict__string__clz_Torappu_RoguelikeScrapMoveData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeScrapMoveData;
+}
+
+table clz_Torappu_RoguelikeScrapGoodsData {
+    scrapId: string; 
+    scrapDesc: string; 
+    sellPrice: int; 
+}
+
+table dict__string__clz_Torappu_RoguelikeScrapGoodsData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeScrapGoodsData;
+}
+
+table clz_Torappu_RoguelikeScrapPassiveData {
+    node: enum__Torappu_RoguelikeEventType; 
+    buffStack: int; 
+    scrapId: string; 
+    scrapDesc: string; 
+    sellPrice: int; 
+}
+
+table dict__string__clz_Torappu_RoguelikeScrapPassiveData {
+    key: string(key);
+    value: clz_Torappu_RoguelikeScrapPassiveData;
+}
+
+enum enum__Torappu_SharedConsts_Direction : int {
+    UP = 0,
+    RIGHT = 1,
+    DOWN = 2,
+    LEFT = 3,
+    E_NUM = 4,
+    INVALID = 4,
+}
+
+table clz_Torappu_GridPosition {
+    row: int; 
+    col: int; 
+}
+
+table clz_Torappu_RangeData {
+    id: string; 
+    direction: enum__Torappu_SharedConsts_Direction; 
+    grids: [clz_Torappu_GridPosition]; 
+}
+
+table dict__string__clz_Torappu_RangeData {
+    key: string(key);
+    value: clz_Torappu_RangeData;
+}
+
+table clz_Torappu_RoguelikeScrapModuleConsts {
+    identifyScrapId: string; 
+}
+
+table clz_Torappu_RoguelikeScrapModuleData {
+    scrapItemToType: [dict__string__enum__Torappu_RoguelikeScrapType]; 
+    scrapTypeData: [dict__string__clz_Torappu_RoguelikeScrapTypeData]; 
+    moveScrapData: [dict__string__clz_Torappu_RoguelikeScrapMoveData]; 
+    goodsScrapData: [dict__string__clz_Torappu_RoguelikeScrapGoodsData]; 
+    passiveScrapData: [dict__string__clz_Torappu_RoguelikeScrapPassiveData]; 
+    moveScrapRangeData: [dict__string__clz_Torappu_RangeData]; 
+    moduleConsts: clz_Torappu_RoguelikeScrapModuleConsts; 
+}
+
 table clz_Torappu_RoguelikeModule {
     moduleTypes: [enum__Torappu_RoguelikeModuleType]; 
     sanCheck: clz_Torappu_RoguelikeSanCheckModuleData; 
@@ -2546,6 +2833,9 @@ table clz_Torappu_RoguelikeModule {
     wrath: clz_Torappu_RoguelikeWrathModuleData; 
     candle: clz_Torappu_RoguelikeCandleModuleData; 
     sky: clz_Torappu_RoguelikeSkyModuleData; 
+    weather: clz_Torappu_RoguelikeWeatherModuleData; 
+    gridZone: clz_Torappu_RoguelikeGridZoneModuleData; 
+    scrap: clz_Torappu_RoguelikeScrapModuleData; 
 }
 
 table dict__string__clz_Torappu_RoguelikeModule {
@@ -3116,12 +3406,98 @@ table clz_Torappu_RL05CustomizeData {
     endingText: clz_Torappu_RL05EndingText; 
 }
 
+table clz_Torappu_RL06DifficultyExt {
+    modeDifficulty: enum__Torappu_RoguelikeTopicMode; 
+    grade: int; 
+    buffs: [string]; 
+    buffDesc: [string]; 
+    leftWeatherDesc: string; 
+    relicDevLevel: string; 
+}
+
+table clz_Torappu_RL06EndingText {
+    summaryScrapGot: string; 
+    summaryScrapSold: string; 
+    summaryScrapLost: string; 
+    summaryScrapMove: string; 
+    summaryScrapBuff: string; 
+    summaryScrapLegacy: string; 
+    summaryMeetWeather: string; 
+    summaryWeatherClear: string; 
+    summaryBubbleBandit: string; 
+    summaryBubbleTreasure: string; 
+    summaryBubbleEvent: string; 
+    summarySavageCamp: string; 
+    summaryScrapShop: string; 
+    summaryScrapShopBuy: string; 
+    summaryScrapShopIdentify: string; 
+    summaryDoor: string; 
+    summaryTreeHole: string; 
+    summaryEvacuate: string; 
+    summaryEmployCamp: string; 
+    summaryEmployRecruit: string; 
+    summaryMercenaryLeave: string; 
+    summaryEncounterBattleWin: string; 
+    summaryEncounterBattleLose: string; 
+    summaryExchangeScrap: string; 
+    summaryExpeditionGoEnding: string; 
+    summaryExpeditionBackEnding: string; 
+    summaryActor: string; 
+    summaryTop: string; 
+    summaryZone: string; 
+    summaryEnding: string; 
+    summaryDifficultyZone: string; 
+    summaryDifficultyEnding: string; 
+    summaryMode: string; 
+    summarySupport: string; 
+    summaryGroup: string; 
+    summaryNormalRecruit: string; 
+    summaryDirectRecruit: string; 
+    summaryFriendRecruit: string; 
+    summaryFreeRecruit: string; 
+    summaryMonthRecruit: string; 
+    summaryUpgrade: string; 
+    summaryCompleteEnding: string; 
+    summaryEachZone: string; 
+    summaryMeetSpZone: string; 
+    summaryPerfectBattle: string; 
+    summaryMeetBattle: string; 
+    summaryMeetEvent: string; 
+    summaryMeetShop: string; 
+    summaryMeetTreasure: string; 
+    summaryMeetSecretpath: string; 
+    summaryExchangeRelic: string; 
+    summaryMeetTrade: string; 
+    summaryBuy: string; 
+    summaryBuyWithPriceId: string; 
+    summaryInvest: string; 
+    summaryGet: string; 
+    summaryRelic: string; 
+    summarySafeHouse: string; 
+    summaryFailEnd: string; 
+    summaryStockRecruitTicket: string; 
+    summaryDuelWin: string; 
+    summaryDuelTie: string; 
+    summaryDuelLose: string; 
+    summaryExpeditionGo: string; 
+    summaryExpeditionBack: string; 
+}
+
+table clz_Torappu_RL06CustomizeData {
+    commonDevelopment: clz_Torappu_RoguelikeCommonDevelopmentData; 
+    difficulties: [clz_Torappu_RL06DifficultyExt]; 
+    endingText: clz_Torappu_RL06EndingText; 
+    scrapShopDialogData: clz_Torappu_RoguelikeGameShopDialogData; 
+    employShopDialogData: clz_Torappu_RoguelikeGameShopDialogData; 
+}
+
 table clz_Torappu_RoguelikeTopicCustomizeData {
     rogue_1: clz_Torappu_RL01CustomizeData; 
     rogue_2: clz_Torappu_RL02CustomizeData; 
     rogue_3: clz_Torappu_RL03CustomizeData; 
     rogue_4: clz_Torappu_RL04CustomizeData; 
     rogue_5: clz_Torappu_RL05CustomizeData; 
+    rogue_6: clz_Torappu_RL06CustomizeData; 
 }
 
 table clz_Torappu_RoguelikeTopicTable {

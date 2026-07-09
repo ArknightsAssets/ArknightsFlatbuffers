@@ -458,6 +458,7 @@ enum enum__Torappu_EmojiSceneType : int {
     ENEMYDUEL_BATTLE = 4,
     AUTOCHESS_ROOM = 5,
     AUTOCHESS_BATTLE = 6,
+    BUILDING_ACTION = 7,
 }
 
 table clz_Torappu_EmoticonData_EmojiData {
@@ -478,9 +479,24 @@ table dict__string__list_string {
     value: [string];
 }
 
+table clz_Torappu_EmoticonData_EmoticonThemeTypeData {
+    itemId: string; 
+    sortId: int; 
+    isBasic: bool; 
+    isDyn: bool; 
+    picSceneList: [enum__Torappu_EmojiSceneType]; 
+}
+
+table dict__string__clz_Torappu_EmoticonData_EmoticonThemeTypeData {
+    key: string(key);
+    value: clz_Torappu_EmoticonData_EmoticonThemeTypeData;
+}
+
 table clz_Torappu_EmoticonData {
     emojiDataDict: [dict__string__clz_Torappu_EmoticonData_EmojiData]; 
     emoticonThemeDataDict: [dict__string__list_string]; 
+    emoticonThemeTypeDict: [dict__string__clz_Torappu_EmoticonData_EmoticonThemeTypeData]; 
+    emoticonThemeReverseDict: [dict__string__list_string]; 
 }
 
 table clz_Torappu_StoryVariantData {

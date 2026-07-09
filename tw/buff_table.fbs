@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/fdb838a2305922358dc4cae6b1d505f45cd5ddaf
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/b251597f596621e47036d9543264564220133680
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 enum enum__Torappu_AbnormalFlag : int {
     STUNNED = 0,
@@ -45,7 +45,8 @@ enum enum__Torappu_AbnormalFlag : int {
     ATTRACTED = 41,
     FEARED_PRIVATE = 42,
     DOZE = 43,
-    E_NUM = 44,
+    TELEPORTED = 44,
+    E_NUM = 45,
 }
 
 enum enum__Torappu_AbnormalCombo : int {

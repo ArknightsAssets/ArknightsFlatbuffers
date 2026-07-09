@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/fdb838a2305922358dc4cae6b1d505f45cd5ddaf
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/b251597f596621e47036d9543264564220133680
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 table clz_Torappu_CharPatchData_PatchInfo {
     tmplIds: [string]; 
@@ -111,6 +111,7 @@ table clz_Torappu_AttributesData {
     fearedImmune: bool; 
     palsyImmune: bool; 
     attractImmune: bool; 
+    teleportImmune: bool; 
 }
 
 table clz_Torappu_KeyFrames_2_KeyFrame_Torappu_AttributesData_Torappu_AttributesData_ {
@@ -313,7 +314,8 @@ enum enum__Torappu_AbnormalFlag : int {
     ATTRACTED = 41,
     FEARED_PRIVATE = 42,
     DOZE = 43,
-    E_NUM = 44,
+    TELEPORTED = 44,
+    E_NUM = 45,
 }
 
 enum enum__Torappu_AbnormalCombo : int {
@@ -426,6 +428,7 @@ table clz_Torappu_AttributesDeltaData {
     fearedImmune: bool; 
     palsyImmune: bool; 
     attractImmune: bool; 
+    teleportImmune: bool; 
 }
 
 table clz_Torappu_KeyFrames_2_KeyFrame_Torappu_AttributesDeltaData_Torappu_AttributesData_ {

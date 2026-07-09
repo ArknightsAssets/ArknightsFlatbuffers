@@ -342,6 +342,8 @@ table clz_Torappu_MapThemeData {
     themeType: string; 
     trapTintColor: string; 
     emissionColor: string; 
+    highlandBuildableColor: string; 
+    highlandEmissionColor: string; 
 }
 
 table dict__string__clz_Torappu_MapThemeData {
