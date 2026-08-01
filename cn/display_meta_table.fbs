@@ -400,6 +400,7 @@ enum enum__Torappu_ItemType : int {
     PLOT_ITEM = 90,
     MAGAZINE_LEAF = 91,
     STICKER = 92,
+    ARKHUB = 93,
 }
 
 table clz_Torappu_ItemBundle {
@@ -459,6 +460,7 @@ enum enum__Torappu_EmojiSceneType : int {
     AUTOCHESS_ROOM = 5,
     AUTOCHESS_BATTLE = 6,
     BUILDING_ACTION = 7,
+    ARKHUB_ROOM = 8,
 }
 
 table clz_Torappu_EmoticonData_EmojiData {
@@ -568,6 +570,9 @@ enum enum__Torappu_UIGuideTarget : int {
     ART_GALLERY = 51,
     ART_MAGAZINE = 52,
     ACT_FOOTBALL = 53,
+    PIXEL_MAP = 54,
+    ARK_HUB = 55,
+    ARK_ODC = 56,
 }
 
 table clz_Torappu_GuidebookConfigData {
@@ -615,7 +620,8 @@ enum enum__Torappu_KeySettingGroup : int {
 enum enum__Torappu_KeyEffectGroup : int {
     BATTLE = 0,
     OUT_BATTLE = 1,
-    ALL = 2,
+    ARKVENT = 2,
+    ALL = 3,
 }
 
 enum enum__Torappu_ActivityType : int {
@@ -681,8 +687,10 @@ enum enum__Torappu_ActivityType : int {
     RECRUIT_ONLY = 59,
     TYPE_ACT46SIDE = 60,
     AUTOCHESS_SEASON = 61,
-    ACT_FOOTBALL = 62,
-    ENUM = 63,
+    ARK_HUB = 62,
+    ACT_FOOTBALL = 63,
+    TYPE_ACT53SIDE = 64,
+    ENUM = 65,
 }
 
 table clz_Torappu_KeySettingItemData {
@@ -699,7 +707,7 @@ table clz_Torappu_KeySettingGroupData {
     funcType: enum__Torappu_KeySettingGroup; 
     keyEffectGroup: enum__Torappu_KeyEffectGroup; 
     isHidden: bool; 
-    relatedActType: enum__Torappu_ActivityType; 
+    relatedActTypes: [enum__Torappu_ActivityType]; 
     gameModeTag: string; 
     sortId: int; 
     startTs: long; 
@@ -829,6 +837,7 @@ table clz_Torappu_MagazineLeafItemData {
     templateId: string; 
     templateStartTime: long; 
     templateColor: string; 
+    templateColor2: string; 
     skinDefaultPos: clz_UnityEngine_Vector2; 
     skinDefaultScale: float; 
     leafDecorMaxNumMap: [dict__string__int]; 
@@ -945,6 +954,27 @@ table clz_Torappu_AVGDialogSettingData {
     presetList: [clz_Torappu_AVGDialogPresetData]; 
 }
 
+table clz_Torappu_PixelMapParamData {
+    width: int; 
+    height: int; 
+    initColor: string; 
+    htmlColors: [string]; 
+}
+
+table dict__string__clz_Torappu_PixelMapParamData {
+    key: string(key);
+    value: clz_Torappu_PixelMapParamData;
+}
+
+table clz_Torappu_PixelMapConstData {
+    uidWaterMark: bool; 
+}
+
+table clz_Torappu_PixelMapData {
+    paramMap: [dict__string__clz_Torappu_PixelMapParamData]; 
+    constData: clz_Torappu_PixelMapConstData; 
+}
+
 table clz_Torappu_DisplayMetaData {
     playerAvatarData: clz_Torappu_PlayerAvatarData; 
     homeBackgroundData: clz_Torappu_HomeBackgroundData; 
@@ -960,6 +990,7 @@ table clz_Torappu_DisplayMetaData {
     magazineLeafData: clz_Torappu_MagazineLeafData; 
     stickerData: clz_Torappu_StickerData; 
     avgDialogSettingData: clz_Torappu_AVGDialogSettingData; 
+    pixelMapData: clz_Torappu_PixelMapData; 
 }
 
 root_type clz_Torappu_DisplayMetaData;

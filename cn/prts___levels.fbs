@@ -250,6 +250,7 @@ table clz_Torappu_AttributesData {
     palsyImmune: bool; 
     attractImmune: bool; 
     teleportImmune: bool; 
+    groundBoundImmune: bool; 
 }
 
 enum enum__Torappu_SourceApplyWay : int {
@@ -363,6 +364,7 @@ table clz_Torappu_EnemyDatabase_AttributesData {
     palsyImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     attractImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
     teleportImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
+    groundBoundImmune: clz_Torappu_Undefinable_1_System_Boolean_; 
 }
 
 table clz_Torappu_Undefinable_1_Torappu_SourceApplyWay_ {

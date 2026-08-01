@@ -101,6 +101,7 @@ table clz_Torappu_AttributesData {
     palsyImmune: bool; 
     attractImmune: bool; 
     teleportImmune: bool; 
+    groundBoundImmune: bool; 
 }
 
 table clz_Torappu_KeyFrames_2_KeyFrame_Torappu_AttributesData_Torappu_AttributesData_ {
@@ -202,6 +203,7 @@ enum enum__Torappu_ItemType : int {
     PLOT_ITEM = 90,
     MAGAZINE_LEAF = 91,
     STICKER = 92,
+    ARKHUB = 93,
 }
 
 table clz_Torappu_ItemBundle {
@@ -304,7 +306,8 @@ enum enum__Torappu_AbnormalFlag : int {
     FEARED_PRIVATE = 42,
     DOZE = 43,
     TELEPORTED = 44,
-    E_NUM = 45,
+    GROUND_BOUND = 45,
+    E_NUM = 46,
 }
 
 enum enum__Torappu_AbnormalCombo : int {
@@ -418,6 +421,7 @@ table clz_Torappu_AttributesDeltaData {
     palsyImmune: bool; 
     attractImmune: bool; 
     teleportImmune: bool; 
+    groundBoundImmune: bool; 
 }
 
 table clz_Torappu_KeyFrames_2_KeyFrame_Torappu_AttributesDeltaData_Torappu_AttributesData_ {

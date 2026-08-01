@@ -62,8 +62,10 @@ enum enum__Torappu_ActivityType : int {
     RECRUIT_ONLY = 59,
     TYPE_ACT46SIDE = 60,
     AUTOCHESS_SEASON = 61,
-    ACT_FOOTBALL = 62,
-    ENUM = 63,
+    ARK_HUB = 62,
+    ACT_FOOTBALL = 63,
+    TYPE_ACT53SIDE = 64,
+    ENUM = 65,
 }
 
 enum enum__Torappu_ActivityDisplayType : int {
@@ -274,6 +276,7 @@ enum enum__Torappu_ItemType : int {
     PLOT_ITEM = 90,
     MAGAZINE_LEAF = 91,
     STICKER = 92,
+    ARKHUB = 93,
 }
 
 table clz_Torappu_MissionDisplayRewards {
@@ -6380,6 +6383,586 @@ table dict__string__clz_Torappu_ActFootballData {
     value: clz_Torappu_ActFootballData;
 }
 
+enum enum__Torappu_ArkdexModeType : int {
+    NONE = 0,
+    ARKDEX_DUEL_SINGLEROUND = 1,
+    ARKDEX_DUEL_BO3 = 2,
+    ARKDEX_DUEL_4PLAYER = 3,
+}
+
+table clz_Torappu_ArkdexModeData {
+    modeId: string; 
+    modeNumId: int; 
+    isMultiplayer: bool; 
+    numMax: int; 
+    battleNpcCount: int; 
+    isMatching: bool; 
+    maxRoundNumber: int; 
+    stageTimeMax: int; 
+    characterLimit: int; 
+    modeType: enum__Torappu_ArkdexModeType; 
+    stageIds: [string]; 
+    modeName: string; 
+    modeHint: string; 
+    matchingIconId: string; 
+}
+
+table dict__string__clz_Torappu_ArkdexModeData {
+    key: string(key);
+    value: clz_Torappu_ArkdexModeData;
+}
+
+table clz_Torappu_ArkdexCreatureData {
+    creatureNumId: int; 
+    enemyId: string; 
+    deployedEnemyId: string; 
+    trapId: string; 
+    uiDisplayScale: float; 
+    followScale: float; 
+    animSpeedFollow: float; 
+    rarity: int; 
+    specialRarity: bool; 
+    sortId: int; 
+    orderId: string; 
+    name: string; 
+    creatureIcon: string; 
+    worldEntityId: string; 
+    alterNumId: int; 
+    upWeightTagIsShow: bool; 
+    advantageType: string; 
+    description: string; 
+    abilities: [string]; 
+    obtainApproach: string; 
+    hp: float; 
+    atk: float; 
+    def: float; 
+    mag: float; 
+    moveSpeed: float; 
+    atkSpeed: float; 
+    hpPct: int; 
+    atkPct: int; 
+    defPct: int; 
+    magPct: int; 
+    moveSpeedPct: int; 
+    atkSpeedPct: int; 
+}
+
+table dict__int__clz_Torappu_ArkdexCreatureData {
+    key: int(key);
+    value: clz_Torappu_ArkdexCreatureData;
+}
+
+table clz_Torappu_ArkdexAdvantageTypeData {
+    advantageType: string; 
+    sortId: int; 
+    name: string; 
+    typeIcon: string; 
+    entryEffectKey: string; 
+    damageScaleMap: [dict__string__float]; 
+}
+
+table dict__string__clz_Torappu_ArkdexAdvantageTypeData {
+    key: string(key);
+    value: clz_Torappu_ArkdexAdvantageTypeData;
+}
+
+table clz_Torappu_ArkdexNpcInfoData {
+    npcId: int; 
+    strategyGroupId: string; 
+    name: string; 
+    avatarId: string; 
+    npcProb: int; 
+    avatarType: enum__Torappu_PlayerAvatarGroupType; 
+    nameCardSkinId: string; 
+    nameCardSkinTmplId: int; 
+}
+
+table dict__int__clz_Torappu_ArkdexNpcInfoData {
+    key: int(key);
+    value: clz_Torappu_ArkdexNpcInfoData;
+}
+
+enum enum__Torappu_ArkDexNpcTileStrategy : int {
+    RANDOM = 0,
+    PREFER_NEAR_SELF = 1,
+    PREFER_FAR_SELF = 2,
+    RANGED_NEAR_MELEE_FAR = 3,
+    PREFER_MIDDLE = 4,
+    RANDOM_FROM_ALL = 5,
+}
+
+enum enum__Torappu_ArkDexNpcCardStrategy : int {
+    RANDOM = 0,
+    FIXED_ORDER = 1,
+    PREFER_ELEMENT_0 = 2,
+    PREFER_ELEMENT_1 = 3,
+    PREFER_ELEMENT_2 = 4,
+    PREFER_RANGED = 5,
+    PREFER_RARITY = 6,
+    COUNTER_PLAYER_MAJOR = 7,
+    COUNTERED_BY_PLAYER_MAJOR = 8,
+    BAG_MIN_ELEMENT = 9,
+    BAG_MAX_ELEMENT = 10,
+    RANDOM_FROM_ALL = 11,
+}
+
+table clz_Torappu_ArkdexNpcDuelCreatureData {
+    creatureNumId: int; 
+    traitMask: int; 
+}
+
+table clz_Torappu_ArkdexNpcDuelStrategyData {
+    strategyGroupId: string; 
+    strategyId: string; 
+    tileStrategy: enum__Torappu_ArkDexNpcTileStrategy; 
+    cardStrategy: enum__Torappu_ArkDexNpcCardStrategy; 
+    creatureData: [clz_Torappu_ArkdexNpcDuelCreatureData]; 
+    weight: int; 
+}
+
+table dict__string__clz_Torappu_ArkdexNpcDuelStrategyData {
+    key: string(key);
+    value: clz_Torappu_ArkdexNpcDuelStrategyData;
+}
+
+table dict__string__list_dict__string__clz_Torappu_ArkdexNpcDuelStrategyData {
+    key: string(key);
+    value: [dict__string__clz_Torappu_ArkdexNpcDuelStrategyData];
+}
+
+table clz_Torappu_ArkdexItemEffectData {
+    itemNumId: int; 
+    buff: string; 
+    activeDesc: string; 
+    blackboard: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table dict__int__clz_Torappu_ArkdexItemEffectData {
+    key: int(key);
+    value: clz_Torappu_ArkdexItemEffectData;
+}
+
+table clz_Torappu_ArkdexTraitData {
+    sortId: int; 
+    traitMask: int; 
+    traitId: string; 
+    name: string; 
+    icon: string; 
+    description: string; 
+    color: string; 
+    buff: [clz_Torappu_Blackboard_DataPair]; 
+}
+
+table dict__int__clz_Torappu_ArkdexTraitData {
+    key: int(key);
+    value: clz_Torappu_ArkdexTraitData;
+}
+
+table dict__int__string {
+    key: int(key);
+    value: string;
+}
+
+table clz_Torappu_ArkdexNpcBattleParamData {
+    npcBattleId: int; 
+    modeId: string; 
+}
+
+table dict__int__clz_Torappu_ArkdexNpcBattleParamData {
+    key: int(key);
+    value: clz_Torappu_ArkdexNpcBattleParamData;
+}
+
+table clz_Torappu_ArkdexNpcPixelData {
+    npcPixelId: string; 
+    npcPixelIcon: string; 
+    npcPixelName: string; 
+    npcLockedToast: string; 
+}
+
+table dict__string__clz_Torappu_ArkdexNpcPixelData {
+    key: string(key);
+    value: clz_Torappu_ArkdexNpcPixelData;
+}
+
+table clz_Torappu_ArkdexCaptureAreaData {
+    areaId: int; 
+}
+
+table dict__int__clz_Torappu_ArkdexCaptureAreaData {
+    key: int(key);
+    value: clz_Torappu_ArkdexCaptureAreaData;
+}
+
+table clz_Torappu_PingCond {
+    cond: int; 
+    txt: string; 
+}
+
+enum enum__Torappu_ArkventRangeType : int {
+    NONE = 0,
+    CIRCLE = 1,
+    RECT = 2,
+}
+
+table clz_UnityEngine_Vector3 {
+    x: float; 
+    y: float; 
+    z: float; 
+}
+
+table clz_Torappu_ArkventRangeData {
+    type: enum__Torappu_ArkventRangeType; 
+    position: clz_UnityEngine_Vector3; 
+    bounds: clz_UnityEngine_Vector3; 
+}
+
+table clz_Torappu_ArkdexConstData {
+    arkdexCreatureBagMaxNum: int; 
+    arkdexCreatureBagAlertNum: int; 
+    operatorTeamSize: int; 
+    totalSquadCnt: int; 
+    teamSlots: int; 
+    teamSize: int; 
+    maxTeamRarityCount: int; 
+    soloCharacterLimit: int; 
+    brawlCharacterLimit: int; 
+    buildEntryMaxTime: float; 
+    battleEntryMaxTime: float; 
+    settleMaxTime: float; 
+    pingConds: [clz_Torappu_PingCond]; 
+    maxLoadingTime: int; 
+    deployPhaseTime: int; 
+    deployPhaseHintTime: int; 
+    battlePhaseTimeMax: int; 
+    modeOperationRankTime: int; 
+    petFollowPanelScale: float; 
+    tradeRequestTime: int; 
+    creaturedDisappearAlert: float; 
+    creatureInteractRange: clz_Torappu_ArkventRangeData; 
+    creatureInteractStyleId: string; 
+    creatureDisplayNameId: string; 
+    creatureHeadUpStyleId: string; 
+}
+
+table clz_Torappu_ArkdexModuleData {
+    modeData: [dict__string__clz_Torappu_ArkdexModeData]; 
+    creatureData: [dict__int__clz_Torappu_ArkdexCreatureData]; 
+    advantageTypeData: [dict__string__clz_Torappu_ArkdexAdvantageTypeData]; 
+    advantageCounterMap: [dict__string__list_string]; 
+    npcInfoData: [dict__int__clz_Torappu_ArkdexNpcInfoData]; 
+    npcDuelStrategyData: [dict__string__list_dict__string__clz_Torappu_ArkdexNpcDuelStrategyData]; 
+    itemEffectData: [dict__int__clz_Torappu_ArkdexItemEffectData]; 
+    traitData: [dict__int__clz_Torappu_ArkdexTraitData]; 
+    sceneTypeMap: [dict__int__string]; 
+    npcBattleParamData: [dict__int__clz_Torappu_ArkdexNpcBattleParamData]; 
+    npcPixelData: [dict__string__clz_Torappu_ArkdexNpcPixelData]; 
+    captureAreaData: [dict__int__clz_Torappu_ArkdexCaptureAreaData]; 
+    dexConstData: clz_Torappu_ArkdexConstData; 
+}
+
+table clz_Torappu_ArkpixelConstData {
+    arkpixelBagNum: int; 
+    arkpixelOtherPlayerBagNum: int; 
+    maxReleaseTimesPerStage: int; 
+    pixelParamId: string; 
+    hiddenCreatorName: string; 
+    scenePixelDisplayRadius: float; 
+    pixelShowLimitConfigList: [int]; 
+    showCollectIconCount: int; 
+    maxCollectedCount: int; 
+    maxCollectedDisplayText: string; 
+}
+
+table clz_Torappu_ArkpixelReleaseStageData {
+    arkpixelStage: string; 
+    startTime: long; 
+    arkpixelReleaseTimes: int; 
+}
+
+table dict__string__clz_Torappu_ArkpixelReleaseStageData {
+    key: string(key);
+    value: clz_Torappu_ArkpixelReleaseStageData;
+}
+
+table clz_Torappu_ArkpixelModuleData {
+    pixelConstData: clz_Torappu_ArkpixelConstData; 
+    releaseStageData: [dict__string__clz_Torappu_ArkpixelReleaseStageData]; 
+}
+
+enum enum__Torappu_ActArkHubModuleType : int {
+    NONE = 0,
+    ARKDEX = 1,
+    ARKPIXEL = 2,
+}
+
+table clz_Torappu_ActArkHubModuleData {
+    arkdexModule: clz_Torappu_ArkdexModuleData; 
+    arkpixelModule: clz_Torappu_ArkpixelModuleData; 
+    moduleTypes: [enum__Torappu_ActArkHubModuleType]; 
+}
+
+enum enum__Torappu_ActArkHubActorType : int {
+    FURNI = 0,
+    LOGIN_REWARDS = 1,
+    ARKDEX_DUEL = 2,
+    ARKDEX_PLAYER = 3,
+}
+
+enum enum__Torappu_ArkventSpineFaceType : int {
+    RIGHT = 0,
+    LEFT = 1,
+}
+
+table clz_Torappu_ActArkHubInteractiveUnitData {
+    editorActorId: int; 
+    actorInteractPointCount: int; 
+    displayNameId: string; 
+    unitId: string; 
+    assetId: string; 
+    actorType: enum__Torappu_ActArkHubActorType; 
+    actorParam: string; 
+    avgId: string; 
+    interactionRequirements: [string]; 
+    position: clz_UnityEngine_Vector3; 
+    yaw: float; 
+    blockRange: clz_Torappu_ArkventRangeData; 
+    interactRange: clz_Torappu_ArkventRangeData; 
+    triggerCameraConfig: string; 
+    interactCameraConfig: string; 
+    interactBtnStyleId: string; 
+    headUpStyleId: string; 
+    sceneId: int; 
+    overrideAnimConfig: [dict__string__string]; 
+    spineFace: enum__Torappu_ArkventSpineFaceType; 
+    hasSafePos: bool; 
+    safePos: clz_UnityEngine_Vector3; 
+}
+
+table dict__int__clz_Torappu_ActArkHubInteractiveUnitData {
+    key: int(key);
+    value: clz_Torappu_ActArkHubInteractiveUnitData;
+}
+
+enum enum__Torappu_ActArkHubMenuType : int {
+    NONE = 0,
+    INVITE_FRIEND = 1,
+    MESSAGE = 2,
+    SETTING = 3,
+    ARKDEX_CREATURE = 4,
+    ARKDEX_ITEM = 5,
+    ARKDEX_ALBUM = 6,
+    ARKPIXEL = 7,
+    ARKDEX_TRADE = 8,
+}
+
+table clz_Torappu_ActArkHubMenuData {
+    type: enum__Torappu_ActArkHubMenuType; 
+    name: string; 
+    iconId: string; 
+    isPermanent: bool; 
+    sortId: int; 
+    unlockToast: string; 
+    bannedToast: string; 
+}
+
+table dict__string__clz_Torappu_ActArkHubMenuData {
+    key: string(key);
+    value: clz_Torappu_ActArkHubMenuData;
+}
+
+enum enum__Torappu_SpineFlipMode : int {
+    INPUT = 0,
+    VELOCITY = 1,
+}
+
+table clz_Torappu_ActArkHubConstData {
+    maxChannelPlayerLimit: int; 
+    emojiCD: float; 
+    emojiTime: float; 
+    runMaxStableMoveSpeed: float; 
+    walkMaxStableMoveSpeed: float; 
+    stableMovementSharpness: float; 
+    defaultAlpha: float; 
+    runConfiguredAnimScale: float; 
+    walkConfiguredAnimScale: float; 
+    minAnimScale: float; 
+    maxAnimScale: float; 
+    defaultMovePreset: string; 
+    defaultSpineFlip: enum__Torappu_SpineFlipMode; 
+    defaultSlideStopThreshold: float; 
+    reportMaxNum: int; 
+    invitationSendCd: int; 
+    invitationValidityPeriod: int; 
+    storyMachineCameraConfigId: string; 
+    pingConds: [clz_Torappu_PingCond]; 
+    btnCancelInteractStyleId: string; 
+    npcDefaultFx: string; 
+    npcSelectedFx: string; 
+    enterLobbyFx: string; 
+    interactSelectedFx: string; 
+    spraySummonFx: string; 
+    sprayFadeFx: string; 
+    petSummonFx: string; 
+    followDistance: float; 
+    stopDistance: float; 
+    moveSpeed: float; 
+    followOffset: float; 
+    colorSpineOutline: string; 
+    highQualityPetSpineCount: int; 
+    lowQualityPetSpineCount: int; 
+    midQualityPetSpineCount: int; 
+}
+
+table clz_Torappu_ActArkHubMoveFixData {
+    skinId: string; 
+    runMaxStableMoveSpeed: float; 
+    walkMaxStableMoveSpeed: float; 
+    alpha: float; 
+    runConfiguredAnimScale: float; 
+    walkConfiguredAnimScale: float; 
+    slideStopThreshold: float; 
+    spineFlip: enum__Torappu_SpineFlipMode; 
+}
+
+table dict__string__clz_Torappu_ActArkHubMoveFixData {
+    key: string(key);
+    value: clz_Torappu_ActArkHubMoveFixData;
+}
+
+enum enum__Torappu_EasingType : int {
+    INSTANT = 0,
+    LINEAR = 1,
+    EASE_IN = 2,
+    EASE_OUT = 3,
+    EASE_IN_OUT = 4,
+    EXPONENTIAL = 5,
+}
+
+enum enum__Torappu_TurningMode : int {
+    INSTANT = 0,
+    MOMENTUM = 1,
+}
+
+table clz_Torappu_ArkventMovePresetData {
+    presetId: string; 
+    accelEasingType: enum__Torappu_EasingType; 
+    accelDuration: float; 
+    accPower: float; 
+    decEasingType: enum__Torappu_EasingType; 
+    decDuration: float; 
+    decPower: float; 
+    turningMode: enum__Torappu_TurningMode; 
+    momentumTurnSpeed: float; 
+    momentumTurnSpeedLow: float; 
+}
+
+table dict__string__clz_Torappu_ArkventMovePresetData {
+    key: string(key);
+    value: clz_Torappu_ArkventMovePresetData;
+}
+
+enum enum__Torappu_ActArkHubNameCardState : int {
+    NONE = -1,
+    BATTLE = 0,
+    CAPTURE = 1,
+    MATCH = 2,
+    PIXEL = 3,
+    INTERACT = 4,
+}
+
+table clz_Torappu_ActArkHubPlayerStateInfoData {
+    state: enum__Torappu_ActArkHubNameCardState; 
+    iconId: string; 
+    name: string; 
+}
+
+table dict__string__clz_Torappu_ActArkHubPlayerStateInfoData {
+    key: string(key);
+    value: clz_Torappu_ActArkHubPlayerStateInfoData;
+}
+
+enum enum__Torappu_ActArkHubItemType : int {
+    NONE = 0,
+    ACTIVITY_COIN = 1,
+    COIN = 2,
+    ARKDEX = 3,
+    PIXEL = 4,
+}
+
+table clz_Torappu_ActArkHubRewardItem {
+    itemId: string; 
+    count: int; 
+    itemType: enum__Torappu_ActArkHubItemType; 
+}
+
+table clz_Torappu_ActArkHubRewardData {
+    rewardId: string; 
+    itemList: [clz_Torappu_ActArkHubRewardItem]; 
+}
+
+table dict__string__clz_Torappu_ActArkHubRewardData {
+    key: string(key);
+    value: clz_Torappu_ActArkHubRewardData;
+}
+
+table clz_Torappu_ActArkhubLoadingTipData {
+    tip: string; 
+    weight: int; 
+}
+
+table clz_Torappu_ActArkHubData {
+    moduleData: clz_Torappu_ActArkHubModuleData; 
+    interactiveUnitData: [dict__int__clz_Torappu_ActArkHubInteractiveUnitData]; 
+    enabledEmoticonThemeIdList: [string]; 
+    reportPlayerDataList: [clz_Torappu_CommonReportPlayerData]; 
+    menuData: [dict__string__clz_Torappu_ActArkHubMenuData]; 
+    constData: clz_Torappu_ActArkHubConstData; 
+    moveFixData: [dict__string__clz_Torappu_ActArkHubMoveFixData]; 
+    movePresetData: [dict__string__clz_Torappu_ArkventMovePresetData]; 
+    skinPresetDict: [dict__string__string]; 
+    playerStateInfoData: [dict__string__clz_Torappu_ActArkHubPlayerStateInfoData]; 
+    rewardDataDict: [dict__string__clz_Torappu_ActArkHubRewardData]; 
+    spawnFxDurationDict: [dict__string__float]; 
+    loadingTipList: [clz_Torappu_ActArkhubLoadingTipData]; 
+}
+
+table dict__string__clz_Torappu_ActArkHubData {
+    key: string(key);
+    value: clz_Torappu_ActArkHubData;
+}
+
+table clz_Torappu_Act53SideData_Act53SideZoneAdditionData {
+    zoneId: string; 
+    unlockText: string; 
+}
+
+table dict__string__clz_Torappu_Act53SideData_Act53SideZoneAdditionData {
+    key: string(key);
+    value: clz_Torappu_Act53SideData_Act53SideZoneAdditionData;
+}
+
+table clz_Torappu_Act53SideData_Act53SideConstData {
+    arkOdcTopicId: string; 
+    arkOdcUnlockStageId: string; 
+    arkOdcUnlockText: string; 
+    arkOdcUpdateText: string; 
+    campaignStageId: string; 
+    campaignEnemyCnt: int; 
+    coinItemId: string; 
+}
+
+table clz_Torappu_Act53SideData {
+    zoneAdditionDataMap: [dict__string__clz_Torappu_Act53SideData_Act53SideZoneAdditionData]; 
+    actOdcStageIdList: [string]; 
+    constData: clz_Torappu_Act53SideData_Act53SideConstData; 
+}
+
+table dict__string__clz_Torappu_Act53SideData {
+    key: string(key);
+    value: clz_Torappu_Act53SideData;
+}
+
 table clz_Torappu_ActivityTable_ActivityDetailTable {
     DEFAULT: [dict__string__clz_Torappu_DefaultFirstData]; 
     CHECKIN_ONLY: [dict__string__clz_Torappu_DefaultCheckInData]; 
@@ -6426,6 +7009,8 @@ table clz_Torappu_ActivityTable_ActivityDetailTable {
     TYPE_ACT46SIDE: [dict__string__clz_Torappu_Act46SideData]; 
     AUTOCHESS_SEASON: [dict__string__clz_Torappu_ActAutoChessData]; 
     ACT_FOOTBALL: [dict__string__clz_Torappu_ActFootballData]; 
+    ARK_HUB: [dict__string__clz_Torappu_ActArkHubData]; 
+    TYPE_ACT53SIDE: [dict__string__clz_Torappu_Act53SideData]; 
 }
 
 table clz_Torappu_ActMainlineBpExtraData_ActMainlineBpExtraPeriodData {
@@ -7587,9 +8172,23 @@ table dict__string__clz_Torappu_DynEntrySwitchInfo {
     value: clz_Torappu_DynEntrySwitchInfo;
 }
 
+table clz_Torappu_DynEntryAnimationInfo {
+    animationId: string; 
+    sortId: int; 
+    isDefaultAnimation: bool; 
+    stageId: string; 
+    signalId: string; 
+}
+
+table dict__string__clz_Torappu_DynEntryAnimationInfo {
+    key: string(key);
+    value: clz_Torappu_DynEntryAnimationInfo;
+}
+
 table clz_Torappu_ActivityDynEntrySwitchData {
     entrySwitchInfo: [dict__string__clz_Torappu_DynEntrySwitchInfo]; 
     randomEntrySwitchInfo: [dict__string__clz_Torappu_DynEntrySwitchInfo]; 
+    entryAnimationInfo: [dict__string__clz_Torappu_DynEntryAnimationInfo]; 
 }
 
 table dict__string__clz_Torappu_ActivityDynEntrySwitchData {
@@ -8086,11 +8685,6 @@ table clz_Torappu_AutoChessData_AutoChessBroadcastData {
     paramList: [string]; 
 }
 
-table clz_Torappu_PingCond {
-    cond: int; 
-    txt: string; 
-}
-
 table clz_Torappu_AutoChessData_AutoChessConstData {
     pingConds: [clz_Torappu_PingCond]; 
     matchingTipRotateInterval: float; 
@@ -8154,6 +8748,42 @@ table clz_Torappu_AutoChessData {
     reportPlayerDataList: [clz_Torappu_CommonReportPlayerData]; 
     broadcastList: [clz_Torappu_AutoChessData_AutoChessBroadcastData]; 
     constData: clz_Torappu_AutoChessData_AutoChessConstData; 
+}
+
+enum enum__Torappu_ItemRarity : int {
+    TIER_1 = 0,
+    TIER_2 = 1,
+    TIER_3 = 2,
+    TIER_4 = 3,
+    TIER_5 = 4,
+    TIER_6 = 5,
+    E_NUM = 6,
+}
+
+table clz_Torappu_ActArkHubItemData {
+    itemId: string; 
+    itemNumId: int; 
+    itemType: enum__Torappu_ActArkHubItemType; 
+    itemName: string; 
+    itemUsage: string; 
+    itemDesc: string; 
+    obtainApproach: string; 
+    stackLimit: int; 
+    maxEffectCount: int; 
+    rarity: enum__Torappu_ItemRarity; 
+    itemSortId: int; 
+    isUsable: bool; 
+    isShow: bool; 
+    accumulateDesc: string; 
+}
+
+table dict__string__clz_Torappu_ActArkHubItemData {
+    key: string(key);
+    value: clz_Torappu_ActArkHubItemData;
+}
+
+table clz_Torappu_ArkhubData {
+    itemData: [dict__string__clz_Torappu_ActArkHubItemData]; 
 }
 
 table dict__string__list_dict__string__string {
@@ -8326,6 +8956,7 @@ table clz_Torappu_ActivityTable {
     fifthAnnivExploreData: clz_Torappu_FifthAnnivExploreData; 
     anniv7thData: clz_Torappu_Anniv7thMainlineData; 
     autoChessData: clz_Torappu_AutoChessData; 
+    arkhubData: clz_Torappu_ArkhubData; 
     stringRes: [dict__string__list_dict__string__string]; 
     activityTraps: [dict__string__clz_Torappu_ActivityTable_ActivityTrapsData]; 
     activityTrapMissions: [dict__string__clz_Torappu_ActivityTable_ActivityTrapMissionsData]; 

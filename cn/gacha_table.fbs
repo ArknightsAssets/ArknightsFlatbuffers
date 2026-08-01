@@ -144,6 +144,7 @@ enum enum__Torappu_ItemType : int {
     PLOT_ITEM = 90,
     MAGAZINE_LEAF = 91,
     STICKER = 92,
+    ARKHUB = 93,
 }
 
 table clz_Torappu_ItemBundle {
