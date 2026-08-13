@@ -1,5 +1,5 @@
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/4975a03f61c54aa9e4ea792c7fd193039166d0cd
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
-// YoStar version
 table clz_Torappu_CharSkinData_TokenSkinInfo {
     tokenId: string; 
     tokenSkinId: string; 
@@ -47,7 +47,9 @@ table clz_Torappu_CharSkinData {
     dynIllustId: string; 
     spDynIllustId: string; 
     avatarId: string; 
+    spAvatarId: string; 
     portraitId: string; 
+    spPortraitId: string; 
     dynPortraitId: string; 
     dynEntranceId: string; 
     buildingId: string; 
@@ -121,6 +123,8 @@ table clz_Torappu_SpDynIllustInfo {
     spDynIllustId: string; 
     spDynIllustSkinTag: string; 
     spIllustId: string; 
+    spPortraitId: string; 
+    spAvatarId: string; 
 }
 
 table dict__string__clz_Torappu_SpDynIllustInfo {
