@@ -186,6 +186,7 @@ table clz_Torappu_BuffData {
     lifeTimeType: enum__Torappu_LifeType; 
     takeSnapshotWhenExtend: bool; 
     durationKey: string; 
+    remainingTimeKey: string; 
     lifeTime: float; 
     triggerLifeType: enum__Torappu_LifeType; 
     triggerCnt: int; 

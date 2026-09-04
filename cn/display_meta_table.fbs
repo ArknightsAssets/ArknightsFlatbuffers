@@ -401,6 +401,7 @@ enum enum__Torappu_ItemType : int {
     MAGAZINE_LEAF = 91,
     STICKER = 92,
     ARKHUB = 93,
+    LINKAGE_TKT_GACHA = 94,
 }
 
 table clz_Torappu_ItemBundle {
@@ -573,6 +574,8 @@ enum enum__Torappu_UIGuideTarget : int {
     PIXEL_MAP = 54,
     ARK_HUB = 55,
     ARK_ODC = 56,
+    ACT54SIDE_CARD = 57,
+    ACT_VASEBREAKER = 58,
 }
 
 table clz_Torappu_GuidebookConfigData {
@@ -690,7 +693,9 @@ enum enum__Torappu_ActivityType : int {
     ARK_HUB = 62,
     ACT_FOOTBALL = 63,
     TYPE_ACT53SIDE = 64,
-    ENUM = 65,
+    TYPE_ACT54SIDE = 65,
+    ACT_DP = 66,
+    ENUM = 67,
 }
 
 table clz_Torappu_KeySettingItemData {

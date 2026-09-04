@@ -1,4 +1,4 @@
-// https://github.com/MooncellWiki/OpenArknightsFBS/commit/8762dd117a04e5815bfe2535569a17fbb8fe4d9b
+// https://github.com/MooncellWiki/OpenArknightsFBS/commit/b24069f2c7366ad207a83659d4820689704d6c1f
 // This file is auto-generated, see https://github.com/MooncellWiki/OpenArknightsFBS for details.
 enum enum__Torappu_BattleFunctionDisableMask : int {
     NONE = 0,
@@ -20,7 +20,8 @@ enum enum__Torappu_BattleFunctionDisableMask : int {
     CHARACTER_LIMIT = 32768,
     AUTOCHESS_SELL_OR_DESTORY = 65536,
     CHARACTER_MENU_PANEL = 131072,
-    ALL = 262143,
+    DRAG_UI_CARD = 262144,
+    ALL = 524287,
 }
 
 table clz_Torappu_Blackboard_DataPair {
@@ -37,6 +38,7 @@ table clz_Torappu_LevelData_Options {
     costIncreaseTime: float; 
     moveMultiplier: float; 
     steeringEnabled: bool; 
+    reachableCheckIgnoreStartTile: bool; 
     isTrainingLevel: bool; 
     isHardTrainingLevel: bool; 
     isPredefinedCardsSelectable: bool; 

@@ -145,6 +145,7 @@ enum enum__Torappu_ItemType : int {
     MAGAZINE_LEAF = 91,
     STICKER = 92,
     ARKHUB = 93,
+    LINKAGE_TKT_GACHA = 94,
 }
 
 table clz_Torappu_ItemBundle {
@@ -240,10 +241,11 @@ table clz_Torappu_GachaData_LimitTenGachaTkt {
     endTime: long; 
 }
 
-table clz_Torappu_GachaData_LinkageTenGachaTkt {
+table clz_Torappu_GachaData_LinkageGachaTkt {
     itemId: string; 
     endTime: long; 
     gachaPoolId: string; 
+    isTen: bool; 
 }
 
 table clz_Torappu_GachaData_NormalGachaTkt {
@@ -288,7 +290,7 @@ table clz_Torappu_GachaData {
     carousel: [clz_Torappu_GachaData_CarouselData]; 
     freeGacha: [clz_Torappu_GachaData_FreeLimitGachaData]; 
     limitTenGachaItem: [clz_Torappu_GachaData_LimitTenGachaTkt]; 
-    linkageTenGachaItem: [clz_Torappu_GachaData_LinkageTenGachaTkt]; 
+    linkageGachaItem: [clz_Torappu_GachaData_LinkageGachaTkt]; 
     normalGachaItem: [clz_Torappu_GachaData_NormalGachaTkt]; 
     fesGachaPoolRelateItem: [dict__string__clz_Torappu_GachaData_FesGachaPoolRelateItem]; 
     dicRecruit6StarHint: [dict__string__string]; 

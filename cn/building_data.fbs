@@ -158,6 +158,7 @@ enum enum__Torappu_ItemType : int {
     MAGAZINE_LEAF = 91,
     STICKER = 92,
     ARKHUB = 93,
+    LINKAGE_TKT_GACHA = 94,
 }
 
 table clz_Torappu_ItemBundle {
